@@ -1,0 +1,57 @@
+@import '../../style/';
+
+.hiui-grid-col {
+  position: relative;
+  float: left;
+}
+
+make-grid(size) {
+  if (size) {
+    _size = '-' + size;
+  }
+  else {
+    _size = '';
+  }
+
+  .hiui-grid-col{_size}-0 {
+    display: none;
+  }
+
+  for _num in (1.._grid_columns) {
+    .hiui-grid-col{_size}-{_num} {
+      display: block;
+      width: unit((100 / _grid_columns) * _num, '%')
+    }
+
+    .hiui-grid-col{_size}-offset-{_num} {
+      margin-left: unit((_num / _grid_columns) * 100, '%')
+    }
+
+    .hiui-grid-col{_size}-pull-{_num} {
+      right: unit((_num / _grid_columns) * 100, '%')
+    }
+
+    .hiui-grid-col{_size}-push-{_num} {
+      left: unit((_num / _grid_columns) * 100, '%')
+    }
+  }
+}
+
+make-grid-media(size) {
+  @media (min-width: _grid_screen_ + size) {
+    make-grid(size);
+  }
+}
+
+make-grid('');
+
+for size in _size_o {
+  if (size == 'xsm') {
+    make-grid(size)
+  }
+  else {
+    make-grid-media(size)
+  }
+}
+
+

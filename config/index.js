@@ -37,7 +37,7 @@ module.exports = {
   },
   package: {
     env: require('./package.env'),
-    libraryName: 'hiuim',
+    libraryName: 'hiuipc',
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',

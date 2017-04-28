@@ -2,9 +2,9 @@
   <demo title="Btn">
     <demo-item name="Size" description="按钮大小" :code="size_code" slot="left">
       <div class="btn-group">
-        <Btn size="sm">Size sm</Btn>
-        <Btn size="md">Size md</Btn>
-        <Btn size="lg">Size lg</Btn>
+        <Btn size="sm">小尺寸</Btn>
+        <Btn size="md">中尺寸</Btn>
+        <Btn size="lg">大尺寸</Btn>
       </div>
     </demo-item>
 
@@ -45,6 +45,7 @@
   .btn-group {
     .solid-btn {
       border: none;
+      border-radius: 0;
       color: _white;
       background-color: _blue;
 
@@ -103,6 +104,7 @@
 <style lang="stylus">
 .solid-btn {
   border: none;
+  border-radius: 0;
   color: _white;
   background-color: _blue;
 }

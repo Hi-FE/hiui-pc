@@ -29,7 +29,7 @@
         <Btn class="solid-btn" prefix="rollback">Back</Btn>
         <Btn class="star-btn" prefix="star">Star</Btn>
         <Btn class="cir-btn" prefix="search"></Btn>
-        <Btn class="fixed-width-btn">购买</Btn>
+        <Btn class="fixed-width-btn" suffix="shoppingcart" size="lg">购买</Btn>
       </div>
     </demo-item>
   </demo>
@@ -51,11 +51,11 @@
       background-color: _blue;
 
       &:hover {
-        background-color: lighten(_blue, 5%);
+        background-color: lighten(_blue, 10%);
       }
 
       &:active {
-        background-color: darken(_blue, 5%);
+        background-color: darken(_blue, 10%);
       }
     }
     .star-btn {
@@ -77,11 +77,19 @@
     }
 
     .fixed-width-btn {
-      width: 120px;
+      width: 150px;
       color: _white;
       border: none;
       background-color: _red;
       border-radius: 0;
+
+      &:hover {
+        background-color: lighten(_red, 10%);
+      }
+
+      &:active {
+        background-color: darken(_red, 10%);
+      }
     }
   }
 </style>
@@ -119,10 +127,10 @@
   background-color: _blue;
 }
 .solid-btn:hover {
-  background-color: lighten(_blue, 5%);
+  background-color: lighten(_blue, 10%);
 }
 .solid-btn:active {
-  background-color: darken(_blue, 5%);
+  background-color: darken(_blue, 10%);
 }
 
 .star-btn:hover {
@@ -142,11 +150,17 @@
 }
 
 .fixed-width-btn {
-  width: 120px;
-  border: none;
-  border-radius: 0;
+  width: 150px;
   color: _white;
+  border: none;
   background-color: _red;
+  border-radius: 0;
+}
+.fixed-width-btn:hover {
+  background-color: lighten(_red, 10%);
+}
+.fixed-width-btn:active {
+  background-color: darken(_red, 10%);
 }
 </style>
         `

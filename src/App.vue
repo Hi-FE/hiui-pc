@@ -6,6 +6,10 @@
 
 <style lang="stylus">
 	@import './style/core/';
+
+  html {
+    color: #666;
+  }
 </style>
 
 <script>

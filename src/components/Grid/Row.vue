@@ -23,7 +23,7 @@
     name: 'Row',
     props: {
       gutter: {
-        default: 12,
+        default: 0,
         type: Number
       }
     },

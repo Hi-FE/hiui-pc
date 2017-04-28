@@ -55,12 +55,20 @@
 
 ## API
 
+### Row
+
+| 参数 | 说明 | 类型 | 默认值 |
+| ----|:-----| ---- | ---- |
+| gutter | 栅格间隔  | `Number` | 0 |
+
+### Col
+
 | 参数 | 说明 | 类型 | 默认值 |
 | ----|:-----| ---- | ---- |
 | span | 栅格格数，为`0`时为`display: none`  | `Number|String` | - |
-| offset | 栅格往右偏移个数  | `Number|String` | - |
-| push | 栅格往右移动个数，原占位不变  | `Number|String` | - |
-| pull | 栅格往左移动个数，原占位不变  | `Number|String` | - |
+| offset | 栅格往右偏移个数  | `Number|String` | 0 |
+| push | 栅格往右移动个数，原占位不变  | `Number|String` | 0 |
+| pull | 栅格往左移动个数，原占位不变  | `Number|String` | 0 |
 | xsm | `<768px` 响应式栅格，可为栅格格数 或 一个包含多个属性的对象  | `Number|String|Object` | - |
 | sm | `>=768px` 响应式栅格，可为栅格格数 或 一个包含多个属性的对象  | `Number|String|Object` | - |
 | md | `>=992px` 响应式栅格，可为栅格格数 或 一个包含多个属性的对象  | `Number|String|Object` | - |

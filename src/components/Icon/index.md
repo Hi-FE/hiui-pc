@@ -22,6 +22,6 @@
 | ----|:-----| ---- | ---- |
 | name | 图标类型 | `String` | - |
 | size | 图标尺寸 | `Number` | - |
-| color | 图标颜色 | `String` | `#666` |
+| color | 图标颜色 | `String` | - |
 | rotate | 是否旋转 | `Boolean` | `false` |
 

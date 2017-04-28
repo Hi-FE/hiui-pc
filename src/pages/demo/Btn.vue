@@ -1,6 +1,5 @@
 <template>
   <demo title="Btn">
-    <!-- Prop: size -->
     <demo-item name="Size" description="按钮大小" :code="size_code" slot="left">
       <div class="btn-group">
         <Btn size="sm">Size sm</Btn>
@@ -9,28 +8,71 @@
       </div>
     </demo-item>
 
-    <!-- Prop: prefix suffix -->
-    <demo-item name="Icon" description="更多图标" :code="icon_code" slot="right">
+    <demo-item name="Icon" description="前后置图标" :code="icon_code" slot="right">
       <div class="btn-group">
-        <Btn prefix="search" size="sm">search</Btn>
-        <Btn suffix="search" size="lg">search</Btn>
+        <Btn prefix="arrowleft">Left</Btn>
+        <Btn prefix="arrowright">Right</Btn>
+        <Btn suffix="arrowup">Up</Btn>
+        <Btn suffix="arrowdown">Down</Btn>
       </div>
     </demo-item>
 
-    <!-- Prop: disabled is_loading -->
     <demo-item name="Status" description="按钮状态" :code="status_code" slot="left">
       <div class="btn-group">
         <Btn :disabled="true">Disabled</Btn>
         <Btn :is_loading="true" loading_text="Loading..">Btn</Btn>
       </div>
     </demo-item>
+
+    <demo-item name="Style" description="自定义样式" :code="style_code" slot="right">
+      <div class="btn-group">
+        <Btn class="solid-btn" prefix="rollback">Back</Btn>
+        <Btn class="star-btn" prefix="star">Star</Btn>
+        <Btn class="cir-btn" prefix="search"></Btn>
+      </div>
+    </demo-item>
   </demo>
 </template>
 
 <style lang="stylus" scope>
+  @import '../../style/';
+
   .btn-group > button {
     margin: 2px 2px 2px 0;
     vertical-align: bottom;
+  }
+
+  .btn-group {
+    .solid-btn {
+      border: none;
+      color: _white;
+      background-color: _blue;
+
+      &:hover {
+        background-color: lighten(_blue, 5%);
+      }
+
+      &:active {
+        background-color: darken(_blue, 5%);
+      }
+    }
+    .star-btn {
+      &:hover {
+        color: _yellow;
+        border-color: _yellow;
+      }
+
+      &:active {
+        box-shadow: none;
+        color: darken(_yellow, 20%);
+        border-color: darken(_yellow, 20%);
+      }
+    }
+    .cir-btn {
+      border-radius: 50%;
+      padding: 0;
+      width: _size_md;
+    }
   }
 </style>
 
@@ -48,8 +90,45 @@
 <Btn :is_loading="true" loading_text="Loading..">Btn</Btn>
         `,
         icon_code: `
-<Btn prefix="search">search</Btn>
-<Btn suffix="search">search</Btn>
+<Btn prefix="arrowleft">Left</Btn>
+<Btn prefix="arrowright">Right</Btn>
+<Btn suffix="arrowup">Up</Btn>
+<Btn suffix="arrowdown">Down</Btn>
+        `,
+        style_code: `
+<Btn class="solid-btn" prefix="rollback">Back</Btn>
+<Btn class="star-btn" prefix="star">Star</Btn>
+<Btn class="cir-btn" prefix="search"></Btn>
+
+<style lang="stylus">
+.solid-btn {
+  border: none;
+  color: _white;
+  background-color: _blue;
+}
+.solid-btn:hover {
+  background-color: lighten(_blue, 5%);
+}
+.solid-btn:active {
+  background-color: darken(_blue, 5%);
+}
+
+.star-btn:hover {
+  color: _yellow;
+  border-color: _yellow;
+}
+.star-btn:active {
+  box-shadow: none;
+  color: darken(_yellow, 20%);
+  border-color: darken(_yellow, 20%);
+}
+
+.cir-btn {
+  border-radius: 50%;
+  padding: 0;
+  width: _size_md;
+}
+</style>
         `
       }
     }

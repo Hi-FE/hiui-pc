@@ -2,7 +2,6 @@
 
 _default = #d9d9d9;
 _default_deep = #666;
-_themes = 'red', 'blue', 'yellow', 'green';
 
 .hiui-btn {
   display: inline-block;
@@ -11,6 +10,7 @@ _themes = 'red', 'blue', 'yellow', 'green';
   white-space: nowrap;
   border-radius: 4px;
   color: _default_deep;
+  vertical-align: middle;
   border: 1px solid _default;
   background-color: #fff;
   user-select: none;
@@ -18,14 +18,24 @@ _themes = 'red', 'blue', 'yellow', 'green';
   color: rgba(0 ,0 , 0, .65);
   outline: none;
   box-shadow: none;
-  transition: all .3s;
+  cursor pointer;
+  transition: all .2s;
 
-  &:not(.disabled):active {
-    box-shadow: inset 0 2px 3px rgba(0, 0, 0, .12);
+  &:hover {
+    border-color: darken(_default, 30%);
+  }
+
+  &:active {
+    box-shadow: inset 0 2px 2px rgba(0, 0, 0, .12);
   }
 
   &.disabled {
     opacity: .3;
+    cursor: not-allowed;
+
+    &:active {
+      box-shadow: none;
+    }
   }
 }
 
@@ -37,7 +47,6 @@ for size in _size {
 
     .hiui-icon {
       font-size: _btn_icon_ + size;
-      vertical-align: top;
     }
   }
 }

@@ -29,6 +29,7 @@
         <Btn class="solid-btn" prefix="rollback">Back</Btn>
         <Btn class="star-btn" prefix="star">Star</Btn>
         <Btn class="cir-btn" prefix="search"></Btn>
+        <Btn class="fixed-width-btn">购买</Btn>
       </div>
     </demo-item>
   </demo>
@@ -74,6 +75,14 @@
       padding: 0;
       width: _size_md;
     }
+
+    .fixed-width-btn {
+      width: 120px;
+      color: _white;
+      border: none;
+      background-color: _red;
+      border-radius: 0;
+    }
   }
 </style>
 
@@ -100,6 +109,7 @@
 <Btn class="solid-btn" prefix="rollback">Back</Btn>
 <Btn class="star-btn" prefix="star">Star</Btn>
 <Btn class="cir-btn" prefix="search"></Btn>
+<Btn class="fixed-width-btn">购买</Btn>
 
 <style lang="stylus">
 .solid-btn {
@@ -129,6 +139,14 @@
   border-radius: 50%;
   padding: 0;
   width: _size_md;
+}
+
+.fixed-width-btn {
+  width: 120px;
+  border: none;
+  border-radius: 0;
+  color: _white;
+  background-color: _red;
 }
 </style>
         `

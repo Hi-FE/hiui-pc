@@ -7,6 +7,9 @@
 *:after {
   box-sizing: border-box;
 }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif;
+}
 body,
 div,
 dl,
@@ -278,6 +281,9 @@ template {
 *:before,
 *:after {
   box-sizing: border-box;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif;
 }
 body,
 div,
@@ -2435,6 +2441,9 @@ template {
 *:after {
   box-sizing: border-box;
 }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif;
+}
 body,
 div,
 dl,
@@ -2730,6 +2739,9 @@ to {
 *:after {
   box-sizing: border-box;
 }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif;
+}
 body,
 div,
 dl,
@@ -2982,6 +2994,7 @@ template {
   white-space: nowrap;
   border-radius: 4px;
   color: #666;
+  vertical-align: middle;
   border: 1px solid #d9d9d9;
   background-color: #fff;
   user-select: none;
@@ -2989,40 +3002,48 @@ template {
   color: rgba(0,0,0,0.65);
   outline: none;
   box-shadow: none;
-  transition: all 0.3s;
+  cursor: pointer;
+  transition: all 0.2s;
 }
-.hiui-btn:not(.disabled):active {
-  box-shadow: inset 0 2px 3px rgba(0,0,0,0.12);
+.hiui-btn:hover {
+  border-color: #989898;
+}
+.hiui-btn:active {
+  box-shadow: inset 0 2px 2px rgba(0,0,0,0.12);
 }
 .hiui-btn.disabled {
   opacity: 0.3;
+  cursor: not-allowed;
+}
+.hiui-btn.disabled:active {
+  box-shadow: none;
 }
 .hiui-btn-sm {
   padding: 0 12px;
   font-size: 12px;
-  height: 20px;
+  height: 24px;
 }
 .hiui-btn-sm .hiui-icon {
+  margin: 0 -1px;
   font-size: 14px;
-  vertical-align: top;
 }
 .hiui-btn-md {
   padding: 0 14px;
-  font-size: 16px;
+  font-size: 14px;
   height: 34px;
 }
 .hiui-btn-md .hiui-icon {
-  font-size: 18px;
-  vertical-align: top;
+  margin: 0 -1px;
+  font-size: 16px;
 }
 .hiui-btn-lg {
   padding: 0 16px;
-  font-size: 20px;
-  height: 48px;
+  font-size: 16px;
+  height: 44px;
 }
 .hiui-btn-lg .hiui-icon {
-  font-size: 22px;
-  vertical-align: top;
+  margin: 0 -1px;
+  font-size: 18px;
 }
 
 * {
@@ -3032,6 +3053,9 @@ template {
 *:before,
 *:after {
   box-sizing: border-box;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif;
 }
 body,
 div,
@@ -3282,9 +3306,7 @@ template {
   position: relative;
   display: inline-block;
   vertical-align: baseline;
-  color: #666;
   font-size: 24px;
-  overflow: hidden;
 }
 .hiui-icon svg {
   display: block;
@@ -3332,6 +3354,9 @@ to {
 *:before,
 *:after {
   box-sizing: border-box;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif;
 }
 body,
 div,
@@ -3584,7 +3609,7 @@ template {
   border: 1px solid #ccc;
 }
 .hiui-bar-sm {
-  height: 24px;
+  height: 28px;
 }
 .hiui-bar-sm.hiui-bar-padding {
   padding: 2px;
@@ -3599,7 +3624,7 @@ template {
   height: 56px;
 }
 .hiui-bar-lg.hiui-bar-padding {
-  padding: 4px;
+  padding: 6px;
 }
 
 * {
@@ -3609,6 +3634,9 @@ template {
 *:before,
 *:after {
   box-sizing: border-box;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif;
 }
 body,
 div,
@@ -3929,6 +3957,9 @@ template {
 *:before,
 *:after {
   box-sizing: border-box;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif;
 }
 body,
 div,

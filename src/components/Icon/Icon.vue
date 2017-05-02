@@ -3,7 +3,7 @@
 </template>
 
 <style lang="stylus">
-  @import '//at.alicdn.com/t/font_53et5piaeaeb3xr.css';
+  @import '//at.alicdn.com/t/font_bwko6yrbca6ecdi.css';
   @import './style/';
 </style>
 

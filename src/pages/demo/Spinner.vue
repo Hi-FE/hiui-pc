@@ -1,9 +1,5 @@
 <template>
   <demo title="Spinner" class="spinner-demo">
-    <demo-item name="Default" description="默认" :code="code" slot="left">
-      <Spinner></Spinner>
-    </demo-item>
-
     <demo-item name="Size" description="尺寸" :code="size_code" slot="right">
       <Spinner></Spinner>
       <Spinner :size="36"></Spinner>
@@ -16,11 +12,28 @@
       <Spinner color="#87db83"></Spinner>
       <Spinner color="rgba(255, 66, 66, 1)"></Spinner>
     </demo-item>
+
+    <demo-item name="Wrap" description="容器中" :code="wrap_code" slot="left">
+      <article class="article">
+        <h3>Article Title</h3>
+        <p>This is a test text</p>
+        <Spinner :wrap="true">
+          Loading...
+        </Spinner>
+      </article>
+    </demo-item>
   </demo>
 </template>
 
 <style lang="stylus" scope>
-  .spinner-demo {
+  .spinner-demo .hiui-spinner {
+    display: inline-block;
+  }
+
+  .article {
+    position: relative;
+    width: 100%;
+    padding: 5px 20px;
   }
 </style>
 
@@ -41,7 +54,16 @@
 <Spinner color="pink"></Spinner>
 <Spinner color="#87db83"></Spinner>
 <Spinner color="rgba(255, 66, 66, 1)"></Spinner>
-      `
+        `,
+        wrap_code: `
+<article class="article">
+  <h3>Article Title</h3>
+  <p>This is a test text</p>
+  <Spinner :wrap="true">
+    Loading...
+  </Spinner>
+</article>
+        `
       }
     }
   }

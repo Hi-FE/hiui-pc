@@ -1,7 +1,7 @@
 <template>
   <Row :gutter="10">
     <template v-for="(type, i) in icons">
-      <Col :lg="3" :md="4" :sm="6">
+      <Col :xlg="3" :lg="4" :md="6" :sm="8">
         <div class="icon-item" @click="clickHandle(i)" v-clipboard:copy="type">
           <Icon :name="type" />
           <div class="icon-name">{{ type }}</div>
@@ -36,8 +36,6 @@
 
   .icon-name {
     font-size: 12px;
-    overflow: hidden;
-    text-overflow: ellipsis;
     white-space: nowrap;
   }
 

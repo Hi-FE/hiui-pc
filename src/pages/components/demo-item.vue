@@ -48,7 +48,7 @@
     height: 20px;
     line-height: 20px;
     padding-left: 30px;
-    background-color: _width;
+    background-color: _white;
 
     &::before {
       content: attr(data-title);

@@ -25,3 +25,20 @@
 | color | 图标颜色 | `String` | - |
 | rotate | 是否旋转 | `Boolean` | `false` |
 
+## 图标列表
+
+> 点击图标复制图标名字
+
+<IconList></IconList>
+
+<script>
+  import test from '@/pages/demo/Icon.vue';
+  import IconList from '@/pages/demo/IconList.vue';
+
+  export default {
+    components: {
+      test,
+      IconList
+    }
+  }
+</script>

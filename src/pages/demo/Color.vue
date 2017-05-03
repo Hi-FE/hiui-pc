@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h3>{{ type }}</h3>
+    <h3>{{ data[type].name }}</h3>
     <Row :gutter="20" :class="`${type}-group color-group`">
-      <Col v-for="name in colors[type]" :span="24 / colors[type].length" class="color-item-wrap">
+      <Col v-for="name in data[type].colors" :span="24 / data[type].colors.length" class="color-item-wrap">
         <div class="color-item">
           <div class="color-name">{{ name }}</div>
         </div>
@@ -30,8 +30,8 @@
     border-radius: 4px;
 
     .color-name {
-      font-size: 18px;
-      text-shadow: 0 0 1px #333;
+      font-size: 16px;
+      text-shadow: 0 0 1px rgba(0, 0, 0, .8);
     }
   }
 
@@ -50,7 +50,7 @@
 
           &::after {
             content: '' + color;
-            text-shadow: 0 0 1px #333;
+            text-shadow: 0 0 1px rgba(0, 0, 0, .8);
           }
         }
       }
@@ -74,12 +74,27 @@
     },
     data () {
       return {
-        colors: {
-          blue: ['_blue', '_blue_light', '_blue_deep'],
-          red: ['_red', '_red_light', '_red_deep'],
-          green: ['_green', '_green_light', '_green_deep'],
-          yellow: ['_yellow', '_yellow_light', '_yellow_deep'],
-          neutrals: ['_grey', '_grey_light', '_grey_lighter', '_grey_deep', '_grey_deeper', '_black']
+        data: {
+          blue: {
+            name: '蓝色',
+            colors: ['_blue', '_blue_light', '_blue_deep']
+          },
+          red: {
+            name: '红色',
+            colors: ['_red', '_red_light', '_red_deep']
+          },
+          green: {
+            name: '绿色',
+            colors: ['_green', '_green_light', '_green_deep']
+          },
+          yellow: {
+            name: '黄色',
+            colors: ['_yellow', '_yellow_light', '_yellow_deep']
+          },
+          neutrals: {
+            name: '中性色',
+            colors: ['_grey', '_grey_light', '_grey_lighter', '_grey_deep', '_grey_deeper', '_black']
+          }
         }
       }
     }

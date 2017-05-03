@@ -2,9 +2,9 @@
   <Row :gutter="10">
     <template v-for="(type, i) in icons">
       <Col :xlg="3" :lg="4" :md="6" :sm="8">
-        <div class="icon-item" @click="clickHandle(i)" v-clipboard:copy="type">
+        <div class="icon-item" @click="clickHandle(i)" v-clipboard:copy='`<Icon name="${type}"></Icon>`'>
           <Icon :name="type" />
-          <div class="icon-name">{{ type }}</div>
+          <div class="icon-name" @click.stop="void 0">{{ type }}</div>
           <transition name="fade">
             <div class="copy_success" v-if="index === i">
               Copy Success!
@@ -23,6 +23,7 @@
     position: relative;
     border-radius: 4px;
     cursor: pointer;
+    margin: 5px 0;
     padding: 20px;
     text-align: center;
     overflow: hidden;

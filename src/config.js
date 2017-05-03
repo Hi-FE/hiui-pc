@@ -43,20 +43,20 @@ export default {
         cn_name: '栅格',
         path: '/Grid'
       }/* base */]
-    }, {
-      title: 'Data in',
-      components: [{
-        name: 'Switch',
-        cn_name: '开关',
-        path: '/Switch'
-      }/* data-in */]
-    }, {
-      title: 'Data out',
-      components: [{
-        name: 'Toast',
-        cn_name: '提示',
-        path: '/Toast'
-      }/* data-out */]
+    // }, {
+    //   title: 'Data in',
+    //   components: [{
+    //     name: 'Switch',
+    //     cn_name: '开关',
+    //     path: '/Switch'
+    //   }/* data-in */]
+    // }, {
+    //   title: 'Data out',
+    //   components: [{
+    //     name: 'Toast',
+    //     cn_name: '提示',
+    //     path: '/Toast'
+    //   }/* data-out */]
     }]
   }]
 }

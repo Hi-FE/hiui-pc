@@ -24,7 +24,6 @@
     <!-- Prop: rotate -->
     <demo-item name="Rotate" description="旋转" :code="rotate_code" slot="right">
       <Icon :rotate="true" name="loading"></Icon>
-      <Icon :rotate="true" name="reload"></Icon>
     </demo-item>
   </demo>
 </template>
@@ -54,7 +53,6 @@
         `,
         rotate_code: `
 <Icon :rotate="true" name="loading"></Icon>
-<Icon :rotate="true" name="reload"></Icon>
         `
       }
     }

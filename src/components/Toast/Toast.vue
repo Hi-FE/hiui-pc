@@ -35,7 +35,6 @@
         this.show = false
       },
       afterLeave () {
-        this.$emit('destroy')
         this.$destroy(true)
       }
     },

@@ -25,6 +25,9 @@
           prefixCls
         ]
       }
+    },
+    mounted () {
+      document.body.appendChild(this.$el)
     }
   }
 </script>

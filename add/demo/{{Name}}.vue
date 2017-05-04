@@ -8,9 +8,6 @@
 
 <style lang="stylus" scope>
   @import '../../style/';
-
-  .{{name}}-demo {
-  }
 </style>
 
 <script>

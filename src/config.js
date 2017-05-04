@@ -42,6 +42,10 @@ export default {
         name: 'Grid',
         cn_name: '栅格',
         path: '/Grid'
+      }, {
+        name: 'Loading',
+        cn_name: '加载条',
+        path: '/Loading'
       }/* base */]
     // }, {
     //   title: 'Data in',

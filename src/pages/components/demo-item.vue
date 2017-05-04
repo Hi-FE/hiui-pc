@@ -5,7 +5,9 @@
     </div>
     <span class="demo-item-title" :data-title="name"></span>
     <div class="demo-description">
-      {{ description }}
+      <span ref="description">
+        {{ description }}
+      </span>
       <Icon :class="['show-code-btn', { open: show_code }]" name="caretdown" @click.native="show_code = !show_code"></Icon>
     </div>
     <transition name="slide">
@@ -102,6 +104,8 @@
 </style>
 
 <script>
+  import hljs from 'highlight.js'
+
   export default {
     name: 'demo-item',
     components: {
@@ -120,6 +124,9 @@
       return {
         show_code: false
       }
+    },
+    mounted () {
+      hljs.highlightBlock(this.$refs.description)
     }
   }
 </script>

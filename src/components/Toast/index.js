@@ -9,6 +9,7 @@ const install = (Vue) => {
   Vue.prototype.$toast = (content, time = 2000, callback) => {
     if (vm) {
       vm.$destroy(true)
+      vm = null
     }
     let instance = new Component({
       data: {
@@ -20,10 +21,6 @@ const install = (Vue) => {
 
     vm = instance.$mount()
     vm.show = true
-
-    vm.$on('destroy', () => {
-      vm = null
-    })
   }
 }
 

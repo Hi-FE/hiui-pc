@@ -2,7 +2,7 @@
   <div>
     <h3>{{ data[type].name }}</h3>
     <Row :gutter="20" :class="`${type}-group color-group`">
-      <Col v-for="name in data[type].colors" :span="24 / data[type].colors.length" class="color-item-wrap">
+      <Col v-for="(name, key, i) in data[type].colors" :key="i" :span="24 / data[type].colors.length" class="color-item-wrap">
         <div class="color-item">
           <div class="color-name">{{ name }}</div>
         </div>

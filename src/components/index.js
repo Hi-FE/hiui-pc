@@ -1,4 +1,5 @@
 /* base */
+import Loading from './Loading'
 import { Row, Col } from './Grid'
 import Spinner from './Spinner'
 import Btn from './Btn'
@@ -22,6 +23,7 @@ const install = (Vue) => {
   Vue.component(Switch.name, Switch)
 
   /* method */
+  Vue.use(Loading)
   Vue.use(Toast)
 }
 
@@ -31,6 +33,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export default {
   /* export */
+  Loading,
   Row,
   Col,
   Spinner,

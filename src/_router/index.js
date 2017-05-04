@@ -51,10 +51,11 @@ export default new Router({
     }, {
       path: '/Components/Grid',
       name: 'Grid',
-      meta: {
-        preview: './#/Grid'
-      },
       component: require('@/components/Grid/index.md')
+    }, {
+      path: '/Components/Loading',
+      name: 'Loading',
+      component: require('@/components/Loading/index.md')
     }/* router */]
   }]
 })

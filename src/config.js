@@ -39,10 +39,10 @@ export default {
         cn_name: '加载动画',
         path: '/Spinner'
       }, {
-        name: 'Grid',
-        cn_name: '栅格',
-        path: '/Grid'
-      }, {
+      //   name: 'Grid',
+      //   cn_name: '栅格',
+      //   path: '/Grid'
+      // }, {
         name: 'Loading',
         cn_name: '加载条',
         path: '/Loading'

@@ -47,20 +47,20 @@ export default {
         cn_name: '加载条',
         path: '/Loading'
       }/* base */]
-    // }, {
-    //   title: 'Data in',
-    //   components: [{
-    //     name: 'Switch',
-    //     cn_name: '开关',
-    //     path: '/Switch'
-    //   }/* data-in */]
-    // }, {
-    //   title: 'Data out',
-    //   components: [{
-    //     name: 'Toast',
-    //     cn_name: '提示',
-    //     path: '/Toast'
-    //   }/* data-out */]
+    }, {
+      title: 'Data in',
+      components: [{
+        name: 'Switch',
+        cn_name: '开关',
+        path: '/Switch'
+      }/* data-in */]
+    }, {
+      title: 'Data out',
+      components: [{
+        name: 'Toast',
+        cn_name: '提示',
+        path: '/Toast'
+      }/* data-out */]
     }]
   }]
 }

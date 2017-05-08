@@ -5,7 +5,7 @@
 </template>
 
 <style lang="stylus">
-	@import './style/';
+	@import './style/core/';
 
   html {
     color: #666;

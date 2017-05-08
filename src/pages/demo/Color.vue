@@ -41,6 +41,7 @@
   _green_group = _green _green_light _green_deep;
   _yellow_group = _yellow _yellow_light _yellow_deep;
   _neutrals_group = _grey _grey_light _grey_lighter _grey_deep _grey_deeper _black;
+  _vi_group = _vi_red _vi_yellow _vi_cyan;
 
   createGroup(type, _colors) {
     .{type}-group {
@@ -62,6 +63,7 @@
   createGroup('green', _green_group);
   createGroup('yellow', _yellow_group);
   createGroup('neutrals', _neutrals_group);
+  createGroup('vi', _vi_group);
 </style>
 
 <script>
@@ -94,6 +96,10 @@
           neutrals: {
             name: '中性色',
             colors: ['_grey', '_grey_light', '_grey_lighter', '_grey_deep', '_grey_deeper', '_black']
+          },
+          vi: {
+            name: 'Vi',
+            colors: ['_vi_red', '_vi_yellow', '_vi_cyan']
           }
         }
       }

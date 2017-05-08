@@ -20,13 +20,17 @@
         show: false,
         content: '',
         time: 0,
+        type: '',
         callback: null
       }
     },
     computed: {
       component_class () {
         return [
-          prefixCls
+          prefixCls,
+          {
+            [`${prefixCls}-${this.type}`]: this.type && this.type !== 'default'
+          }
         ]
       }
     },

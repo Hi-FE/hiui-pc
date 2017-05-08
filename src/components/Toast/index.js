@@ -6,7 +6,7 @@ let vm
 const install = (Vue) => {
   let Component = Vue.extend(Toast)
 
-  Vue.prototype.$toast = (content, time = 2000, callback) => {
+  Vue.prototype.$toast = (content, type = '', time = 2000, callback) => {
     if (vm) {
       vm.$destroy(true)
       vm = null
@@ -14,6 +14,7 @@ const install = (Vue) => {
     let instance = new Component({
       data: {
         content,
+        type,
         time,
         callback
       }

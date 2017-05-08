@@ -2,18 +2,38 @@
 
 .hiui-toast {
   position: fixed;
-  top: 50%;
+  top: 50px;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 8px 15px;
   background-color rgba(0, 0, 0, .66);
   border-radius: 4px;
   color: #fff;
+
+  &.hiui-toast-default {
+    background-color rgba(0, 0, 0, .66);
+  }
+
+  &.hiui-toast-primary {
+    background-color: _blue;
+  }
+
+  &.hiui-toast-error {
+    background-color: _red;
+  }
+
+  &.hiui-toast-warning {
+    background-color: _yellow;
+  }
+
+  &.hiui-toast-success {
+    background-color: _green;
+  }
 }
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .5s
+  transition: opacity .5s;
 }
 .fade-enter, .fade-leave-to {
-  opacity: 0
+  opacity: 0;
 }

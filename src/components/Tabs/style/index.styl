@@ -1,0 +1,42 @@
+@import '../../style/';
+
+.hiui-tabs {
+  position: relative;
+}
+
+.hiui-tabs-bar {
+  position: relative;
+  height: 40px;
+  line-height: 40px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid _grey_lighter;
+
+  .hiui-tabs-bar-item {
+    position: relative;
+    height: 100%;
+    display: inline-block;
+    font-size: 14px;
+    padding: 0 15px;
+    color: #666;
+    cursor: pointer;
+
+    &.hiui-tabs-bar-item-nopadding {
+      margin-right: 30px;
+      padding: 0;
+    }
+
+    &:hover {
+      color: #333;
+    }
+
+    &.active {
+      color: _blue;
+      border-bottom: 2px solid _blue;
+    }
+
+    &.disabled {
+      opacity: .2;
+      cursor: not-allowed;
+    }
+  }
+}

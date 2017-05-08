@@ -10,10 +10,13 @@ import Bar from './Bar'
 import Switch from './Switch'
 
 /* data-out */
+import { Tabs, TabPane } from './Tabs'
 import Toast from './Toast'
 
 const install = (Vue) => {
   /* component */
+  Vue.component(Tabs.name, Tabs)
+  Vue.component(TabPane.name, TabPane)
   Vue.component(Col.name, Col)
   Vue.component(Row.name, Row)
   Vue.component(Spinner.name, Spinner)
@@ -33,6 +36,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export default {
   /* export */
+  TabPane,
+  Tabs,
   Loading,
   Row,
   Col,

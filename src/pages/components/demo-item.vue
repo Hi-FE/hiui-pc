@@ -40,7 +40,7 @@
     position: relative;
     font-size: 14px;
     color: #666;
-    padding: 10px _demo_gap _demo_gap;
+    padding: 10px;
   }
 
   .demo-item-title {

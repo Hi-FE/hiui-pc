@@ -56,6 +56,10 @@ export default new Router({
       path: '/Components/Loading',
       name: 'Loading',
       component: require('@/components/Loading/index.md')
+    }, {
+      path: '/Components/Tabs',
+      name: 'Tabs',
+      component: require('@/components/Tabs/index.md')
     }/* router */]
   }]
 })

@@ -60,6 +60,10 @@ export default {
         name: 'Toast',
         cn_name: '提示',
         path: '/Toast'
+      }, {
+        name: 'Tabs',
+        cn_name: '标签页',
+        path: '/Tabs'
       }/* data-out */]
     }]
   }]

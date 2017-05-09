@@ -53,6 +53,10 @@ export default {
         name: 'Switch',
         cn_name: '开关',
         path: '/Switch'
+      }, {
+        name: 'CheckBox',
+        cn_name: '多选框',
+        path: '/CheckBox'
       }/* data-in */]
     }, {
       title: 'Data out',

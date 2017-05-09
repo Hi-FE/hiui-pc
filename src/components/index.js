@@ -7,6 +7,7 @@ import Icon from './Icon'
 import Bar from './Bar'
 
 /* data-in */
+import CheckBox from './CheckBox'
 import Switch from './Switch'
 
 /* data-out */
@@ -15,6 +16,7 @@ import Toast from './Toast'
 
 const install = (Vue) => {
   /* component */
+  Vue.component(CheckBox.name, CheckBox)
   Vue.component(Tabs.name, Tabs)
   Vue.component(TabPane.name, TabPane)
   Vue.component(Col.name, Col)
@@ -36,6 +38,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export default {
   /* export */
+  CheckBox,
   TabPane,
   Tabs,
   Loading,

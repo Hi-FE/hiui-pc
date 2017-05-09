@@ -8,6 +8,7 @@ import Bar from './Bar'
 
 /* data-in */
 import Switch from './Switch'
+import Calendar from './Calendar'
 
 /* data-out */
 import { Tabs, TabPane } from './Tabs'
@@ -24,8 +25,10 @@ const install = (Vue) => {
   Vue.component(Icon.name, Icon)
   Vue.component(Bar.name, Bar)
   Vue.component(Switch.name, Switch)
+  Vue.component(Calendar.name, Calendar)
 
   /* method */
+  Vue.use(Calendar)
   Vue.use(Loading)
   Vue.use(Toast)
 }
@@ -36,6 +39,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export default {
   /* export */
+  Calendar,
   TabPane,
   Tabs,
   Loading,

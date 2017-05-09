@@ -60,6 +60,10 @@ export default new Router({
       path: '/Components/Tabs',
       name: 'Tabs',
       component: require('@/components/Tabs/index.md')
+    }, {
+      path: '/Components/Calendar',
+      name: 'Calendar',
+      component: require('@/components/Calendar/index.md')
     }/* router */]
   }]
 })

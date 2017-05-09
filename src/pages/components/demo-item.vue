@@ -5,9 +5,7 @@
     </div>
     <span class="demo-item-title" :data-title="name"></span>
     <div class="demo-description">
-      <span ref="description">
-        {{ description }}
-      </span>
+      <span ref="description" v-html="descr"></span>
       <Icon :class="['show-code-btn', { open: show_code }]" name="caretdown" @click.native="show_code = !show_code"></Icon>
     </div>
     <transition name="slide">
@@ -41,6 +39,10 @@
     font-size: 14px;
     color: #666;
     padding: 10px;
+
+    .hljs p {
+      margin-bottom: 5px;
+    }
   }
 
   .demo-item-title {
@@ -105,6 +107,7 @@
 
 <script>
   import hljs from 'highlight.js'
+  import MarkdownIt from 'markdown-it'
 
   export default {
     name: 'demo-item',
@@ -123,6 +126,12 @@
     data () {
       return {
         show_code: false
+      }
+    },
+    computed: {
+      descr () {
+        let md = new MarkdownIt()
+        return md.render(this.description)
       }
     },
     mounted () {

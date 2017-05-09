@@ -69,8 +69,7 @@
     <!-- 选择年 -->
     <section class="select-year select"
              ref="select_year"
-             v-show="is_select_year"
-             v-scrollself>
+             v-show="is_select_year">
       <table>
         <tbody>
         <tr v-for="(year_tr, index) in select_year_data">

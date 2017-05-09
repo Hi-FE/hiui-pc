@@ -43,7 +43,15 @@
            :is_single_month="true"
            :is_today_disable="true"
            @get-first-value="date = arguments[0]"></vCalendar>
-        `
+        `,
+        double_date: `
+<vCalendar :is_show="true"
+           :is_range="true"
+           :is_single_month="true"
+           :is_today_disable="true"
+           @get-first-value="demo_from_date = arguments[0]"
+           @get-sec-value="demo_ret_date = arguments[0]"></vCalendar>
+`
       }
     }
   }

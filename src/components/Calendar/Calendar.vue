@@ -59,7 +59,7 @@
                            'range-begin' : child.range_begin,
                            'range-end' : child.range_end }"
                  @mousedown="!child.nodisplay && !child.disable && select(k1, k2, cur_year, item.month, $event)">
-              {{ child.day }}
+              <em>{{ child.day }}</em>
             </div>
           </td>
         </tr>
@@ -69,8 +69,7 @@
     <!-- 选择年 -->
     <section class="select-year select"
              ref="select_year"
-             v-show="is_select_year"
-             v-scrollself>
+             v-show="is_select_year">
       <table>
         <tbody>
         <tr v-for="(year_tr, index) in select_year_data">

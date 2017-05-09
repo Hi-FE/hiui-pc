@@ -59,7 +59,7 @@
                            'range-begin' : child.range_begin,
                            'range-end' : child.range_end }"
                  @mousedown="!child.nodisplay && !child.disable && select(k1, k2, cur_year, item.month, $event)">
-              {{ child.day }}
+              <em>{{ child.day }}</em>
             </div>
           </td>
         </tr>

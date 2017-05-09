@@ -36,6 +36,14 @@
         <TabPane label="Setting" icon="setting">第四个标签内容</TabPane>
       </Tabs>
     </demo-item>
+
+    <demo-item name="Style" description="修改样式" :code="style_code" slot="left">
+      <Tabs type="no_padding" class="red-tabs">
+        <TabPane label="机酒自由行">机酒自由行</TabPane>
+        <TabPane label="当地玩乐">当地玩乐</TabPane>
+        <TabPane label="出行必备">出行必备</TabPane>
+      </Tabs>
+    </demo-item>
   </demo>
 </template>
 
@@ -49,6 +57,11 @@
 
   .type-group .hiui-tabs&:not(:last-child) {
     margin-bottom: 40px;
+  }
+
+  .red-tabs .hiui-tabs-bar-item.active {
+    color: _red;
+    border-bottom-color: _red;
   }
 </style>
 
@@ -89,6 +102,20 @@
   <TabPane label="User" icon="user">第三个标签内容</TabPane>
   <TabPane label="Setting" icon="setting">第四个标签内容</TabPane>
 </Tabs>
+        `,
+        style_code: `
+<Tabs type="no_padding" class="red-tabs">
+  <TabPane label="机酒自由行">机酒自由行</TabPane>
+  <TabPane label="当地玩乐">当地玩乐</TabPane>
+  <TabPane label="出行必备">出行必备</TabPane>
+</Tabs>
+
+<style lang="stylus">
+.red-tabs .hiui-tabs-bar-item.active {
+  color: _red;
+  border-bottom-color: _red;
+}
+</style>
         `,
         type_descr: `
 \`no_padding\` 不使用padding的标签\n

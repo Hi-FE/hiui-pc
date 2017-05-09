@@ -48,47 +48,47 @@ _default_height = 42px;
   &-next {
     right: 0;
   }
+}
 
-  .hiui-tabs-bar-item {
-    position: relative;
-    height: _default_height;
-    line-height: _default_height;
-    display: inline-block;
-    text-align: center;
-    font-size: 14px;
-    padding: 0 15px;
-    color: #666;
-    cursor: pointer;
+.hiui-tabs-bar-item {
+  position: relative;
+  height: _default_height;
+  line-height: _default_height;
+  display: inline-block;
+  text-align: center;
+  font-size: 14px;
+  padding: 0 15px;
+  color: #666;
+  cursor: pointer;
 
-    &-no_padding {
-      padding: 0;
+  &-no_padding {
+    padding: 0;
 
-      &:not(:last-child) {
-        margin-right: 30px;
-      }
+    &:not(:last-child) {
+      margin-right: 30px;
     }
+  }
 
-    &-fix_width {
-      padding: 0;
-    }
+  &-fix_width {
+    padding: 0;
+  }
 
-    &:hover {
-      color: #333;
-    }
+  &:hover {
+    color: #333;
+  }
 
-    &.active {
-      color: _blue;
-      border-bottom: 2px solid _blue;
-    }
+  &.active {
+    color: _blue;
+    border-bottom: 2px solid _blue;
+  }
 
-    &.disabled {
-      opacity: .2;
-      cursor: not-allowed;
-    }
+  &.disabled {
+    opacity: .2;
+    cursor: not-allowed;
+  }
 
-    .hiui-icon {
-      font-size: 16px;
-      margin-right: 6px;
-    }
+  .hiui-icon {
+    font-size: 16px;
+    margin-right: 6px;
   }
 }

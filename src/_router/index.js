@@ -64,6 +64,10 @@ export default new Router({
       path: '/Components/CheckBox',
       name: 'CheckBox',
       component: require('@/components/CheckBox/index.md')
+    }, {
+      path: '/Components/Calendar',
+      name: 'Calendar',
+      component: require('@/components/Calendar/index.md')
     }/* router */]
   }]
 })

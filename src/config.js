@@ -46,6 +46,10 @@ export default {
         name: 'Loading',
         cn_name: '加载条',
         path: '/Loading'
+      }, {
+        name: 'Calendar',
+        cn_name: '日历',
+        path: '/Calendar'
       }/* base */]
     }, {
       title: 'Data in',

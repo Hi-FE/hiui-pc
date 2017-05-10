@@ -1,42 +1,94 @@
 @import '../../style/';
 
+_default_height = 42px;
+
 .hiui-tabs {
   position: relative;
 }
 
 .hiui-tabs-bar {
   position: relative;
-  height: 40px;
-  line-height: 40px;
   margin-bottom: 15px;
   border-bottom: 1px solid _grey_lighter;
+  white-space: nowrap;
 
-  .hiui-tabs-bar-item {
-    position: relative;
+  &-over {
+    padding: 0 12px;
+  }
+
+  &-scroll {
+    float: left;
+    transition: transform .3s;
+  }
+
+  &-nav {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &-prev, &-next {
+    position: absolute;
+    top: 0;
     height: 100%;
-    display: inline-block;
-    font-size: 14px;
-    padding: 0 15px;
-    color: #666;
+    line-height: _default_height;
+    font-size: 12px;
+    font-weight: bold;
     cursor: pointer;
-
-    &.hiui-tabs-bar-item-nopadding {
-      margin-right: 30px;
-      padding: 0;
-    }
-
-    &:hover {
-      color: #333;
-    }
-
-    &.active {
-      color: _blue;
-      border-bottom: 2px solid _blue;
-    }
 
     &.disabled {
       opacity: .2;
       cursor: not-allowed;
     }
+  }
+
+  &-prev {
+    left: 0;
+  }
+
+  &-next {
+    right: 0;
+  }
+}
+
+.hiui-tabs-bar-item {
+  position: relative;
+  height: _default_height;
+  line-height: _default_height;
+  display: inline-block;
+  text-align: center;
+  font-size: 14px;
+  padding: 0 15px;
+  color: #666;
+  cursor: pointer;
+
+  &-no_padding {
+    padding: 0;
+
+    &:not(:last-child) {
+      margin-right: 30px;
+    }
+  }
+
+  &-fix_width {
+    padding: 0;
+  }
+
+  &:hover {
+    color: #333;
+  }
+
+  &.active {
+    color: _blue;
+    border-bottom: 2px solid _blue;
+  }
+
+  &.disabled {
+    opacity: .2;
+    cursor: not-allowed;
+  }
+
+  .hiui-icon {
+    font-size: 16px;
+    margin-right: 6px;
   }
 }

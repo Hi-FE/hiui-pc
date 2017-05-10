@@ -16,6 +16,7 @@
     props: {
       label: String,
       name: String,
+      icon: String,
       disabled: {
         default: false,
         type: Boolean
@@ -24,6 +25,17 @@
     data () {
       return {
         show: false
+      }
+    },
+    watch: {
+      label () {
+        this.$parent.updateBar()
+      },
+      name () {
+        this.$parent.updateBar()
+      },
+      icon () {
+        this.$parent.updateBar()
       }
     },
     computed: {

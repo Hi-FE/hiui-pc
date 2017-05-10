@@ -1,49 +1,295 @@
 @import '../../style/';
 
-.hiui-calendar { min-width: 260px;user-select: none;width: 100%; border: 1px solid #eee; margin-left: auto; margin-right: auto; background: #fff; padding: 20px 15px; color: #333; overflow: hidden; }
-.hiui-calendar * { font-weight: normal }
-.hiui-calendar h2 { border-bottom: 1px solid #eee; font-size: 16px; text-align: center; background-color: #fff }
-.hiui-calendar h2 a .icon { width:20px;height:20px }
-.hiui-calendar h2 .info { padding-bottom: 20px; }
-.hiui-calendar h2 .info .icon { width: 16px; height: 16px; vertical-align: middle; }
-.hiui-calendar h2 .info .month { margin-left: 15px; position: relative; }
-.hiui-calendar h2 .info .year { position: relative; }
-.hiui-calendar h2 .info .month.active:after { content: ''; background-color: _red; height: 2px; position: absolute; z-index: 1; bottom: -22px; left: 0; right: 20px }
-.hiui-calendar h2 .info .year.active:after { content: ''; background-color: _red; height: 2px; position: absolute; z-index: 1; bottom: -22px; left: 0; right: 20px }
-.hiui-calendar h2 a { text-decoration: none; color: inherit; font-size: inherit; }
-.hiui-calendar table { display: table !important; width: 100%; text-align: center; background: transparent; }
-.hiui-calendar table td { padding: 0; height: 24px !important; font-weight: bold; border: 6px solid transparent; }
-.hiui-calendar .month table td { padding: 0; border: 1px solid #fff; }
-.hiui-calendar .day-title { font-weight: bold; color: #333; border-width: 0 1px; padding: 20px 0 12px 0; }
-.hiui-calendar .day-title table { margin-bottom: 0; }
-.hiui-calendar .day-title table td { padding: 0; border: 1px solid transparent; }
-.hiui-calendar .day-title table td div.item { padding: 6px 7px; }
-.month > h3 { font-size: 16px; line-height: 30px; padding: 10px 0 0 20px; }
-.month td div.item { cursor:pointer; padding: 6px 5px; background-color: #f7f7f7; }
-.month td div.item:hover { background-color:_red;color:#fff; }
-.month td div.item.nodisplay:hover { background-color: #f7f7f7;color: #c0c0c0; }
-.month td div.item.disable:hover { background-color: #f7f7f7;color: #c0c0c0; }
-.month td div { position: relative; overflow: hidden; }
-.month td div.selected { background: _red; color: #fff; }
-.month td div.selected .price { color: #fff; }
-.month td div.nodisplay { background-color: #f7f7f7;color: #c0c0c0; pointer-events: none !important; cursor: default !important; }
-.month td div.disable { background-color: #f7f7f7; color: #ccc; pointer-events: none !important; cursor: default !important; }
-.month td div.range-begin::before { content: ""; display: block; position: absolute; top: 0; left: 0; bottom: 0; right: 12px; background: #ddd; }
-.month td div.range-end::before { content: ""; display: block; position: absolute; top: 0; left: 12px; bottom: 0; right: 0; background: #ddd; }
-.month td div.range-begin::after { content: ""; display: block; position: absolute; top: 0; bottom: 0; right: 2px; width: 0; height: 0; border-width: 17px 0 17px 10px; border-style: solid; border-color: transparent transparent transparent #ddd; }
-.month td div.range-end::after { content: ""; display: block; position: absolute; top: 0; bottom: 0; left: 2px; width: 0; height: 0; border-width: 17px 10px 17px 0; border-style: solid; border-color: transparent #ddd transparent transparent; }
-.month td div em { position: relative; z-index: 1; font-style: normal; }
-.hiui-calendar .select table tr { background: #fff !important; border-top: none !important; }
-.hiui-calendar .select table td { border: none !important; }
-.hiui-calendar .select .item { padding: 15px 0; }
-.hiui-calendar .select .item:hover { background-color: #eee; cursor: pointer; }
-.hiui-calendar .select .item.disable { color: #999; }
-.hiui-calendar .select .item.disable:hover { background-color: #fff; cursor: inherit; }
-.hiui-calendar .can-select-tips { padding-top: 20px; margin-top: 20px; border-top: 1px solid #eee }
-.hiui-calendar .can-select-tips .block { font-size: 12px; width: 16px; height: 17px; padding: 1px 4px; background-color: #eee; }
-.hiui-calendar .can-select-tips .block.can-select-block { color: #333; }
-.hiui-calendar .can-select-tips .block.cant-select-block { color: #c2c2c2; }
-.hiui-calendar .can-select-tips .right { color: #c2c2c2; text-align: right }
-.hiui-calendar .select-year { max-height: 200px; overflow: auto }
-.hiui-calendar .color-red { color: _red }
-.opacity-hidden { opacity: 0; }
+.hiui-calendar {
+  min-width: 260px;
+  user-select: none;
+  width: 100%;
+  border: 1px solid #eee;
+  margin-left: auto;
+  margin-right: auto;
+  background: #fff;
+  padding: 20px 15px;
+  color: #333;
+  overflow: hidden;
+
+  * {
+    font-weight: normal;
+  }
+
+  h2 {
+    &.title {
+      border-bottom: 1px solid #eee;
+      font-size: 16px;
+      text-align: center;
+      background-color: #fff;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      font-size: inherit;
+    }
+
+    .info {
+      padding-bottom: 20px;
+
+      .icon {
+        width: 16px;
+        height: 16px;
+        vertical-align: middle;
+      }
+
+      .month {
+        margin-left: 15px;
+        position: relative;
+
+        &.active:after {
+          content: '';
+          background-color: _red;
+          height: 2px;
+          position: absolute;
+          z-index: 1;
+          bottom: -22px;
+          left: 0;
+          right: 20px
+        }
+      }
+
+      .year {
+        position: relative;
+
+        &.active:after {
+          content: '';
+          background-color: _red;
+          height: 2px;
+          position: absolute;
+          z-index: 1;
+          bottom: -22px;
+          left: 0;
+          right: 20px
+        }
+      }
+    }
+  }
+
+
+  table {
+    display: table !important;
+    width: 100%;
+    text-align: center;
+    background: transparent;
+
+    td {
+      padding: 0;
+      height: 24px !important;
+      font-weight: bold;
+      border: 6px solid transparent;
+    }
+  }
+
+  .day-title {
+    font-weight: bold;
+    color: #333;
+    border-width: 0 1px;
+    padding: 20px 0 12px 0;
+
+    table {
+      margin-bottom: 0;
+
+      td {
+        padding: 0;
+        border: 1px solid transparent;
+      }
+    }
+  }
+
+  .month {
+
+    h3 {
+      font-size: 16px;
+      line-height: 30px;
+      padding: 10px 0 0 20px;
+    }
+
+    td {
+      padding: 0;
+      border: 1px solid #fff;
+    }
+
+    div {
+      position: relative;
+      overflow: hidden;
+
+      &.item {
+        cursor:pointer;
+        padding: 6px 5px;
+        background-color: #f7f7f7;
+      }
+
+      &.item:hover {
+        background-color:_red;
+        color:#fff;
+      }
+
+      &.item.nodisplay:hover {
+        background-color: #f7f7f7;
+        color: #c0c0c0;
+      }
+
+      &.item.disable:hover {
+        background-color: #f7f7f7;
+        color: #c0c0c0;
+      }
+
+      &.selected {
+        background: _red;
+        color: #fff;
+
+        .price {
+          color: #fff;
+        }
+      }
+
+      &.nodisplay {
+        background-color: #f7f7f7;
+        color: #c0c0c0;
+        pointer-events: none !important;
+        cursor: default !important;
+      }
+
+      &.disable {
+        background-color: #f7f7f7;
+        color: #ccc;
+        pointer-events: none !important;
+        cursor: default !important;
+      }
+
+      &.range-begin {
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 12px;
+          background: #ddd;
+        }
+        &::after {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 2px;
+          width: 0;
+          height: 0;
+          border-width: 17px 0 17px 10px;
+          border-style: solid;
+          border-color: transparent transparent transparent #ddd;
+        }
+      }
+
+      &.range-end {
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 12px;
+          bottom: 0;
+          right: 0;
+          background: #ddd;
+        }
+        &::after {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 2px;
+          width: 0;
+          height: 0;
+          border-width: 17px 10px 17px 0;
+          border-style: solid;
+          border-color: transparent #ddd transparent transparent;
+        }
+      }
+
+      em {
+        position: relative;
+        z-index: 1;
+        font-style: normal;
+      }
+    }
+  }
+
+  .select {
+
+    table {
+      tr {
+        background: #fff !important;
+        border-top: none !important;
+      }
+      td {
+        border: none !important;
+      }
+    }
+
+    .item {
+      padding: 15px 0;
+
+      &:hover {
+        background-color: #eee;
+        cursor: pointer;
+      }
+
+      &.disable {
+        color: #999;
+        pointer-events: none;
+
+        &:hover {
+          background-color: #fff;
+          cursor: inherit;
+        }
+      }
+    }
+  }
+
+  .can-select-tips {
+    padding-top: 20px;
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+    font-size: 14px;
+
+    .block {
+      font-size: 12px;
+      width: 16px;
+      height: 17px;
+      padding: 1px 4px;
+      background-color: #eee;
+
+      &.can-select-block {
+        color: #c2c2c2;
+      }
+    }
+
+    .right {
+      color: #c2c2c2;
+      text-align: right;
+    }
+  }
+
+  .select-year {
+    max-height: 200px;
+    overflow: auto
+  }
+
+  .color-red {
+    color: _red;
+  }
+
+  .opacity-hidden {
+    opacity: 0;
+  }
+}

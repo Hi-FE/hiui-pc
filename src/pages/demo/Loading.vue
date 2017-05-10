@@ -1,9 +1,9 @@
 <template>
   <demo title="Icon" class="icon-demo">
     <demo-item name="Default" description="默认" :code="size_code" lang="html">
-      <Btn @click.native="$loading.start()">Start</Btn>
-      <Btn @click.native="$loading.success()">Success</Btn>
-      <Btn @click.native="$loading.error()">Error</Btn>
+      <Btn @click="$loading.start()">Start</Btn>
+      <Btn @click="$loading.success()">Success</Btn>
+      <Btn @click="$loading.error()">Error</Btn>
     </demo-item>
   </demo>
 </template>
@@ -17,9 +17,9 @@
     data () {
       return {
         size_code: `
-<Btn @click.native="$loading.start()">Start</Btn>
-<Btn @click.native="$loading.success()">Success</Btn>
-<Btn @click.native="$loading.error()">Error</Btn>
+<Btn @click="$loading.start()">Start</Btn>
+<Btn @click="$loading.success()">Success</Btn>
+<Btn @click="$loading.error()">Error</Btn>
         `
       }
     }

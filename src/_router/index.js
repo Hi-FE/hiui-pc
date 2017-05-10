@@ -72,6 +72,10 @@ export default new Router({
       path: '/Components/Loadmore',
       name: 'Loadmore',
       component: require('@/components/Loadmore/index.md')
+    }, {
+      path: '/Components/Select',
+      name: 'Select',
+      component: require('@/components/Select/index.md')
     }/* router */]
   }]
 })

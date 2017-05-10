@@ -45,9 +45,9 @@
     align-items: center;
   }
 
-  _colors = _blue _red _green _yellow _blue_deep _red_deep _green_deep _yellow_deep;
+  _colors = _blue _red _green _yellow _grey;
   for color, i in _colors {
-    .block:nth-child(8n + {i % 8}) {
+    .block:nth-child(5n + {i % 5 + 1}) {
       background-color: color;
     }
   }
@@ -99,16 +99,26 @@
         show: false,
         slot_show: false,
         count: 5,
+        timer: null,
         list: [],
         code: `
-<Loadmore v-if="show" :load-method="loadmore" :done="cur >= total">
+<Loadmore v-if="show" :load-method="getNextPage" :done="cur >= total">
   <div v-for="item in list" class="block">
     {{ item }}
   </div>
 </Loadmore>
+
+//...
+getNextPage (next, err) {
+  this.cur++
+
+  this.getList()
+  .then(next)
+  .catch((err_msg) => err(err_msg))
+}
         `,
         slot_code: `
-<Loadmore v-if="slot_show" :interval="4" :offset="0" :load-method="loadmore" :done="cur >= total">
+<Loadmore v-if="slot_show" :interval="4" :offset="0" :load-method="getNextPage" :done="cur >= total">
   <div v-for="item in list" class="block">
     {{ item }}
   </div>
@@ -123,6 +133,15 @@
     <Btn @click="props.loadmore" class="error-btn">出错啦，重新加载</Btn>
   </template>
 </Loadmore>
+
+//...
+getNextPage (next, err) {
+  this.cur++
+
+  this.getList()
+  .then(next)
+  .catch((err_msg) => err(err_msg))
+}
         `
       }
     },
@@ -138,11 +157,11 @@
       getNextPage (next, err) {
         this.cur++
 
-        this.getList(2000)
+        this.getList()
         .then(next)
         .catch((err_msg) => err(err_msg))
       },
-      getList (time) {
+      getList (time = 2000) {
         // 模拟请求加载列表数据
         return new Promise((resolve, reject) => {
           this.timer = setTimeout(() => {

@@ -61,6 +61,10 @@ export default {
         name: 'CheckBox',
         cn_name: '多选框',
         path: '/CheckBox'
+      }, {
+        name: 'Select',
+        cn_name: '选择器',
+        path: '/Select'
       }/* data-in */]
     }, {
       title: 'Data out',

@@ -3,11 +3,11 @@
            :class="component_class"
            v-show="is_show">
 
-    <h2 class="pure-g" v-if="is_single_month">
+    <h2 class="title pure-g" v-if="is_single_month">
       <div class="pure-u-1-8">
         <a :class="{ 'opacity-hidden': is_disable_prev }"
            @click="!is_disable_prev && preMonth()">
-          <Icon class="icon" name="left"></Icon>
+          <Icon :size="16" name="left"></Icon>
         </a>
       </div>
       <div class="info pure-u-3-4">
@@ -25,7 +25,7 @@
       <div class="pure-u-1-8">
         <a :class="{ 'opacity-hidden': is_disable_next}"
            @click="!is_disable_next && nextMonth()">
-          <Icon name="right"></Icon>
+          <Icon :size="16" name="right"></Icon>
         </a>
       </div>
     </h2>

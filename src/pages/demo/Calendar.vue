@@ -12,7 +12,7 @@
     </demo-item>
 
     <demo-item name="doubleDate" description="双日期选择" :code="double_date" lang="js">
-      <div>日期: {{ demo_from_date + ' to ' + demo_ret_date }}</div>
+      <div>起止日期:  {{ demo_from_date }} <Icon name="arrowright"></Icon> {{ demo_ret_date }}</div>
       <div class="calendar-warp">
         <vCalendar :is_show="true"
                    :is_range="true"

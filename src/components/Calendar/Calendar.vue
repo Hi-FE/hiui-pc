@@ -15,11 +15,15 @@
               :class="{ active: is_select_year }"
               @click="is_select_year = !is_select_year, is_select_month = false, scrollToTheYear()">
           {{ cur_year }} 年
+          <Icon name="down" v-if="!is_select_year" :size="16"></Icon>
+          <Icon name="up" v-else :size="16"></Icon>
         </span>
         <span class="month"
               :class="{ active: is_select_month }"
               @click="is_select_month = !is_select_month, is_select_year = false">
           {{ cur_month+1 }} 月
+          <Icon name="down" v-if="!is_select_month" :size="16" ></Icon>
+          <Icon name="up" v-else :size="16" ></Icon>
         </span>
       </div>
       <div class="pure-u-1-8">

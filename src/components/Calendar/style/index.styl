@@ -164,54 +164,56 @@
         cursor: default !important;
       }
 
-      &.range-begin::before {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 12px;
-        background: #ddd;
+      &.range-begin {
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 12px;
+          background: #ddd;
+        }
+        &::after {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 2px;
+          width: 0;
+          height: 0;
+          border-width: 17px 0 17px 10px;
+          border-style: solid;
+          border-color: transparent transparent transparent #ddd;
+        }
       }
 
-      &.range-end::before {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 12px;
-        bottom: 0;
-        right: 0;
-        background: #ddd;
-      }
-
-      &.range-begin::after {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 2px;
-        width: 0;
-        height: 0;
-        border-width: 17px 0 17px 10px;
-        border-style: solid;
-        border-color: transparent transparent transparent #ddd;
-      }
-
-      &.range-end::after {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 2px;
-        width: 0;
-        height: 0;
-        border-width: 17px 10px 17px 0;
-        border-style: solid;
-        border-color: transparent #ddd transparent transparent;
+      &.range-end {
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 12px;
+          bottom: 0;
+          right: 0;
+          background: #ddd;
+        }
+        &::after {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 2px;
+          width: 0;
+          height: 0;
+          border-width: 17px 10px 17px 0;
+          border-style: solid;
+          border-color: transparent #ddd transparent transparent;
+        }
       }
 
       em {
@@ -258,6 +260,7 @@
     padding-top: 20px;
     margin-top: 20px;
     border-top: 1px solid #eee;
+    font-size: 14px;
 
     .block {
       font-size: 12px;

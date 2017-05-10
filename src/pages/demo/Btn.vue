@@ -35,7 +35,7 @@
   </demo>
 </template>
 
-<style lang="stylus" scope>
+<style lang="stylus" scoped>
   @import '../../style/';
 
   .btn-group > button {

@@ -25,7 +25,7 @@
   </demo>
 </template>
 
-<style lang="stylus" scope>
+<style lang="stylus" scoped>
   @import '../../style/';
   .calendar-warp { width: 320px; }
 </style>

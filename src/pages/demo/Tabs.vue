@@ -47,7 +47,7 @@
   </demo>
 </template>
 
-<style lang="stylus" scope>
+<style lang="stylus" scoped>
   @import '../../style/';
 
   .tabs-demo .hiui-tab-pane {

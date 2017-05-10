@@ -1,5 +1,5 @@
 <template>
-  <button :class="component_class">
+  <button :class="component_class" @click="handleClick">
     <Icon v-if="is_loading" name="loading" :rotate="true"></Icon>
     <Icon v-if="!is_loading && prefix" :name="prefix"></Icon>
     <span v-if="loading_text">
@@ -50,6 +50,11 @@
             'disabled': this.disabled
           }
         ]
+      }
+    },
+    methods: {
+      handleClick (e) {
+        this.$emit('click', e)
       }
     }
   }

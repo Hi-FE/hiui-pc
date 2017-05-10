@@ -72,6 +72,10 @@ export default {
         name: 'Tabs',
         cn_name: '标签页',
         path: '/Tabs'
+      }, {
+        name: 'Loadmore',
+        cn_name: '加载更多',
+        path: '/Loadmore'
       }/* data-out */]
     }]
   }]

@@ -68,6 +68,10 @@ export default new Router({
       path: '/Components/Calendar',
       name: 'Calendar',
       component: require('@/components/Calendar/index.md')
+    }, {
+      path: '/Components/Loadmore',
+      name: 'Loadmore',
+      component: require('@/components/Loadmore/index.md')
     }/* router */]
   }]
 })

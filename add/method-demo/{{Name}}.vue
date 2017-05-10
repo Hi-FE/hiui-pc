@@ -6,7 +6,7 @@
   </demo>
 </template>
 
-<style lang="stylus" scope>
+<style lang="stylus" scoped>
   @import '../../style/';
 </style>
 

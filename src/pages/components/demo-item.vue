@@ -38,7 +38,7 @@
     position: relative;
     font-size: 14px;
     color: #666;
-    padding: 10px;
+    padding: 10px 20px;
 
     .hljs p {
       margin-bottom: 5px;

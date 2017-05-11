@@ -17,7 +17,6 @@
   .hiui-input-field { color:_black;line-height:1;display: block;width: 100%;position:absolute;z-index:8;left:0;top:50%;transform: translateY(-50%);transition: margin-top .3s;-webkit-appearance: textfield; border: 0; outline: none; background: transparent; color: inherit; }
   .hiui-input-field:-webkit-autofill {-webkit-box-shadow: 0 0 0px 1000px white inset; }
   .hiui-input-field::placeholder { color:_grey_deep }
-  .hiui-input-field.date{ line-height: 48px } /*fix: date类型无法垂直居中*/
 </style>
 
 <script>

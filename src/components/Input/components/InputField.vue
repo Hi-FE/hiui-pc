@@ -29,7 +29,7 @@
     empty: /.+/
   }
   export default {
-    name: 'Input',
+    name: 'InputField',
     props: {
       value: [String, Number],
       type: {

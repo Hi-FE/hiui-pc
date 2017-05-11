@@ -8,7 +8,7 @@ import Bar from './Bar'
 
 /* data-in */
 import Input from './Input'
-import Select from './Select'
+import {Select, SelectItem} from './Select'
 import CheckBox from './CheckBox'
 import Switch from './Switch'
 import Calendar from './Calendar'
@@ -23,6 +23,7 @@ const install = (Vue) => {
   Vue.component(Input.name, Input)
   Vue.component(Loadmore.name, Loadmore)
   Vue.component(Select.name, Select)
+  Vue.component(SelectItem.name, SelectItem)
   Vue.component(CheckBox.name, CheckBox)
   Vue.component(Tabs.name, Tabs)
   Vue.component(TabPane.name, TabPane)

@@ -1,6 +1,6 @@
 <template>
   <demo title="Btn">
-    <demo-item name="Size" description="按钮大小" :code="size_code" slot="left">
+    <demo-item name="size" description="按钮大小" :code="size_code" slot="left">
       <div class="btn-group">
         <Btn size="sm">小尺寸</Btn>
         <Btn size="md">中尺寸</Btn>
@@ -8,7 +8,7 @@
       </div>
     </demo-item>
 
-    <demo-item name="Icon" description="前后置图标" :code="icon_code" slot="right">
+    <demo-item name="icon" description="前后置图标" :code="icon_code" slot="right">
       <div class="btn-group">
         <Btn prefix="arrowleft">Left</Btn>
         <Btn prefix="arrowright">Right</Btn>
@@ -17,14 +17,14 @@
       </div>
     </demo-item>
 
-    <demo-item name="Status" description="按钮状态" :code="status_code" slot="left">
+    <demo-item name="status" description="按钮状态" :code="status_code" slot="left">
       <div class="btn-group">
         <Btn :disabled="true">Disabled</Btn>
         <Btn :is_loading="true" loading_text="Loading..">Btn</Btn>
       </div>
     </demo-item>
 
-    <demo-item name="Style" description="自定义样式" :code="style_code" slot="right">
+    <demo-item name="style" description="自定义样式" :code="style_code" slot="right">
       <div class="btn-group">
         <Btn class="solid-btn" prefix="rollback">Back</Btn>
         <Btn class="star-btn" prefix="star">Star</Btn>

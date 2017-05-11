@@ -1,10 +1,10 @@
 <template>
   <demo title="Icon" class="icon-demo">
-    <demo-item name="Default" description="默认" :code="size_code" lang="js">
+    <demo-item name="default" description="默认" :code="size_code" lang="js">
       <Btn @click="$toast(new Date().toLocaleString())">Toast</Btn>
     </demo-item>
 
-    <demo-item class="type-btn-group" name="Type" description="主题" :code="type_code" lang="js">
+    <demo-item class="type-btn-group" name="type" description="主题" :code="type_code" lang="js">
       <Btn @click="$toast(new Date().toLocaleString(), 'default')">Default</Btn>
       <Btn @click="$toast(new Date().toLocaleString(), 'primary')">Primary</Btn>
       <Btn @click="$toast(new Date().toLocaleString(), 'success')">Success</Btn>

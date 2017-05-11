@@ -15,12 +15,14 @@ import Switch from './Switch'
 import Calendar from './Calendar'
 
 /* data-out */
+import Price from './Price'
 import Loadmore from './Loadmore'
 import { Tabs, TabPane } from './Tabs'
 import Toast from './Toast'
 
 const install = (Vue) => {
   /* component */
+  Vue.component(Price.name, Price)
   Vue.component(Radio.name, Radio)
   Vue.component(Input.name, Input)
   Vue.component(Loadmore.name, Loadmore)
@@ -50,6 +52,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export default {
   /* export */
+  Price,
   Radio,
   Input,
   Loadmore,

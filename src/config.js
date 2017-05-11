@@ -88,6 +88,10 @@ export default {
         name: 'Loadmore',
         cn_name: '加载更多',
         path: '/Loadmore'
+      }, {
+        name: 'Price',
+        cn_name: '价格',
+        path: '/Price'
       }/* data-out */]
     }]
   }]

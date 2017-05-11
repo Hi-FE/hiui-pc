@@ -1,24 +1,24 @@
 <template>
   <demo title="Input" class="input-demo">
-    <demo-item name="Size" description="大小" :code="code" slot="left">
+    <demo-item name="size" description="大小" :code="code" slot="left">
       <Input size="sm" v-model="size_test"></Input>
       <Input size="md" v-model="size_test"></Input>
       <Input size="lg" v-model="size_test"></Input>
     </demo-item>
-    <demo-item name="LabelFloat" description="标题浮动" :code="label_code" slot="right">
+    <demo-item name="labelFloat" description="标题浮动" :code="label_code" slot="right">
       <Input size="md" label="我是浮动标题" v-model="label_test"></Input>
       <Input size="md" placeholder="我是提示" v-model="label_test"></Input>
     </demo-item>
-    <demo-item name="Status" description="状态" :code="disabled_code" slot="left">
+    <demo-item name="status" description="状态" :code="disabled_code" slot="left">
       <Input size="md" placeholder="正常使用" v-model="status_test"></Input>
       <Input size="md" placeholder="我被禁用了" :disabled="true"></Input>
     </demo-item>
-    <demo-item name="Color" description="颜色" :code="color_code" slot="right">
+    <demo-item name="color" description="颜色" :code="color_code" slot="right">
       <Input size="md" placeholder="默认" v-model="status_test"></Input>
       <Input size="md" placeholder="绿色" color="#4fae9B" v-model="color_test"></Input>
       <Input size="md" placeholder="蓝色" color="rgb(0, 160, 233)" v-model="color_test"></Input>
     </demo-item>
-    <demo-item name="Verify" description="验证" :code="verify_code" slot="left">
+    <demo-item name="verify" description="验证" :code="verify_code" slot="left">
       <Input size="md" placeholder="正常使用"></Input>
       <Input size="md" placeholder="验证手机号(数字7~14位)" verify="phone" @verify="verify_result = arguments[0]" v-model="verify_test"></Input>
       <p class="verify-result">手机号验证结果: {{ verify_result }}</p>

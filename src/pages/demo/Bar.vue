@@ -1,6 +1,6 @@
 <template>
   <demo title="Icon" class="bar-demo">
-    <demo-item name="Default" description="默认" :code="no_padding_code">
+    <demo-item name="default" description="默认" :code="no_padding_code">
       <Bar>
         I'm Bar.
       </Bar>

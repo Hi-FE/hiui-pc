@@ -7,6 +7,7 @@ import Icon from './Icon'
 import Bar from './Bar'
 
 /* data-in */
+import Radio from './Radio'
 import Input from './Input'
 import {Select, SelectItem} from './Select'
 import CheckBox from './CheckBox'
@@ -22,6 +23,7 @@ import Toast from './Toast'
 const install = (Vue) => {
   /* component */
   Vue.component(Price.name, Price)
+  Vue.component(Radio.name, Radio)
   Vue.component(Input.name, Input)
   Vue.component(Loadmore.name, Loadmore)
   Vue.component(Select.name, Select)
@@ -51,6 +53,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default {
   /* export */
   Price,
+  Radio,
   Input,
   Loadmore,
   Select,

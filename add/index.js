@@ -14,6 +14,7 @@ const isFunction = argv._[1] === 'method'
 const type = argv.type || 'base'
 const cn_name = argv.cn || ''
 
+
 //  判断是否有输入组件名
 if (!component_name) {
   console.log()

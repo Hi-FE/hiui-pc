@@ -65,6 +65,10 @@ export default {
         name: 'Select',
         cn_name: '选择器',
         path: '/Select'
+      }, {
+        name: 'Input',
+        cn_name: '输入栏',
+        path: '/Input'
       }/* data-in */]
     }, {
       title: 'Data out',

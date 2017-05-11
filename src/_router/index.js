@@ -72,6 +72,10 @@ export default new Router({
       path: '/Components/Select',
       name: 'Select',
       component: require('@/components/Select/index.md')
+    }, {
+      path: '/Components/Input',
+      name: 'Input',
+      component: require('@/components/Input/index.md')
     }/* router */]
   }]
 })

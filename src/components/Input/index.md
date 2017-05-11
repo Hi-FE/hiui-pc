@@ -1,0 +1,43 @@
+# Input
+
+> 输入栏
+
+## 代码示例
+
+<test></test>
+
+<script>
+  import test from '@/pages/demo/Input.vue';
+
+  export default {
+    components: {
+      test
+    }
+  }
+</script>
+
+## API
+
+| 参数 | 说明 | 类型 | 默认值 |
+| ----|:-----| ---- | ---- |
+| size | 选择器尺寸，可选值 `sm`/`md`/`lg` | `String` | `md` |
+| label | 标题 | `String` | - |
+| placeholder | 占位文本/提示文本 | `String` | - |
+| type | 输入类型 | `String` | `text` |
+| verify | 验证内容，可选值 `phone`/`password`/`email`/`empty` | `String` | - |
+| reg | 自定义验证正则 | `String`/`RegExp` | - |
+| tip | 验证错误提示 | `String` | - |
+| disabled | 是否禁用 | `Boolean` | `false` |
+| format | 是否格式化内容，将全角符号转化为半角, `，` => `,` | `Boolean` | `false` |
+| readonly | 只读 | `Boolean` | `false` |
+| with_border | 是否带边框 | `Boolean` | `true` |
+
+| 事件 | 说明 | 结果 |
+| ----|:-----| ---- |
+| form-verify | 验证当前选择器是否选中 | - |
+| verify | 返回验证结果 | `true`/`false` |
+| enter | 用户按下Enter键时触发 | - | 
+
+
+
+

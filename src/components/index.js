@@ -7,6 +7,7 @@ import Icon from './Icon'
 import Bar from './Bar'
 
 /* data-in */
+import Input from './Input'
 import Select from './Select'
 import CheckBox from './CheckBox'
 import Switch from './Switch'
@@ -18,6 +19,7 @@ import Toast from './Toast'
 
 const install = (Vue) => {
   /* component */
+  Vue.component(Input.name, Input)
   Vue.component(Select.name, Select)
   Vue.component(CheckBox.name, CheckBox)
   Vue.component(Tabs.name, Tabs)
@@ -43,6 +45,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export default {
   /* export */
+  Input,
   Select,
   CheckBox,
   Calendar,

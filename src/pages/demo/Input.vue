@@ -9,7 +9,7 @@
       <Input size="md" label="我是浮动标题" v-model="label_test"></Input>
       <Input size="md" placeholder="我是提示" v-model="label_test"></Input>
     </demo-item>
-    <demo-item name="Status" description="状态" :code="label_code" slot="left">
+    <demo-item name="Status" description="状态" :code="disabled_code" slot="left">
       <Input size="md" placeholder="正常使用" v-model="status_test"></Input>
       <Input size="md" placeholder="我被禁用了" :disabled="true"></Input>
     </demo-item>
@@ -23,7 +23,7 @@
 
 <style lang="stylus" scoped>
   @import '../../style/';
-  .hiui-input + .hiui-input{ margin-top:5px }
+  .hiui-input{ margin-bottom:5px }
   .verify-result { margin-top:5px;margin-bottom:5px }
 </style>
 

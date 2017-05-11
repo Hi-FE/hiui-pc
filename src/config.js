@@ -85,6 +85,10 @@ export default {
         cn_name: '标签页',
         path: '/Tabs'
       }, {
+        name: 'TabBar',
+        cn_name: '标签栏',
+        path: '/TabBar'
+      }, {
         name: 'Loadmore',
         cn_name: '加载更多',
         path: '/Loadmore'

@@ -22,18 +22,13 @@
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----|:-----| ---- | ---- |
-| done | 是否已经全部加载完毕  | `Boolean` | false |
-| interval | 手动点击加载出现间隔  | `Number` | 3 |
-| offset | 距离到容器底部`300px`时加载 | `Number` | 300 |
-
-### Event
+| done | 是否已经全部加载完毕  | `Boolean` | `false` |
+| interval | 手动点击加载出现间隔  | `Number` | `3` |
+| offset | 距离到容器底部`300px`时加载 | `Number` | `300` |
 
 | 事件 | 说明 | 参数 | 默认值 |
 | ----|:-----| ---- | ---- |
-| load-method* | 加载时调用方法 | [next*:`Function`, err*:`Function`] | - |
-
-next\*: 异步加载完毕后调用<br />
-err\*: 加载出错时调用
+| load-method* | 加载时调用方法 | `[next <Function:异步加载完毕后调用>, err: <Function:加载出错时调用>]` | - |
 
 ## Slot
 

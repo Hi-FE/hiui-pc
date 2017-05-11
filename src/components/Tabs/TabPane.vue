@@ -47,6 +47,9 @@
     },
     mounted () {
       this.$parent.updateBar()
+    },
+    destroyed () {
+      this.$parent.updateBar()
     }
   }
 </script>

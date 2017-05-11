@@ -12,7 +12,7 @@ function resolve (dir) {
 module.exports = {
   devtool: config.package.productionSourceMap ? '#source-map' : false,
   entry: {
-    app: './src/components/index.js'
+    app: ['./src/components/index.js']
   },
   output: {
     path: config.package.assetsRoot,
@@ -43,6 +43,13 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: vueLoaderConfig
+      },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader']
+        })
       },
       {
         test: /\.js$/,

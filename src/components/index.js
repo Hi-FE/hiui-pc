@@ -15,13 +15,18 @@ import Switch from './Switch'
 import Calendar from './Calendar'
 
 /* data-out */
+import TabBar from './TabBar'
 import Price from './Price'
 import Loadmore from './Loadmore'
 import { Tabs, TabPane } from './Tabs'
 import Toast from './Toast'
 
+import 'purecss/build/base-min.css';
+import 'purecss/build/grids-min.css';
+
 const install = (Vue) => {
   /* component */
+  Vue.component(TabBar.name, TabBar)
   Vue.component(Price.name, Price)
   Vue.component(Radio.name, Radio)
   Vue.component(Input.name, Input)
@@ -52,6 +57,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export default {
   /* export */
+  TabBar,
   Price,
   Radio,
   Input,

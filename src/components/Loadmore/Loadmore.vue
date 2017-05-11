@@ -38,10 +38,6 @@
         default: 3,
         type: Number
       },
-      loadMethod: {
-        required: true,
-        type: Function
-      },
       done: {
         default: false,
         type: Boolean
@@ -93,7 +89,7 @@
         }
 
         this.status = 'loading'
-        this.loadMethod(this.next, this.error)
+        this.$emit('load-method', this.next, this.error)
       },
       next () {
         this.$nextTick(() => {

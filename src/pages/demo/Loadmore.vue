@@ -1,9 +1,19 @@
 <template>
   <demo title="Loadmore" class="loadmore-demo">
     <!-- Default -->
-    <demo-item name="Default" description="默认" :code="code">
-      <Btn @click="setShow('show')" class="show-btn">Show</Btn>
-      <Loadmore v-if="show" :load-method="getNextPage" :done="cur >= total">
+    <demo-item name="default" description="默认" :code="code">
+      <Btn @click="setShow(0)" class="show-btn">Show</Btn>
+      <Loadmore v-if="show[0]" @load-method="getNextPage" :done="cur >= total">
+        <div v-for="item in list" class="block">
+          List.{{ item }}
+        </div>
+      </Loadmore>
+    </demo-item>
+
+    <!-- error -->
+    <demo-item name="erroe" description="错误处理" :code="code">
+      <Btn @click="setShow(2)" class="show-btn">Show</Btn>
+      <Loadmore v-if="show[2]" @load-method="getNextPage" :done="cur >= total">
         <div v-for="item in list" class="block">
           List.{{ item }}
         </div>
@@ -11,9 +21,9 @@
     </demo-item>
 
     <!-- Slot -->
-    <demo-item name="Slot" description="自定义Slot内容" :code="slot_code">
-      <Btn @click="setShow('slot_show')" class="show-btn">Show</Btn>
-      <Loadmore v-if="slot_show" :interval="4" :offset="0" :load-method="getNextPage" :done="cur >= total">
+    <demo-item name="slot" description="自定义Slot内容" :code="slot_code">
+      <Btn @click="setShow(1)" class="show-btn">Show</Btn>
+      <Loadmore v-if="show[1]" @load-method="getNextPage" :done="cur >= total">
         <div v-for="item in list" class="block">
           List.{{ item }}
         </div>
@@ -96,13 +106,12 @@
       return {
         cur: 1,
         total: 10,
-        show: false,
-        slot_show: false,
+        show: [false, false, false],
         count: 5,
         timer: null,
         list: [],
         code: `
-<Loadmore v-if="show" :load-method="getNextPage" :done="cur >= total">
+<Loadmore v-if="show" @load-method="getNextPage" :done="cur >= total">
   <div v-for="item in list" class="block">
     {{ item }}
   </div>
@@ -118,7 +127,7 @@ getNextPage (next, err) {
 }
         `,
         slot_code: `
-<Loadmore v-if="slot_show" :interval="4" :offset="0" :load-method="getNextPage" :done="cur >= total">
+<Loadmore v-if="show" :interval="4" :offset="0" @load-method="getNextPage" :done="cur >= total">
   <div v-for="item in list" class="block">
     {{ item }}
   </div>
@@ -146,13 +155,13 @@ getNextPage (next, err) {
       }
     },
     methods: {
-      setShow (name) {
+      setShow (index) {
         this.cur = 1
         this.list = []
         clearTimeout(this.timer)
         this.getList(0)
-        this[name] = !this[name]
-        this[name === 'show' ? 'slot_show' : 'show'] = false
+
+        this.show = this.show.map((bool, i) => i === index && !bool)
       },
       getNextPage (next, err) {
         this.cur++
@@ -161,14 +170,13 @@ getNextPage (next, err) {
         .then(next)
         .catch((err_msg) => err(err_msg))
       },
-      getList (time = 2000) {
+      getList (time = 1000) {
         // 模拟请求加载列表数据
         return new Promise((resolve, reject) => {
           this.timer = setTimeout(() => {
-            //  模拟百分之10的概率出现错误
-            if (Math.random() < 0.1) {
+            if (this.cur > 1 && this.show.indexOf(true) === 2) {
               this.cur--
-              return reject('未知错误')
+              return reject('加载失败')
             }
             let data = new Array(this.count).fill(this.cur)
             this.list = this.list.concat(data)

@@ -1,6 +1,6 @@
 <template>
   <demo title="Grid">
-    <demo-item class="grid-demo" name="Default" description="基础栅格" :code="code">
+    <demo-item class="grid-demo" name="default" description="基础栅格" :code="code">
       <Row>
         <Col :span="12"> col-12 </Col>
         <Col :span="12"> col-12 </Col>
@@ -20,7 +20,7 @@
       </Row>
     </demo-item>
 
-    <demo-item class="grid-gutter-demo" name="Gutter" description="间隔" :code="gutter_code">
+    <demo-item class="grid-gutter-demo" name="gutter" description="间隔" :code="gutter_code">
       <Row :gutter="20">
         <Col :span="6">
           <div class="gutter-box">col-6</div>
@@ -37,7 +37,7 @@
       </Row>
     </demo-item>
 
-    <demo-item class="grid-demo" name="Offset" description="区块偏移" :code="offset_code">
+    <demo-item class="grid-demo" name="offset" description="区块偏移" :code="offset_code">
       <Row>
         <Col :span="8"> col-8 </Col>
         <Col :span="8" :offset="8"> col-8 offset-8 </Col>
@@ -53,14 +53,14 @@
       </Row>
     </demo-item>
 
-    <demo-item class="grid-demo" name="Pull & Push" description="区块排序" :code="sort_code">
+    <demo-item class="grid-demo" name="pull & push" description="区块排序" :code="sort_code">
       <Row>
         <Col :span="18" :push="6"> col-18 push-6 </Col>
         <Col :span="6" :pull="18"> col-6 pull-18 </Col>
       </Row>
     </demo-item>
 
-    <demo-item class="grid-demo" name="Responsive" description="响应式" :code="responsive_code">
+    <demo-item class="grid-demo" name="responsive" description="响应式" :code="responsive_code">
       <Row>
         <Col :xsm="0" :sm="4" :md="6" :lg="8" :xlg="6" >Col</Col>
         <Col :xsm="24" :sm="16" :md="12" :lg="8" :xlg="{ span: 6, offset: 3 }" >Col</Col>

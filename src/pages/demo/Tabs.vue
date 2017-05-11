@@ -1,6 +1,6 @@
 <template>
   <demo title="Tabs" class="tabs-demo">
-    <demo-item name="Default" description="默认" :code="code" slot="left">
+    <demo-item name="default" description="默认" :code="code" slot="left">
       <Tabs>
         <TabPane label="标签一">第一个标签内容</TabPane>
         <TabPane label="标签二">第二个标签内容</TabPane>
@@ -8,7 +8,7 @@
       </Tabs>
     </demo-item>
 
-    <demo-item class="type-group" name="Type" :description="type_descr" :code="type_code" slot="right">
+    <demo-item class="type-group" name="type" :description="type_descr" :code="type_code" slot="right">
       <Tabs type="no_padding">
         <TabPane label="标签一">不使用padding的标签1</TabPane>
         <TabPane label="标签二">不使用padding的标签2</TabPane>
@@ -28,7 +28,7 @@
       </Tabs>
     </demo-item>
 
-    <demo-item name="Icon" description="图标" :code="icon_code" slot="left">
+    <demo-item name="icon" description="图标" :code="icon_code" slot="left">
       <Tabs>
         <TabPane label="Home" icon="home">第一个标签内容</TabPane>
         <TabPane label="Cart" icon="shoppingcart">第二个标签内容</TabPane>
@@ -37,7 +37,7 @@
       </Tabs>
     </demo-item>
 
-    <demo-item name="Style" description="修改样式" :code="style_code" slot="left">
+    <demo-item name="style" description="修改样式" :code="style_code" slot="left">
       <Tabs type="no_padding" class="red-tabs">
         <TabPane label="机酒自由行">机酒自由行</TabPane>
         <TabPane label="当地玩乐">当地玩乐</TabPane>

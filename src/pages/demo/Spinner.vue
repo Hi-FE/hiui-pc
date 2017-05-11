@@ -1,19 +1,19 @@
 <template>
   <demo title="Spinner" class="spinner-demo">
-    <demo-item name="Color" description="颜色" :code="color_code" slot="left">
+    <demo-item name="color" description="颜色" :code="color_code" slot="left">
       <Spinner color="pink"></Spinner>
       <Spinner color="#87db83"></Spinner>
       <Spinner color="rgba(255, 66, 66, 1)"></Spinner>
     </demo-item>
 
-    <demo-item name="Size" description="尺寸" :code="size_code" slot="right">
+    <demo-item name="size" description="尺寸" :code="size_code" slot="right">
       <Spinner></Spinner>
       <Spinner :size="36"></Spinner>
       <Spinner :size="48"></Spinner>
       <Spinner :size="60"></Spinner>
     </demo-item>
 
-    <demo-item name="Wrap" description="覆盖整个容器, 基于最近的定位父级`relative`" :code="wrap_code" slot="left">
+    <demo-item name="wrap" description="覆盖整个容器, 基于最近的定位父级`relative`" :code="wrap_code" slot="left">
       <article class="article">
         <h3>Article Title</h3>
         <p>This is a test text</p>

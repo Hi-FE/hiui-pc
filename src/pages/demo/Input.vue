@@ -13,7 +13,7 @@
       <Input size="md" placeholder="正常使用" v-model="status_test"></Input>
       <Input size="md" placeholder="我被禁用了" :disabled="true"></Input>
     </demo-item>
-    <demo-item name="Verify" description="验证" :code="verify_code" slot="right">
+    <demo-item name="verify" description="验证" :code="verify_code" slot="right">
       <Input size="md" placeholder="正常使用"></Input>
       <Input size="md" placeholder="验证手机号(数字7~14位)" verify="phone" @verify="verify_result = arguments[0]" v-model="verify_test"></Input>
       <p class="verify-result">手机号验证结果: {{ verify_result }}</p>

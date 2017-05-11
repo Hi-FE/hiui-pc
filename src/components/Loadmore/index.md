@@ -4,7 +4,7 @@
 
 ## 代码示例
 
-以下示例，模拟异步加载的时间为 2 秒，出错概率 10%
+以下示例，模拟异步加载的时间为 1 秒
 
 <test></test>
 
@@ -25,11 +25,15 @@
 | done | 是否已经全部加载完毕  | `Boolean` | false |
 | interval | 手动点击加载出现间隔  | `Number` | 3 |
 | offset | 距离到容器底部`300px`时加载 | `Number` | 300 |
-| load-method* | 加载时调用方法 | `Function` | - |
 
- \* load-method 方法调用时参数 @params[next, err]
-1. next 异步加载完毕后调用
-2. err  加载出错时调用
+### Event
+
+| 事件 | 说明 | 参数 | 默认值 |
+| ----|:-----| ---- | ---- |
+| load-method* | 加载时调用方法 | [next*:`Function`, err*:`Function`] | - |
+
+next\*: 异步加载完毕后调用<br />
+err\*: 加载出错时调用
 
 ## Slot
 

@@ -4,7 +4,7 @@
       <Icon v-if="over" :class="bar_prev_class" name="left" @click.native="slider('prev')"></Icon>
       <div class="hiui-tabs-bar-nav" ref="nav">
         <div class="hiui-tabs-bar-scroll" ref="scroll" :style="scroll_style">
-          <div v-for="(item, index) in barList" :class="[bar_item_class, { disabled: item.disabled, active: active === item.name }]" :style="bar_style" @click="setActive(item)">
+          <div v-for="(item, index) in barList" :class="[bar_item_class, { disabled: item.disabled, active: active === item.name }]" :style="[bar_style, active === item.name ? activeStyle : {}]" @click="setActive(item)">
             <Icon v-if="item.icon" :name="item.icon"></Icon>
             {{ item.label }}
           </div>
@@ -28,7 +28,11 @@
   export default {
     name: 'Tabs',
     props: {
-      type: String,
+      type: {
+        default: 'padding',
+        type: String
+      },
+      activeStyle: Object,
       shouldChange: Function
     },
     data () {

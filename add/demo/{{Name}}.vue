@@ -1,6 +1,6 @@
 <template>
   <demo title="{{Name}}" class="{{name}}-demo">
-    <demo-item name="Default" description="默认" :code="code" slot="left">
+    <demo-item name="default" description="默认" :code="code" slot="left">
       <{{cname}}></{{cname}}>
     </demo-item>
   </demo>

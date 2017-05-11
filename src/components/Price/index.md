@@ -22,5 +22,5 @@
 | ----|:-----| ---- | ---- |
 | color | 颜色 | `String` | `#f02f45` |
 | font-size | 字号大小 | `Number` | `24` |
-| super | 价格符号是否对其文本的上标  | `Boolean` | false |
-| delete | 是否为`删除`样式  | `Boolean` | false |
+| super | 价格符号是否对其文本的上标  | `Boolean` | `false` |
+| delete | 是否为`删除`样式  | `Boolean` | `false` |

@@ -21,10 +21,10 @@
         <TabPane label="标签三">平分宽度的标签3</TabPane>
       </Tabs>
 
-      <Tabs type="fix_width:140px">
-        <TabPane label="标签一">固定宽度为120px的标签1</TabPane>
-        <TabPane label="标签二">固定宽度为120px的标签2</TabPane>
-        <TabPane label="标签三">固定宽度为120px的标签3</TabPane>
+      <Tabs type="fix_width:20%">
+        <TabPane label="标签一">固定宽度为20%的标签1</TabPane>
+        <TabPane label="标签二">固定宽度为20%的标签2</TabPane>
+        <TabPane label="标签三">固定宽度为20%的标签3</TabPane>
       </Tabs>
     </demo-item>
 
@@ -33,12 +33,11 @@
         <TabPane label="Home" icon="home">第一个标签内容</TabPane>
         <TabPane label="Cart" icon="shoppingcart">第二个标签内容</TabPane>
         <TabPane label="User" icon="user">第三个标签内容</TabPane>
-        <TabPane label="Setting" icon="setting">第四个标签内容</TabPane>
       </Tabs>
     </demo-item>
 
-    <demo-item name="style" description="修改样式" :code="style_code" slot="left">
-      <Tabs type="no_padding" class="red-tabs">
+    <demo-item name="activeStyle" description="选中样式" :code="style_code" slot="left">
+      <Tabs type="no_padding" :active-style="{ color: '#f02f45', borderBottomColor: '#f02f45' }">
         <TabPane label="机酒自由行">机酒自由行</TabPane>
         <TabPane label="当地玩乐">当地玩乐</TabPane>
         <TabPane label="出行必备">出行必备</TabPane>
@@ -57,11 +56,6 @@
 
   .type-group .hiui-tabs&:not(:last-child) {
     margin-bottom: 40px;
-  }
-
-  .red-tabs .hiui-tabs-bar-item.active {
-    color: _red;
-    border-bottom-color: _red;
   }
 </style>
 
@@ -104,18 +98,11 @@
 </Tabs>
         `,
         style_code: `
-<Tabs type="no_padding" class="red-tabs">
+<Tabs type="no_padding" :active-style="{ color: '#f02f45', borderBottomColor: '#f02f45' }">
   <TabPane label="机酒自由行">机酒自由行</TabPane>
   <TabPane label="当地玩乐">当地玩乐</TabPane>
   <TabPane label="出行必备">出行必备</TabPane>
 </Tabs>
-
-<style lang="stylus">
-.red-tabs .hiui-tabs-bar-item.active {
-  color: _red;
-  border-bottom-color: _red;
-}
-</style>
         `,
         type_descr: `
 \`no_padding\` 不使用padding的标签\n

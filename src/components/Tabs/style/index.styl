@@ -1,7 +1,5 @@
 @import '../../style/';
 
-_default_height = 42px;
-
 .hiui-tabs {
   position: relative;
 }
@@ -9,7 +7,7 @@ _default_height = 42px;
 .hiui-tabs-bar {
   position: relative;
   margin-bottom: 15px;
-  border-bottom: 1px solid _grey_lighter;
+  border-bottom: 1px solid _grey_light;
   white-space: nowrap;
 
   &-over {
@@ -30,7 +28,7 @@ _default_height = 42px;
     position: absolute;
     top: 0;
     height: 100%;
-    line-height: _default_height;
+    line-height: _tabs_height;
     font-size: 12px;
     font-weight: bold;
     cursor: pointer;
@@ -52,14 +50,17 @@ _default_height = 42px;
 
 .hiui-tabs-bar-item {
   position: relative;
-  height: _default_height;
-  line-height: _default_height;
+  height: _tabs_height;
+  line-height: _tabs_height;
   display: inline-block;
   text-align: center;
   font-size: 14px;
-  padding: 0 15px;
   color: #666;
   cursor: pointer;
+
+  &-padding {
+    padding: 0 15px;
+  }
 
   &-no_padding {
     padding: 0;
@@ -78,8 +79,8 @@ _default_height = 42px;
   }
 
   &.active {
-    color: _blue;
-    border-bottom: 2px solid _blue;
+    color: _tabs_active_color;
+    border-bottom: 2px solid _tabs_active_color;
   }
 
   &.disabled {

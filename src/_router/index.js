@@ -88,6 +88,10 @@ export default new Router({
       path: '/Components/Radio',
       name: 'Radio',
       component: require('@/components/Radio/index.md')
+    }, {
+      path: '/Components/TabBar',
+      name: 'TabBar',
+      component: require('@/components/TabBar/index.md')
     }/* router */]
   }]
 })

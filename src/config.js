@@ -69,6 +69,10 @@ export default {
         name: 'Input',
         cn_name: '输入栏',
         path: '/Input'
+      }, {
+        name: 'Radio',
+        cn_name: '单选框',
+        path: '/Radio'
       }/* data-in */]
     }, {
       title: 'Data out',

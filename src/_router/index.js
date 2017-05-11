@@ -80,6 +80,10 @@ export default new Router({
       path: '/Components/Input',
       name: 'Input',
       component: require('@/components/Input/index.md')
+    }, {
+      path: '/Components/Radio',
+      name: 'Radio',
+      component: require('@/components/Radio/index.md')
     }/* router */]
   }]
 })

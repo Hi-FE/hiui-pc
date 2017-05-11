@@ -20,7 +20,8 @@
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----|:-----| ---- | ---- |
-| size | 选择器尺寸，可选值 `sm`/`md`/`lg` | `String` | `md` |
+| size | 输入框尺寸，可选值 `sm`/`md`/`lg` | `String` | `md` |
+| color | 输入框聚焦时的颜色, 支持两种格式`#f00`/`rgb(255,255,255)` | `String` | - |
 | label | 标题 | `String` | - |
 | placeholder | 占位文本/提示文本 | `String` | - |
 | type | 输入类型 | `String` | `text` |

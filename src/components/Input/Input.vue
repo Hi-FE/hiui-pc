@@ -1,5 +1,8 @@
 <template>
-  <label :class="component_class">
+  <label :class="component_class"
+         :style="custom_style"
+         @mouseenter="is_hover = true"
+         @mouseleave="is_hover = false">
 
     <div class="wrapper">
 
@@ -42,6 +45,7 @@
     props: {
       value: {},
       size: { type: String, default: 'md' },
+      color: String,
       label: [String, Number],
       placeholder: [String, Number],
       type: { type: String, default: 'text' },
@@ -60,6 +64,7 @@
     },
     data () {
       return {
+        is_hover: false,
         is_focus: false,
         is_error: false,
         is_correct: false,
@@ -75,6 +80,17 @@
           `${prefixCls}-${size}`,
           { error: is_error, focus: is_focus, disabled, animated: is_animated, 'with-border': with_border }
         ]
+      },
+      custom_style: function () {
+        const { color, is_hover, is_focus, with_border } = this;
+        if (!color || !with_border) return {}
+        let rgb = color.indexOf('rgb') === -1 ? this.hexToRgb(color) : color.replace(/[^\d,]/g, '').split(',');
+        const _boxshadow = is_focus ? `0 0 0 2px rgba(${rgb.r || rgb[0] || 0},${rgb.g || rgb[1] || 0},${rgb.b || rgb[2] || 0},.2)` : undefined;
+        const _color = is_hover || is_focus ? color : undefined;
+        return {
+          borderColor: _color,
+          boxShadow: _boxshadow
+        }
       },
       // 标题浮动动画开关
       is_animated: function () {
@@ -132,6 +148,20 @@
         }
         this.$root.$on('form-verify', handler)
         this.$on('form-verify', handler)
+      },
+      hexToRgb: function (hex) {
+        // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+        let shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+        hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+          return r + r + g + g + b + b;
+        });
+
+        let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+          r: parseInt(result[1], 16),
+          g: parseInt(result[2], 16),
+          b: parseInt(result[3], 16)
+        } : null;
       }
     }
   }

@@ -1,5 +1,5 @@
 <template>
-  <div :class="component_class" v-clickothers="clickOthers">
+  <div :class="component_class" :style="custom_style.self" v-clickothers="clickOthers">
     <!-- handler -->
     <div class="handler"
          @click="clickHandler"
@@ -8,7 +8,7 @@
       <!-- <icon v-if="!float && icon" class="icon" :name="icon" color="#979797"></icon> -->
       <p class="label" v-show="float || !show_val" :class="{ float: show_val && float }">{{ label || (show_val ? '已选择' : '请选择') }} </p>
       <p class="selected" :class="{ float: show_val && float }">{{ show_val }}</p>
-      <span class="arrow"></span>
+      <span class="arrow" :style="custom_style.arrow"></span>
     </div>
     <!-- 下拉内容 -->
     <transition name="slide-down">
@@ -17,6 +17,7 @@
         <slot>
           <SelectItem v-for="(item, index) in data"
                       :key="index"
+                      :color="color"
                       :active="value_by ? value === item[value_by] : item === value"
                       @click="itemClick(item, index)">
             {{ item[show_by] || item }}
@@ -48,6 +49,7 @@
     directives: { clickothers },
     props: {
       size: { default: 'md', type: String },
+      color: String,
       data: Array,
       value: {},
       show_by: String,
@@ -76,6 +78,22 @@
           `${prefixCls}-${size}`,
           { active: is_active, hover: is_hover, error: is_error, 'has-icon': !!icon, float, disabled }
         ]
+      },
+      custom_style: function () {
+        const { color, is_hover, is_active } = this;
+        if (!color) return {}
+        let rgb = color.indexOf('rgb') === -1 ? this.hexToRgb(color) : color.replace(/[^\d,]/g, '').split(',');
+        const _boxshadow = is_active ? `0 0 0 2px rgba(${rgb.r || rgb[0] || 0},${rgb.g || rgb[1] || 0},${rgb.b || rgb[2] || 0},.2)` : undefined;
+        const _color = is_hover || is_active ? color : undefined;
+        return {
+          self: {
+            borderColor: _color,
+            boxShadow: _boxshadow
+          },
+          arrow: {
+            borderColor: _color
+          }
+        }
       },
       show_val: function () {
         const { data, value, show_by, value_by } = this;
@@ -152,6 +170,20 @@
         this.$on('close', () => {
           this.is_active = false;
         })
+      },
+      hexToRgb: function (hex) {
+        // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+        let shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+        hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+          return r + r + g + g + b + b;
+        });
+
+        let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+          r: parseInt(result[1], 16),
+          g: parseInt(result[2], 16),
+          b: parseInt(result[3], 16)
+        } : null;
       }
     }
   }

@@ -14,7 +14,12 @@
       <Select :data="[2,3,4]" :disabled="true"></Select>
       <Select :data="[2,3,4]" v-model="disabled_test"></Select>
     </demo-item>
-    <demo-item name="Custom" description="自定义行为" :code="custom_code" slot="right">
+    <demo-item name="Color" description="颜色" :code="color_code" slot="right">
+      <Select :data="[2,3,4]" v-model="color_test"></Select>
+      <Select :data="[2,3,4]" color="#4fae9B" v-model="color_test"></Select>
+      <Select :data="[2,3,4]" color="rgb(0, 160, 233)" v-model="color_test"></Select>
+    </demo-item>
+    <demo-item name="Custom" description="自定义行为" :code="custom_code" slot="left">
       <p class="tip">选择器1 无触发close事件</p>
       <Select v-model="custom_test">
         <p class="custom-option" v-for="n in 4" @click="custom_test = `自定义选项${n}`">自定义选项 {{ n }}</p>
@@ -47,8 +52,8 @@
       return {
         test: '',
         float_test: '',
-        disabled_test: '',
         color_test: '',
+        disabled_test: '',
         custom_test: '',
         code: `
 <Select :data="[2,3,4]" v-model="test" size="sm"></Select>
@@ -62,6 +67,11 @@
         disabled_code: `
 <Select :data="[2,3,4]" :disabled="true"></Select>
 <Select :data="[2,3,4]" v-model="disabled_test"></Select>
+        `,
+        color_code: `
+<Select :data="[2,3,4]" v-model="color_test"></Select>
+<Select :data="[2,3,4]" color="#4fae9B" v-model="color_test"></Select>
+<Select :data="[2,3,4]" color="rgb(0, 160, 233)" v-model="color_test"></Select>
         `,
         custom_code: `
 // 选择器1 无触发close事件

@@ -1,5 +1,6 @@
 <template>
   <div :class="component_class"
+       :style="custom_style"
        @click="$emit('click')">
     <slot></slot>
   </div>
@@ -31,7 +32,8 @@
   export default {
     name: 'SelectItem',
     props: {
-      active: Boolean
+      active: Boolean,
+      color: String
     },
     data () {
       return {
@@ -43,6 +45,11 @@
           prefixCls,
           {active: this.active}
         ]
+      },
+      custom_style: function () {
+        return {
+          color: this.active ? this.color : undefined
+        }
       }
     }
   }

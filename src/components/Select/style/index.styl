@@ -12,14 +12,28 @@
       }
     }
   }
-  &.disabled {
-    border-color:_grey_light;
-  }
   &.error {
     border-color: _red_light;
     .handler {
       .arrow {
         border-color:_red_light;
+      }
+    }
+    &:not(.active).hover {
+      border-color: _red_light !important;
+      .handler {
+        .arrow {
+          border-color:_red_light !important;
+        }
+      }
+    }
+  }
+
+  &.disabled {
+    border-color:_grey_light;
+    .handler {
+      .arrow {
+        border-color:_grey;
       }
     }
   }

@@ -14,12 +14,14 @@ import Switch from './Switch'
 import Calendar from './Calendar'
 
 /* data-out */
+import Loadmore from './Loadmore'
 import { Tabs, TabPane } from './Tabs'
 import Toast from './Toast'
 
 const install = (Vue) => {
   /* component */
   Vue.component(Input.name, Input)
+  Vue.component(Loadmore.name, Loadmore)
   Vue.component(Select.name, Select)
   Vue.component(CheckBox.name, CheckBox)
   Vue.component(Tabs.name, Tabs)
@@ -46,6 +48,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default {
   /* export */
   Input,
+  Loadmore,
   Select,
   CheckBox,
   Calendar,

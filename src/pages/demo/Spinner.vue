@@ -25,7 +25,7 @@
   </demo>
 </template>
 
-<style lang="stylus" scope>
+<style lang="stylus" scoped>
   .spinner-demo .hiui-spinner {
     display: inline-block;
   }

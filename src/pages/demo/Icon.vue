@@ -28,7 +28,7 @@
   </demo>
 </template>
 
-<style lang="stylus" scope>
+<style lang="stylus" scoped>
   .icon-demo .hiui-icon { margin: 0 2px; }
 </style>
 
@@ -42,9 +42,9 @@
 <Icon name="tag"></Icon>
         `,
         size_code: `
-<Icon size="16" name="enviroment"></Icon>
-<Icon size="24" name="enviroment"></Icon>
-<Icon size="32" name="enviroment"></Icon>
+<Icon :size="16" name="enviroment"></Icon>
+<Icon :size="24" name="enviroment"></Icon>
+<Icon :size="32" name="enviroment"></Icon>
         `,
         color_code: `
 <Icon color="red" name="search"></Icon>

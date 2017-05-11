@@ -14,7 +14,7 @@
       <Input size="md" placeholder="我被禁用了" :disabled="true"></Input>
     </demo-item>
     <demo-item name="color" description="颜色" :code="color_code" slot="right">
-      <Input size="md" placeholder="默认" v-model="status_test"></Input>
+      <Input size="md" placeholder="默认" v-model="color_test"></Input>
       <Input size="md" placeholder="绿色" color="#4fae9B" v-model="color_test"></Input>
       <Input size="md" placeholder="蓝色" color="rgb(0, 160, 233)" v-model="color_test"></Input>
     </demo-item>

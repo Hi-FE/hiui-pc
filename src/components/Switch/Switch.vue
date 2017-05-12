@@ -1,6 +1,6 @@
 <template>
   <label :class="component_class">
-    <input type="checkbox" v-model="checked" />
+    <input type="checkbox" v-model="checked" :disabled="disabled" />
   </label>
 </template>
 
@@ -21,6 +21,10 @@
       value: {
         type: Boolean,
         required: true
+      },
+      disabled: {
+        default: false,
+        type: Boolean
       }
     },
     computed: {
@@ -29,6 +33,7 @@
           prefixCls,
           `${prefixCls}-${this.size}`,
           {
+            'disabled': this.disabled,
             'checked': this.value
           }
         ]

@@ -23,6 +23,11 @@
       <Input size="md" placeholder="验证手机号(数字7~14位)" verify="phone" @verify="verify_result = arguments[0]" v-model="verify_test"></Input>
       <p class="verify-result">手机号验证结果: {{ verify_result }}</p>
     </demo-item>
+    <demo-item name="textarea" description="文本域" :code="textarea_code" slot="right">
+      <Input size="md" v-model="textarea_test"></Input>
+      <Input size="md" v-model="textarea_test" placeholder="默认3行高" type="textarea"></Input>
+      <Input size="md" v-model="textarea_test" type="textarea" placeholder="内容撑开高度" :autosize="true"></Input>
+    </demo-item>
   </demo>
 </template>
 
@@ -41,6 +46,7 @@
         status_test: '',
         verify_test: '',
         color_test: '',
+        textarea_test: '',
         verify_result: false,
         code: `
 <Input size="sm" v-model="test"></Input>
@@ -66,6 +72,11 @@
 <Input size="md" placeholder="正常使用"></Input>
 <Input size="md" placeholder="验证手机号(数字7~14位)" verify="phone" @verify="verify_result = arguments[0]" v-model="verify_test"></Input>
 <p class="verify-result">手机号验证结果: {{ verify_result }}</p>
+        `,
+        textarea_code: `
+<Input size="md" v-model="textarea_test"></Input>
+<Input size="md" v-model="textarea_test" placeholder="默认3行高" type="textarea"></Input>
+<Input size="md" v-model="textarea_test" type="textarea" placeholder="内容撑开高度" :autosize="true"></Input>
         `
       }
     }

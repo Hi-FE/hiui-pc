@@ -2,9 +2,17 @@
 
 .hiui-input {
   vertical-align: top; position: relative; display: inline-block; background-color:#fff; border-radius:2px; height:_input_height_md; transition:border-color .3s; transition:border-color .3s, box-shadow .3s; cursor:text;
+
+  &.textarea { height: auto !important; }
+
   &.with-border {
-    border:1px solid _grey; padding: 0 _gap_xsm;
+    border:1px solid _grey;
   }
+
+  &:not(.textarea) {
+    padding: 0 _gap_xsm;
+  }
+
   &:not(.disabled):hover {
     border-color: _grey_deep;
   }

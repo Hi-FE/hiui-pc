@@ -18,12 +18,21 @@
 
 <style lang="stylus">
   @import '../../../style/';
-  .hiui-input-tip { color:_red;font-size: 12px;position: absolute;z-index:9;top:0;right:0;height:100%;background-color: rgba(255,255,255,.9);}
-  .hiui-input-tip .tip-wrapper {display: inline-block;vertical-align: middle;position:relative;background-color:#fff }
-  .hiui-input-tip:after{ content: '';display: inline-block;height: 100%;vertical-align: middle; }
-  .hiui-input-tip .tip { margin: 0;display:inline-block;white-space:nowrap }
-  .hiui-input-tip .correct-sign { position:relative;vertical-align:middle;text-align: center;border: 1px solid _green;display: inline-block;border-radius: 100%;width:18px;height:18px; }
-  .hiui-input-tip .correct-sign .icon{ position:absolute;z-index:1;top:50%;left:50%;transform:translate(-50%,-50%) }
+  .hiui-input-tip {
+    color:_red;font-size: 12px;position: absolute;z-index:9;top:0;right:0;height:100%;background-color: rgba(255,255,255,.9);
+    &.middle:after { content: '';display: inline-block;height: 100%;vertical-align: middle; }
+    &.top {
+      .tip-wrapper { margin-top:5px;margin-right:5px }
+    }
+    .tip-wrapper {
+      display: inline-block;vertical-align: middle;position:relative;background-color:#fff
+      .tip { margin: 0;display:inline-block;white-space:nowrap }
+      .correct-sign {
+        position:relative;vertical-align:middle;text-align: center;border: 1px solid _green;display: inline-block;border-radius: 100%;width:18px;height:18px;
+        .icon{ position:absolute;z-index:1;top:50%;left:50%;transform:translate(-50%,-50%) }
+      }
+    }
+  }
   .slide-up-enter-active, .slide-up-leave-active {transition: opacity .3s, transform .3s; }
   .slide-up-enter, .slide-up-leave-active {opacity: 0;transform: translateY(15px) }
 </style>
@@ -40,6 +49,7 @@
     name: 'InputTip',
     props: {
       tip: String,
+      position: { type: String, default: 'middle' },
       verify: [String, Array],
       is_error: Boolean,
       is_correct: Boolean
@@ -47,7 +57,8 @@
     computed: {
       component_class () {
         return [
-          prefixCls
+          prefixCls,
+          this.position
         ]
       },
       self_tip: function () {

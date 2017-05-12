@@ -32,6 +32,8 @@
 | format | 是否格式化内容，将全角符号转化为半角, `，` => `,` | `Boolean` | `false` |
 | readonly | 只读 | `Boolean` | `false` |
 | with_border | 是否带边框 | `Boolean` | `true` |
+| rows | `textarea`类型有效，指定默认行数 | `Number` | `3` |
+| autosize | `textarea`类型有效，内容撑开高度 | `Boolean` | `false` |
 
 | 事件 | 说明 | 结果 |
 | ----|:-----| ---- |

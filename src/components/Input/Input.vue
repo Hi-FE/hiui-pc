@@ -16,6 +16,9 @@
                   :reg="reg"
                   :verify="verify"
                   :value="value"
+                  :autosize="autosize"
+                  :rows="rows"
+                  :no_padding="!with_border"
                   @focus="focusHandler"
                   @blur="blurHandler(is_edited)"
                   @enter="enterHandler"
@@ -24,6 +27,7 @@
 
       <InputTip v-if="!no_verify"
                 :tip="tip"
+                :position="type === 'textarea' ? 'top' : 'middle'"
                 :verify="verify"
                 :is_error="is_error"
                 :is_correct="is_correct"></InputTip>
@@ -55,7 +59,9 @@
       with_border: { type: Boolean, default: true },
       format: Boolean,
       disabled: Boolean,
-      readonly: Boolean
+      readonly: Boolean,
+      rows: Number,
+      autosize: Boolean
     },
     components: {
       InputLabel: require('./components/InputLabel.vue'),
@@ -74,11 +80,11 @@
     },
     computed: {
       component_class () {
-        const { is_error, is_focus, disabled, is_animated, size, with_border } = this;
+        const { is_error, is_focus, disabled, is_animated, size, type, with_border } = this;
         return [
           prefixCls,
           `${prefixCls}-${size}`,
-          { error: is_error, focus: is_focus, disabled, animated: is_animated, 'with-border': with_border }
+          { error: is_error, focus: is_focus, disabled, animated: is_animated, 'with-border': with_border, textarea: type === 'textarea' }
         ]
       },
       custom_style: function () {

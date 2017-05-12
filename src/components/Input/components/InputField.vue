@@ -1,22 +1,49 @@
 <template>
-  <input :class="component_class"
-         :type="type"
-         :placeholder="placeholder"
-         :disabled="disabled"
-         :readonly="readonly"
-         :value="value"
-         @focus="$emit('focus')"
-         @blur="$emit('blur')"
-         @keyup.enter="$emit('enter')"
-         @input="$emit('input', $event.target.value)"
-         @change="$emit('input', reformStr($event.target.value))">
+  <div :class="component_class">
+    <template v-if="type === 'textarea'">
+      <textarea :style="textarea_style"
+                :rows="rows"
+                :placeholder="placeholder"
+                :disabled="disabled"
+                :readonly="readonly"
+                :value="value"
+                @focus="$emit('focus')"
+                @blur="$emit('blur')"
+                @keyup.enter="$emit('enter')"
+                @input="$emit('input', $event.target.value)"
+                @change="$emit('input', reformStr($event.target.value))"></textarea>
+      <textarea class="hidden-textarea" :ref="'hidden_textarea'" :rows="rows" :value="value"></textarea>
+    </template>
+    <input v-else
+           :type="type"
+           :placeholder="placeholder"
+           :disabled="disabled"
+           :readonly="readonly"
+           :value="value"
+           @focus="$emit('focus')"
+           @blur="$emit('blur')"
+           @keyup.enter="$emit('enter')"
+           @input="$emit('input', $event.target.value)"
+           @change="$emit('input', reformStr($event.target.value))">
+  </div>
 </template>
 
 <style lang="stylus">
   @import '../../../style/';
-  .hiui-input-field { color:_black;line-height:1;display: block;width: 100%;position:absolute;z-index:8;left:0;top:50%;transform: translateY(-50%);transition: margin-top .3s;-webkit-appearance: textfield; border: 0; outline: none; background: transparent; color: inherit; }
-  .hiui-input-field:-webkit-autofill {-webkit-box-shadow: 0 0 0px 1000px white inset; }
-  .hiui-input-field::placeholder { color:_grey_deep }
+  .hiui-input-field {
+    color:_black;display: block;width: 100%;
+    &:not(.textarea) {position:absolute;z-index:8;left:0;top:50%;transform: translateY(-50%);transition: margin-top .3s; }
+    &.no-padding textarea { padding: 0 }
+    input{
+      line-height:1;display: block;width: 100%;height:100%;-webkit-appearance: textfield; border: 0; outline: none; background: transparent; color: inherit;
+      &:-webkit-autofill { -webkit-box-shadow: 0 0 0px 1000px white inset; }
+      &::placeholder { color:_grey_deep }
+    }
+    textarea{
+      resize: vertical;padding: 10px _gap_xsm;display: block;width: 100%;-webkit-appearance: textfield; border: 0; outline: none; background: transparent; color: inherit;
+      &.hidden-textarea { opacity:0;position:absolute;z-index:-1; }
+    }
+  }
 </style>
 
 <script>
@@ -39,19 +66,29 @@
       disabled: Boolean,
       readonly: Boolean,
       format: Boolean,
+      autosize: Boolean,
+      no_padding: Boolean,
+      rows: { type: Number, default: 3 },
       verify: [String, Array],
       reg: [RegExp, String]
     },
     data () {
       return {
+        textarea_height: 0
       }
     },
     computed: {
       component_class () {
         return [
           prefixCls,
-          this.type
+          this.type,
+          { 'no-padding': this.no_padding }
         ]
+      },
+      textarea_style: function () {
+        return {
+          height: this.textarea_height ? this.textarea_height + 'px' : undefined
+        }
       },
       // 验证结果
       verify_result: function () {
@@ -61,6 +98,9 @@
     watch: {
       verify_result: function () {
         this.$emit('verify', this.verify_result)
+      },
+      value: function () {
+        this.autosize && this.recomputeTextAreaHeight()
       }
     },
     created: function () {
@@ -109,6 +149,12 @@
           return idx !== -1 ? REFORM_SYMBOL.charAt(idx) : item;
         })
         return arr_deal.join('');
+      },
+      recomputeTextAreaHeight: function () {
+        this.$nextTick(() => {
+          const hidden_textarea = this.$refs.hidden_textarea;
+          this.textarea_height = hidden_textarea.scrollHeight;
+        })
       }
     }
   }

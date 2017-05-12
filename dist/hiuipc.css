@@ -2379,10 +2379,6 @@ to {
 .hiui-input-field::placeholder {
   color: #999;
 }
-.hiui-input-field.date {
-  line-height: 48px;
-}
-/*fix: date类型无法垂直居中*/
 
 .hiui-input-tip {
   color: #f02f45;

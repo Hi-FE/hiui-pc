@@ -20,11 +20,9 @@
 
 ### Tabs
 
-#### Props
-
 | 参数 | 说明 | 类型 | 默认值 |
 | ----|:-----| ---- | ---- |
-| type | 标签类型，可选值`padding/no_padding/fix_width/fix_width:Number`  | `String` | `padding` |
+| type | 标签类型，可选值`padding/no_padding/fix_width/fix_width:String`  | `String` | `padding` |
 | active-style | 选中时标签样式  | `Object` | - |
 | shouldChange | 标签切换前调用，返回false时则不切换标签[@params: name, vm]  | `Function` | - |
 

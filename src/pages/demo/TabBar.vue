@@ -54,6 +54,10 @@
 
 <style lang="stylus" scoped>
   @import '../../style/';
+
+  .tabBar-demo .hiui-tabBar {
+    box-sizing: content-box;
+  }
 </style>
 
 <script>

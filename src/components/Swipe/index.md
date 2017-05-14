@@ -20,7 +20,7 @@
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----|:-----| ---- | ---- |
-| value | Swipe的当前下标，使用v-model获取及设置  | - | - |
+| value | Swipe的当前下标，请使用v-model获取及设置  | - | - |
 | preview | 预览展示的滑块数目  | `Number` | 1 |
 | between | 每个滑块之间的间距  | `Number` | 0 |
 | trigger | index的触发时机, 可选值`change`/`progress`  | `String` | 'change' |

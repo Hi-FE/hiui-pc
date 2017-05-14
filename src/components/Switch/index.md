@@ -22,3 +22,4 @@
 | ----|:-----| ---- | ---- |
 | Size | 尺寸，可选值 `lg`/`md`/`sm`  | `String` | `md` |
 | value | 绑定值  | `Boolean` | - |
+| disabled | 是否禁用  | `Boolean` | `false` |

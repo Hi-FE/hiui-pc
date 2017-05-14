@@ -11,6 +11,12 @@
     <demo-item name="style" description="自定义样式" :code="color_code" slot="right">
       <vSwitch class="green" v-model="val"></vSwitch>
     </demo-item>
+
+    <!-- Status -->
+    <demo-item name="status" description="状态" :code="status_code" slot="left">
+      <vSwitch v-model="val"></vSwitch>
+      <vSwitch v-model="val" disabled></vSwitch>
+    </demo-item>
   </demo>
 </template>
 
@@ -58,6 +64,10 @@
   background-color: _green;
 }
 </style>
+        `,
+        status_code: `
+<vSwitch v-model="val"></vSwitch>
+<vSwitch v-model="val" disabled></vSwitch>
         `,
         val: false
       }

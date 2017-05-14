@@ -23,6 +23,18 @@
       color: _tabBar_active_color;
       border-bottom: 2px solid _tabBar_active_color;
     }
+
+    .hiui-icon {
+      font-size: 16px;
+
+      &-prefix {
+        margin-right: 6px;
+      }
+
+      &-suffix {
+        margin-left: 6px;
+      }
+    }
   }
 
   &-padding {
@@ -47,7 +59,7 @@
       background-color: _tabBar_ticket_color;
       border-left: 1px dashed _white;
 
-      &:first-child {
+      &:first-child, &.active, &.active+.hiui-tabBar-item {
         border-left-width: 0;
       }
 

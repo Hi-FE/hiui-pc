@@ -19,11 +19,45 @@
     <demo-item name="trigger" description="触发类型" :code="trigger_code" slot="right">
       <TabBar :data="arr" v-model="trigger_index" trigger="hover"></TabBar>
     </demo-item>
+
+    <demo-item name="icon" description="图标" :code="icon_code" slot="left">
+      <TabBar
+        :data="[{
+          name: 'Home',
+          icon: 'home'
+        }, {
+          name: 'Cart',
+          icon: 'shoppingcart'
+        }, {
+          name: 'User',
+          icon: 'user'
+        }]" v-model="icon_index"></TabBar>
+
+      <TabBar
+        :data="[{
+          name: 'Home',
+          suffix_icon: 'home'
+        }, {
+          name: 'Cart',
+          suffix_icon: 'shoppingcart'
+        }, {
+          name: 'User',
+          suffix_icon: 'user'
+        }]" v-model="icon_index"></TabBar>
+    </demo-item>
+
+    <demo-item name="activeStyle" description="选中样式" :code="style_code" slot="right">
+      <TabBar :data="arr" v-model="style_index" :active-style="{ color: '#f02f45', borderBottomColor: '#f02f45' }"></TabBar>
+    </demo-item>
   </demo>
 </template>
 
 <style lang="stylus" scoped>
   @import '../../style/';
+
+  .tabBar-demo .hiui-tabBar {
+    box-sizing: content-box;
+  }
 </style>
 
 <script>
@@ -35,6 +69,8 @@
         type_index: 0,
         theme_index: 0,
         trigger_index: 0,
+        icon_index: 0,
+        style_index: 0,
         code: `
 <TabBar :data="arr" v-model="default_index"></TabBar>
         `,
@@ -50,6 +86,34 @@
         `,
         trigger_code: `
 <TabBar :data="arr" v-model="trigger_index" trigger="hover"></TabBar>
+        `,
+        icon_code: `
+<TabBar
+  :data="[{
+    name: 'Home',
+    icon: 'home'
+  }, {
+    name: 'Cart',
+    icon: 'shoppingcart'
+  }, {
+    name: 'User',
+    icon: 'user'
+  }]" v-model="style_index"></TabBar>
+
+<TabBar
+  :data="[{
+    name: 'Home',
+    suffix_icon: 'home'
+  }, {
+    name: 'Cart',
+    suffix_icon: 'shoppingcart'
+  }, {
+    name: 'User',
+    suffix_icon: 'user'
+  }]" v-model="icon_index"></TabBar>
+        `,
+        style_code: `
+<TabBar :data="arr" v-model="style_index" :active-style="{ color: '#f02f45', borderBottomColor: '#f02f45' }"></TabBar>
         `
       }
     }

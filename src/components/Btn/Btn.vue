@@ -47,7 +47,7 @@
           prefixCls,
           {
             [`${prefixCls}-${this.size}`]: this.size,
-            'disabled': this.disabled
+            'disabled': this.is_loading || this.disabled
           }
         ]
       }

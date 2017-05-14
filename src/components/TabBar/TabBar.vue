@@ -1,6 +1,15 @@
 <template>
   <div :class="component_class" :style="tab_style">
-    <div v-for="(title, i) in data" :key="i" @click="handleClick(i, title)" @mouseenter="handleMouseEnter(i, title)" :class="[item_class, { active: value === i }]" :style="item_style">{{ title }}</div>
+    <div v-for="(item, i) in tab_data"
+         :key="i" @click="handleClick(i, item.name)"
+         @mouseenter="handleMouseEnter(i, item.name)"
+         :class="[item_class, { active: value === i }]"
+         :style="[item_style, value === i ? activeStyle : {}]"
+         >
+         <Icon v-if="item.icon" class="hiui-icon-prefix" :name="item.icon"></Icon>
+         {{ item.name }}
+         <Icon v-if="item.suffix_icon" class="hiui-icon-suffix" :name="item.suffix_icon"></Icon>
+    </div>
   </div>
 </template>
 
@@ -31,7 +40,8 @@
         type: String
       },
       width: [Number, String],
-      theme: String
+      theme: String,
+      activeStyle: Object
     },
     data () {
       return {
@@ -77,6 +87,9 @@
         return this.width ? {
           width: this.width + (typeof this.width === 'number' ? 'px' : '')
         } : null
+      },
+      tab_data () {
+        return Array.from(this.data, (item) => typeof item === 'string' ? { name: item } : item)
       }
     },
     methods: {

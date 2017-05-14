@@ -92,6 +92,10 @@ export default new Router({
       path: '/Components/TabBar',
       name: 'TabBar',
       component: require('@/components/TabBar/index.md')
+    }, {
+      path: '/Components/Swipe',
+      name: 'Swipe',
+      component: require('@/components/Swipe/index.md')
     }/* router */]
   }]
 })

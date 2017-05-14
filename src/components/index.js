@@ -15,6 +15,7 @@ import Switch from './Switch'
 import Calendar from './Calendar'
 
 /* data-out */
+import { Swipe, SwipeSlide } from './Swipe'
 import TabBar from './TabBar'
 import Price from './Price'
 import Loadmore from './Loadmore'
@@ -26,6 +27,8 @@ import 'purecss/build/grids-min.css';
 
 const install = (Vue) => {
   /* component */
+  Vue.component(Swipe.name, Swipe)
+  Vue.component(SwipeSlide.name, SwipeSlide)
   Vue.component(TabBar.name, TabBar)
   Vue.component(Price.name, Price)
   Vue.component(Radio.name, Radio)
@@ -57,6 +60,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export default {
   /* export */
+  Swipe,
   TabBar,
   Price,
   Radio,

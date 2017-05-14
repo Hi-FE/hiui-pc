@@ -1,0 +1,27 @@
+@import '../../style/';
+
+.hiui-swipe {
+  min-height:50px
+  .swiper-button {
+    transform: translateY(-50%);margin:0;
+    .arrow{
+      transition: transform .3s, background-color .3s;position: absolute;width: _size_md;height: _size_md;display: block;border-radius: 100%;background-color: rgba(0, 0, 0, .2);
+      &:hover { background-color:rgba(0, 0, 0, .4) }
+      .icon{
+        position: absolute;left:50%;top:50%;transform: translate(-50%,-50%);
+      }
+    }
+  }
+  .swiper-button-prev {
+    left: _gap_xsm;
+    .arrow.left{
+      &:hover{ transform: translateX(-10%); }
+    }
+  }
+  .swiper-button-next{
+    right: _gap_xsm
+    .arrow.right{
+      &:hover{ transform: translateX(10%); }
+    }
+  }
+}

@@ -96,6 +96,10 @@ export default {
         name: 'Price',
         cn_name: '价格',
         path: '/Price'
+      }, {
+        name: 'Swipe',
+        cn_name: '走马灯',
+        path: '/Swipe'
       }/* data-out */]
     }]
   }]

@@ -22,10 +22,10 @@
   import 'purecss/build/base-min.css';
   import 'purecss/build/grids-min.css';
 
-  const prefixCls = 'hiui-tabBar'
+  const prefixCls = 'hiui-tab'
 
   export default {
-    name: 'TabBar',
+    name: 'Tab',
     components: {
       Icon
     },

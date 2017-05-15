@@ -1,4 +1,4 @@
-# TabBar
+# Tab
 
 > 标签栏
 
@@ -7,7 +7,7 @@
 <test></test>
 
 <script>
-  import test from '@/pages/demo/TabBar.vue';
+  import test from '@/pages/demo/Tab.vue';
 
   export default {
     components: {

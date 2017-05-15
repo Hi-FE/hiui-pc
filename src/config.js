@@ -83,13 +83,13 @@ export default {
         cn_name: '提示',
         path: '/Toast'
       }, {
-        name: 'Tabs',
-        cn_name: '标签页',
-        path: '/Tabs'
-      }, {
-        name: 'TabBar',
+      //   name: 'Tabs',
+      //   cn_name: '标签页',
+      //   path: '/Tabs'
+      // }, {
+        name: 'Tab',
         cn_name: '标签栏',
-        path: '/TabBar'
+        path: '/Tab'
       }, {
         name: 'Loadmore',
         cn_name: '加载更多',

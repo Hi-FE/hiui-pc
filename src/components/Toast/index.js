@@ -13,7 +13,6 @@ const install = (Vue) => {
 
     if (vm) {
       vm.$destroy(true)
-      vm = null
     }
 
     if (typeof option === 'string') {
@@ -28,6 +27,10 @@ const install = (Vue) => {
 
     vm = instance.$mount()
     vm.show = true
+
+    vm.$on('destroyed', () => {
+      vm = null
+    })
 
     return vm
   }

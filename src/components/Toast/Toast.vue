@@ -48,9 +48,12 @@
     },
     beforeDestroy () {
       document.body.removeChild(this.$el)
+      this.callback && this.$nextTick(() => {
+        this.callback()
+      })
     },
     destroyed() {
-      this.callback && this.callback()
+      this.$emit('destroyed')
     }
   }
 </script>

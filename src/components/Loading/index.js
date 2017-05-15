@@ -24,10 +24,18 @@ const install = (Vue) => {
       vm.start()
     },
     success () {
+      if (!vm) {
+        return false
+      }
+
       vm.process = 100
       vm.status = 'success'
     },
     error () {
+      if (!vm) {
+        return false
+      }
+
       vm.process = 100
       vm.status = 'error'
     }

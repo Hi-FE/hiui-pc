@@ -37,13 +37,15 @@ Vue.use(hiuipc)
 
 单个组件引入
 
+> 需要安装 stylus-loader / stylus 依赖
+
 ```html
 <template>
   <Btn size="lg">Hiui-PC</Btn>
 </template>
 
 <script>
-  import Btn from 'hiui-pc/src/Btn'
+  import Btn from 'hiui-pc/src/components/Btn'
 
   export default {
     components: {

@@ -124,10 +124,17 @@
 </style>
 
 <script>
+  import Icon from '../Icon'
+  import 'purecss/build/base-min.css';
+  import 'purecss/build/grids-min.css';
+
   const prefixCls = 'hiui-calendar'
 
   export default {
     name: 'vCalendar',
+    components: {
+      Icon
+    },
     props: {
       // 连续输出的月份数量,从本月之后算起(此参数受daterange参数影响,如daterange为true则n_months参数无效)
       n_months: {

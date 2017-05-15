@@ -23,10 +23,15 @@
 </style>
 
 <script>
+  import Icon from '../Icon'
+
   const prefixCls = 'hiui-tabs'
 
   export default {
     name: 'Tabs',
+    components: {
+      Icon
+    },
     props: {
       type: {
         default: 'padding',

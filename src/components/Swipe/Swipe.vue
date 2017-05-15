@@ -37,6 +37,8 @@
 
 <script>
   import Swiper from 'swiper'
+  import Icon from '../Icon'
+
   import 'swiper/dist/css/swiper.min.css'
   const prefixCls = 'hiui-swipe'
 
@@ -64,6 +66,7 @@
       }
     },
     components: {
+      Icon,
       SwipeSlide: require('./SwipeSlide.vue')
     },
     computed: {

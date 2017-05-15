@@ -1,9 +1,9 @@
 {
   "name": "hiui-pc",
-  "version": "1.0.0",
-  "description": "UI components for m.wantu.cn",
+  "version": "1.0.4",
+  "description": "UI components for wantu.cn",
   "homepage": "https://hi-fe.github.io/hiui-pc/",
-  "main": "./dist/hiuim.js",
+  "main": "./dist/hiuipc.js",
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",

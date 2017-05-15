@@ -1,8 +1,10 @@
+import config from '../package.json'
+
 export default {
-  name: 'Hiui-PC',
-  version: 'v1.0.0',
+  name: config.name,
+  version: `v${config.version}`,
   links: {
-    github: 'https://github.com/Hi-FE/hiui-pc'
+    github: config.homepage
   },
   nav: [{
     name: 'Overview',
@@ -46,10 +48,6 @@ export default {
         name: 'Loading',
         cn_name: '加载条',
         path: '/Loading'
-      }, {
-        name: 'Calendar',
-        cn_name: '日历',
-        path: '/Calendar'
       }/* base */]
     }, {
       title: 'Data in',
@@ -73,6 +71,10 @@ export default {
         name: 'Radio',
         cn_name: '单选框',
         path: '/Radio'
+      }, {
+        name: 'Calendar',
+        cn_name: '日历',
+        path: '/Calendar'
       }/* data-in */]
     }, {
       title: 'Data out',

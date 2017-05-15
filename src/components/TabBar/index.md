@@ -20,7 +20,7 @@
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----|:-----| ---- | ---- |
-| value | 当前索引值  | `Number` | `0` |
+| value | 当前索引值，请使用v-model获取及设置  | `Number` | `0` |
 | data | 标签栏数据[`String` / `Object { name:标签名, icon:前置图标, suffix_icon:后置图标 }`] | `Array` | - |
 | trigger | 标签切换事件触发类型, 可选值`click/hover`  | `String` | `click` |
 | type | 标签类型，可选值`padding/no_padding/fix_width/fix_width:String`  | `String` | `padding` |

@@ -18,10 +18,17 @@
 </style>
 
 <script>
+  import Icon from '../Icon'
+  import 'purecss/build/base-min.css';
+  import 'purecss/build/grids-min.css';
+
   const prefixCls = 'hiui-tabBar'
 
   export default {
     name: 'TabBar',
+    components: {
+      Icon
+    },
     props: {
       value: {
         default: 0,
@@ -89,7 +96,7 @@
         } : null
       },
       tab_data () {
-        return Array.from(this.data, (item) => typeof item === 'string' ? { name: item } : item)
+        return Array.from(this.data, (item) => typeof item === 'object' ? item : { name: item })
       }
     },
     methods: {

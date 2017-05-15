@@ -16,8 +16,12 @@
     display: inline-block;
     text-align: center;
     font-size: 14px;
-    color: #666;
+    color: #777;
     cursor: pointer;
+
+    &:hover {
+      color: #333;
+    }
 
     &.active {
       color: _tabBar_active_color;
@@ -61,6 +65,10 @@
 
       &:first-child, &.active, &.active+.hiui-tabBar-item {
         border-left-width: 0;
+      }
+
+      &:hover {
+        color: _tabBar_ticket_active_color;
       }
 
       &.active {

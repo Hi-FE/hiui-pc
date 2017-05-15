@@ -21,6 +21,7 @@
     </demo-item>
 
     <demo-item name="icon" description="图标" :code="icon_code" slot="left">
+      <TabBar :data="['Home', 'Cart', 'User']" v-model="icon_index"></TabBar>
       <TabBar
         :data="[{
           name: 'Home',
@@ -32,7 +33,6 @@
           name: 'User',
           icon: 'user'
         }]" v-model="icon_index"></TabBar>
-
       <TabBar
         :data="[{
           name: 'Home',
@@ -88,6 +88,7 @@
 <TabBar :data="arr" v-model="trigger_index" trigger="hover"></TabBar>
         `,
         icon_code: `
+<TabBar :data="['Home', 'Cart', 'User']" v-model="icon_index"></TabBar>
 <TabBar
   :data="[{
     name: 'Home',
@@ -99,7 +100,6 @@
     name: 'User',
     icon: 'user'
   }]" v-model="style_index"></TabBar>
-
 <TabBar
   :data="[{
     name: 'Home',

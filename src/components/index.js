@@ -22,9 +22,6 @@ import Loadmore from './Loadmore'
 import { Tabs, TabPane } from './Tabs'
 import Toast from './Toast'
 
-import 'purecss/build/base-min.css';
-import 'purecss/build/grids-min.css';
-
 const install = (Vue) => {
   /* component */
   Vue.component(Swipe.name, Swipe)

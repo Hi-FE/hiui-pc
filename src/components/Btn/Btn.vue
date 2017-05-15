@@ -17,12 +17,14 @@
 </style>
 
 <script>
+  import Icon from '../Icon'
+
   const prefixCls = 'hiui-btn'
 
   export default {
     name: 'Btn',
     components: {
-      Icon: require('@/components/Icon/Icon.vue')
+      Icon
     },
     props: {
       size: {

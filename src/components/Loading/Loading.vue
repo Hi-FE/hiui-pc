@@ -11,10 +11,15 @@
 </style>
 
 <script>
+  import Icon from '../Icon/'
+
   const prefixCls = 'hiui-loading'
 
   export default {
     name: 'Loading',
+    components: {
+      Icon
+    },
     data () {
       return {
         show: false,

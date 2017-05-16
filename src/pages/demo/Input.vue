@@ -48,7 +48,7 @@
   export default {
     data () {
       return {
-        size_test: '2121312312',
+        size_test: '',
         label_test: '',
         status_test: '',
         verify_test: '',

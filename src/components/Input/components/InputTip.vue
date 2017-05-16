@@ -38,6 +38,8 @@
 </style>
 
 <script>
+  import Icon from '../../Icon'
+
   const prefixCls = 'hiui-input-tip'
   const BASIC_VERIFY_TIP = {
     phone: '手机格式不正确',
@@ -47,6 +49,9 @@
   }
   export default {
     name: 'InputTip',
+    components: {
+      Icon
+    },
     props: {
       tip: String,
       position: { type: String, default: 'middle' },

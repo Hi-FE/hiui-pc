@@ -25,10 +25,15 @@
 </style>
 
 <script>
+  import Icon from '../Icon'
+
   const prefixCls = 'hiui-loadmore'
 
   export default {
     name: 'Loadmore',
+    components: {
+      Icon
+    },
     props: {
       offset: {
         default: 300,

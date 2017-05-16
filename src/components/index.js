@@ -16,20 +16,17 @@ import Calendar from './Calendar'
 
 /* data-out */
 import { Swipe, SwipeSlide } from './Swipe'
-import TabBar from './TabBar'
+import Tab from './Tab'
 import Price from './Price'
 import Loadmore from './Loadmore'
 import { Tabs, TabPane } from './Tabs'
 import Toast from './Toast'
 
-import 'purecss/build/base-min.css';
-import 'purecss/build/grids-min.css';
-
 const install = (Vue) => {
   /* component */
   Vue.component(Swipe.name, Swipe)
   Vue.component(SwipeSlide.name, SwipeSlide)
-  Vue.component(TabBar.name, TabBar)
+  Vue.component(Tab.name, Tab)
   Vue.component(Price.name, Price)
   Vue.component(Radio.name, Radio)
   Vue.component(Input.name, Input)
@@ -61,7 +58,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default {
   /* export */
   Swipe,
-  TabBar,
+  Tab,
   Price,
   Radio,
   Input,

@@ -1,6 +1,6 @@
 <template>
-  <transition v-if="show" name="fade" @after-leave="afterLeave">
-    <div :class="component_class">
+  <transition name="fade" @after-leave="afterLeave">
+    <div v-if="show" :class="component_class">
       {{ content }}
     </div>
   </transition>
@@ -19,7 +19,7 @@
       return {
         show: false,
         content: '',
-        time: 0,
+        time: 2000,
         type: '',
         callback: null
       }
@@ -44,11 +44,16 @@
     },
     mounted () {
       document.body.appendChild(this.$el)
-      setTimeout(this.close, this.time)
+      this.time && setTimeout(this.close, this.time)
     },
     beforeDestroy () {
-      this.callback && this.callback()
       document.body.removeChild(this.$el)
+      this.callback && this.$nextTick(() => {
+        this.callback()
+      })
+    },
+    destroyed() {
+      this.$emit('destroyed')
     }
   }
 </script>

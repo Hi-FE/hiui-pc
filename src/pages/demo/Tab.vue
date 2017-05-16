@@ -1,27 +1,28 @@
 <template>
-  <demo title="TabBar" class="tabBar-demo">
+  <demo title="Tab" class="tab-demo">
     <demo-item name="default" description="默认" :code="code" slot="left">
-      <TabBar :data="arr" v-model="default_index"></TabBar>
+      <Tab :data="arr" v-model="default_index"></Tab>
     </demo-item>
 
     <demo-item name="type" description="类型" :code="type_code" slot="right">
-      <TabBar :data="arr" v-model="type_index" type="no_padding"></TabBar>
-      <TabBar :data="arr" v-model="type_index" type="fix_width"></TabBar>
-      <TabBar :data="arr" v-model="type_index" type="fix_width:25%"></TabBar>
+      <Tab :data="arr" v-model="type_index" type="no_padding"></Tab>
+      <Tab :data="arr" v-model="type_index" type="fix_width"></Tab>
+      <Tab :data="arr" v-model="type_index" type="fix_width:25%"></Tab>
     </demo-item>
 
     <demo-item name="theme" description="主题" :code="theme_code" slot="left">
-      <TabBar :data="arr" v-model="theme_index"></TabBar>
-      <TabBar :data="arr" v-model="theme_index" theme="card"></TabBar>
-      <TabBar :data="arr" v-model="theme_index" theme="ticket" type="fix_width"></TabBar>
+      <Tab :data="arr" v-model="theme_index"></Tab>
+      <Tab :data="arr" v-model="theme_index" theme="card"></Tab>
+      <Tab :data="arr" v-model="theme_index" theme="ticket" type="fix_width"></Tab>
     </demo-item>
 
     <demo-item name="trigger" description="触发类型" :code="trigger_code" slot="right">
-      <TabBar :data="arr" v-model="trigger_index" trigger="hover"></TabBar>
+      <Tab :data="arr" v-model="trigger_index" trigger="hover"></Tab>
     </demo-item>
 
     <demo-item name="icon" description="图标" :code="icon_code" slot="left">
-      <TabBar
+      <Tab :data="['Home', 'Cart', 'User']" v-model="icon_index"></Tab>
+      <Tab
         :data="[{
           name: 'Home',
           icon: 'home'
@@ -31,9 +32,8 @@
         }, {
           name: 'User',
           icon: 'user'
-        }]" v-model="icon_index"></TabBar>
-
-      <TabBar
+        }]" v-model="icon_index"></Tab>
+      <Tab
         :data="[{
           name: 'Home',
           suffix_icon: 'home'
@@ -43,11 +43,11 @@
         }, {
           name: 'User',
           suffix_icon: 'user'
-        }]" v-model="icon_index"></TabBar>
+        }]" v-model="icon_index"></Tab>
     </demo-item>
 
     <demo-item name="activeStyle" description="选中样式" :code="style_code" slot="right">
-      <TabBar :data="arr" v-model="style_index" :active-style="{ color: '#f02f45', borderBottomColor: '#f02f45' }"></TabBar>
+      <Tab :data="arr" v-model="style_index" :active-style="{ color: '#f02f45', borderBottomColor: '#f02f45' }"></Tab>
     </demo-item>
   </demo>
 </template>
@@ -55,7 +55,7 @@
 <style lang="stylus" scoped>
   @import '../../style/';
 
-  .tabBar-demo .hiui-tabBar {
+  .tab-demo .hiui-Tab {
     box-sizing: content-box;
   }
 </style>
@@ -72,23 +72,24 @@
         icon_index: 0,
         style_index: 0,
         code: `
-<TabBar :data="arr" v-model="default_index"></TabBar>
+<Tab :data="arr" v-model="default_index"></Tab>
         `,
         type_code: `
-<TabBar :data="arr" v-model="type_index" type="no_padding"></TabBar>
-<TabBar :data="arr" v-model="type_index" type="fix_width"></TabBar>
-<TabBar :data="arr" v-model="type_index" type="fix_width:25%"></TabBar>
+<Tab :data="arr" v-model="type_index" type="no_padding"></Tab>
+<Tab :data="arr" v-model="type_index" type="fix_width"></Tab>
+<Tab :data="arr" v-model="type_index" type="fix_width:25%"></Tab>
         `,
         theme_code: `
-<TabBar :data="arr" v-model="theme_index"></TabBar>
-<TabBar :data="arr" v-model="theme_index" theme="card"></TabBar>
-<TabBar :data="arr" v-model="theme_index" theme="ticket" type="fix_width"></TabBar>
+<Tab :data="arr" v-model="theme_index"></Tab>
+<Tab :data="arr" v-model="theme_index" theme="card"></Tab>
+<Tab :data="arr" v-model="theme_index" theme="ticket" type="fix_width"></Tab>
         `,
         trigger_code: `
-<TabBar :data="arr" v-model="trigger_index" trigger="hover"></TabBar>
+<Tab :data="arr" v-model="trigger_index" trigger="hover"></Tab>
         `,
         icon_code: `
-<TabBar
+<Tab :data="['Home', 'Cart', 'User']" v-model="icon_index"></Tab>
+<Tab
   :data="[{
     name: 'Home',
     icon: 'home'
@@ -98,9 +99,8 @@
   }, {
     name: 'User',
     icon: 'user'
-  }]" v-model="style_index"></TabBar>
-
-<TabBar
+  }]" v-model="style_index"></Tab>
+<Tab
   :data="[{
     name: 'Home',
     suffix_icon: 'home'
@@ -110,10 +110,10 @@
   }, {
     name: 'User',
     suffix_icon: 'user'
-  }]" v-model="icon_index"></TabBar>
+  }]" v-model="icon_index"></Tab>
         `,
         style_code: `
-<TabBar :data="arr" v-model="style_index" :active-style="{ color: '#f02f45', borderBottomColor: '#f02f45' }"></TabBar>
+<Tab :data="arr" v-model="style_index" :active-style="{ color: '#f02f45', borderBottomColor: '#f02f45' }"></Tab>
         `
       }
     }

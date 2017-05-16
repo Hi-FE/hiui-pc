@@ -115,7 +115,7 @@
         if (this.reg) return new RegExp(this.reg).test(value)
         // 内置基础正则验证
         for (let i = 0, len = verify.length, reg; i < len; i++) {
-          reg = reg || BASIC_VERIFY_REGEXP[verify[i]];
+          reg = BASIC_VERIFY_REGEXP[verify[i]];
           if (reg.test(value)) {
             // fix: 判空正则无法识别undefined
             if (verify[i] === 'empty') return !!value || value === 0;

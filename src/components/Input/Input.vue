@@ -15,7 +15,7 @@
                   :format="format"
                   :reg="reg"
                   :verify="verify"
-                  :value="value"
+                  :value="value != null ? value : val"
                   :autosize="autosize"
                   :rows="rows"
                   :no_padding="!with_border"
@@ -25,8 +25,7 @@
                   @input="inputHandler"
                   @verify="verifyHandler"></InputField>
 
-      <InputTip v-if="!no_verify"
-                :tip="tip"
+      <InputTip :tip="err_tip"
                 :position="type === 'textarea' ? 'top' : 'middle'"
                 :verify="verify"
                 :is_error="is_error"
@@ -70,6 +69,8 @@
     },
     data () {
       return {
+        _tip: '',
+        val: '',
         is_hover: false,
         is_focus: false,
         is_error: false,
@@ -105,6 +106,10 @@
       // 无验证需求
       no_verify: function () {
         return (!this.verify || (this.verify && !this.verify.length)) && !this.reg
+      },
+      // 错误提示
+      err_tip: function () {
+        return this._tip || this.tip
       }
     },
     watch: {
@@ -143,8 +148,9 @@
         this.$emit('enter');
       },
       inputHandler: function (val) {
-        this.is_edited = true;
+        this.is_edited = true
         this.is_correct = false
+        this.val = val
         this.$emit('input', val);
       },
       registerEvents: function () {
@@ -154,6 +160,24 @@
         }
         this.$root.$on('form-verify', handler)
         this.$on('form-verify', handler)
+        this.$on('error', (tip) => {
+          this._tip = tip
+          this.is_error = true;
+          this.is_correct = false;
+          this.$emit('verify', false)
+        })
+        this.$on('correct', () => {
+          this._tip = ''
+          this.is_error = false;
+          this.is_correct = true;
+          this.$emit('verify', true)
+        })
+        this.$on('clear', () => {
+          this._tip = ''
+          this.is_error = false;
+          this.is_correct = false;
+          this.$emit('verify', false)
+        })
       },
       hexToRgb: function (hex) {
         // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")

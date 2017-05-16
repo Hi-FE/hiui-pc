@@ -34,10 +34,10 @@
 | default_first | 是否默认选中第一个选项 | `Boolean` | `false` |
 
 
-| 事件 | 说明 |
-| ----|:----- |
-| close | 关掉当前Select选择器 |
-| form-verify | 验证当前选择器是否选中 |
+| 事件 | 说明 | 类型 | 使用 | 结果 |
+| ----|:----- | ---- | ---- | ---- |
+| close | 关掉当前Select选择器 | 触发事件 | `component.$emit('close')` | - |
+| form-verify | 验证当前选择器是否选中 | 触发事件 | `component.$emit('form-verify')`/`this.$root.$emit('form-verify')` | - |
 
 
 ### SelectItem

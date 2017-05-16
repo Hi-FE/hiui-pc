@@ -36,11 +36,14 @@
 | rows | `textarea`类型有效，指定默认行数 | `Number` | `3` |
 | autosize | `textarea`类型有效，内容撑开高度 | `Boolean` | `false` |
 
-| 事件 | 说明 | 结果 |
-| ----|:-----| ---- |
-| form-verify | 验证当前选择器是否选中 | - |
-| verify | 返回验证结果 | `true`/`false` |
-| enter | 用户按下Enter键时触发 | - | 
+| 事件 | 说明 | 类型 | 使用 | 结果 |
+| ----|:-----| ---- | ---- | ---- |
+| form-verify | 验证当前选择器是否选中 | 触发事件 | `component.$emit('form-verify')`/`this.$root.$emit('form-verify')` | - |
+| error | 触发错误提示 | 触发事件 | `component.$emit('error', '错误提示')` | - |
+| correct | 触发正确提示 | 触发事件 | `component.$emit('correct')` | - |
+| clear | 清除提示 | 触发事件 | `component.$emit('clear')` | - |
+| verify | 返回验证结果 | 监听事件 | `@verify="result = argument[0]"` | `true`/`false` |
+| enter | 用户按下Enter键时触发 | 监听事件 | `@enter="dosomething"` |  - |
 
 
 

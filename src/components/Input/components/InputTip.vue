@@ -1,18 +1,18 @@
 <template>
   <div :class="component_class">
-    <div class="tip-wrapper"
-         v-show="is_error || is_correct">
+    <transition name="slide-up">
+      <div class="tip-wrapper" v-show="is_correct || is_error">
 
-      <transition name="slide-up">
-        <!-- 成功提示 -->
-        <span class="correct-sign" v-if="is_correct">
-        <Icon class="icon" name="check" :size="12" color="#4fae9b"></Icon>
-        </span>
-        <!-- 错误提示 -->
-        <p class="tip" v-else-if="is_error"> * {{ self_tip }}</p>
-      </transition>
+          <!-- 成功提示 -->
+          <span class="correct-sign" v-if="is_correct">
+            <Icon class="icon" name="check" :size="12" color="#4fae9b"></Icon>
+          </span>
+          <!-- 错误提示 -->
+          <p class="tip" v-else-if="is_error"> * {{ self_tip }}</p>
 
-    </div>
+      </div>
+    </transition>
+
   </div>
 </template>
 

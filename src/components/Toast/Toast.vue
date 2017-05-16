@@ -1,5 +1,5 @@
 <template>
-  <transition name="fade" @after-leave="afterLeave">
+  <transition name="hiui_fade" @after-leave="afterLeave">
     <div v-if="show" :class="component_class">
       {{ content }}
     </div>

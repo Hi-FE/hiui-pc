@@ -1,4 +1,4 @@
-@import url(//at.alicdn.com/t/font_bwko6yrbca6ecdi.css);
+@import url(//at.alicdn.com/t/font_i65wur19duc8fr.css);
 .hiui-loading {
   position: fixed;
   top: 0;
@@ -3496,12 +3496,12 @@ https://github.com/yahoo/pure/blob/master/LICENSE.md
 .hiui-toast.hiui-toast-success {
   background-color: #4fae9b;
 }
-.fade-enter-active,
-.fade-leave-active {
+.hiui_fade-enter-active,
+.hiui_fade-leave-active {
   transition: all 0.3s;
 }
-.fade-enter,
-.fade-leave-to {
+.hiui_fade-enter,
+.hiui_fade-leave-to {
   opacity: 0;
   transform: translate(-50%, -50%) scale(0.9);
 }

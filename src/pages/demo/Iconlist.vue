@@ -3,10 +3,10 @@
     <template v-for="(type, i) in icons">
       <Col :xlg="3" :lg="4" :md="6" :sm="8">
         <div class="icon-item" @click="clickHandle(i)" v-clipboard:copy='`<Icon name="${type}"></Icon>`'>
-          <Icon :name="type" />
+          <Icon :size="26" :name="type" />
           <div class="icon-name" @click.stop="void 0">{{ type }}</div>
           <transition name="fade">
-            <div class="copy_success" v-if="index === i">
+            <div v-if="index === i" class="copy_success">
               Copy Success!
             </div>
           </transition>
@@ -42,14 +42,14 @@
 
   .copy_success {
     position: absolute;
-    left: 0px;
-    top: 0px;
+    left: 0;
+    top: 0;
     height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 12px;
+    font-size: 14px;
     color: _white;
     background-color: _green;
     border-radius: 4px;
@@ -58,7 +58,7 @@
 
   .fade-enter-active, .fade-leave-active {
     opacity: 1;
-    transition: all .5s ease;
+    transition: opacity .5s;
   }
   .fade-enter, .fade-leave-to {
     opacity: 0;
@@ -71,7 +71,7 @@
       return {
         timer: null,
         index: null,
-        icons: ['pay-circle-o', 'pay-circle', 'tag-o', 'tag', 'check-square-o', 'check-square', 'calendar', 'unlock', 'lock', 'download', 'upload', 'loading', 'message', 'heart-o', 'heart', 'delete', 'dislike', 'like', 'scan', 'appstore', 'appstore-o', 'export', 'enviroment-o', 'enviroment', 'cloud-o', 'tags-o', 'tags', 'qrcode', 'phone', 'picture', 'setting', 'search', 'solution', 'team', 'totop', 'user', 'shoppingcart', 'file', 'filter', 'star-o', 'star', 'home', 'link', 'logout', 'mail', 'question-circle-o', 'question-circle', 'ellipsis', 'swapright', 'swapleft', 'swap', 'clock-circle-o', 'clock-circle', 'bars', 'creditcard', 'close', 'check', 'check-circle-o', 'check-circle', 'close-circle-o', 'close-circle', 'exclamation-circle-o', 'exclamation-circle', 'info-circle-o', 'info-circle', 'plus', 'plus-circle', 'plus-circle-o', 'minus', 'arrowleft', 'arrowright', 'arrowup', 'arrowdown', 'doubleleft', 'doubleright', 'reload', 'retweet', 'rollback', 'down-circle', 'up-circle', 'left-circle', 'right-circle', 'caretup', 'caretdown', 'caretleft', 'caretright', 'right', 'left', 'down', 'up']
+        icons: ['pay-circle-o', 'pay-circle', 'tag-o', 'tag', 'check-square-o', 'check-square', 'calendar', 'unlock', 'lock', 'download', 'upload', 'loading', 'message', 'heart-o', 'heart', 'delete', 'dislike', 'like', 'scan', 'appstore', 'appstore-o', 'export', 'enviroment-o', 'enviroment', 'cloud-o', 'tags-o', 'tags', 'qrcode', 'phone', 'picture', 'setting', 'search', 'solution', 'team', 'totop', 'user', 'shoppingcart', 'file', 'filter', 'star-o', 'star', 'home', 'link', 'logout', 'question-circle-o', 'question-circle', 'ellipsis', 'swapright', 'swapleft', 'swap', 'clock-circle-o', 'clock-circle', 'bars', 'creditcard', 'close', 'check', 'check-circle-o', 'check-circle', 'close-circle-o', 'close-circle', 'exclamation-circle-o', 'exclamation-circle', 'info-circle-o', 'info-circle', 'plus', 'plus-circle', 'plus-circle-o', 'minus', 'arrowleft', 'arrowright', 'arrowup', 'arrowdown', 'doubleleft', 'doubleright', 'reload', 'retweet', 'rollback', 'down-circle', 'up-circle', 'left-circle', 'right-circle', 'caretup', 'caretdown', 'caretleft', 'caretright', 'right', 'left', 'down', 'up', 'mail', 'mail-circle', 'weixin', 'weixin-circle', 'sina', 'sina-circle', 'qq', 'qq-circle']
       }
     },
     methods: {

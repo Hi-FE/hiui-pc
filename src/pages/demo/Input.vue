@@ -83,8 +83,10 @@
         `,
         verify_code: `
 // 更多验证细节，参照API
-<Input placeholder="验证手机号(数字7~14位)" verify="phone" @verify="verify_result = arguments[0]" v-model="verify_test"></Input>
-<p class="verify-result">手机号验证结果: {{ verify_result }}</p>
+<Input placeholder="验证手机号(数字7~14位)" verify="phone" @verify="verify_result = arguments[0]"></Input>
+<p>手机号验证结果: {{ verify_result }}</p>
+<Input placeholder="验证手机号/邮箱" :verify="['phone', 'email']" @verify="verify3_result = arguments[0]"></Input>
+<p>手机号/邮箱验证果: {{ verify3_result }}</p>
 <Input placeholder="自定义验证1" :reg="/哈哈/" tip="不开心" @verify="verify1_result = arguments[0]"></Input>
 <p>自定义验证1结果：{{verify1_result}}</p>
 <Input placeholder="自定义验证2" :ref="'verify_input'" @verify="verify2_result = arguments[0]"></Input>

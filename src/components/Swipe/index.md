@@ -23,8 +23,10 @@
 | value | Swipe的当前下标，请使用v-model获取及设置  | - | - |
 | preview | 预览展示的滑块数目  | `Number` | 1 |
 | between | 每个滑块之间的间距  | `Number` | 0 |
-| trigger | index的触发时机, 可选值`change`/`progress`  | `String` | 'change' |
+| trigger | index的触发时机, 可选值`change`/`progress`  | `String` | change |
 | arrow | 箭头, 可选值`true`/`false`/`'hover'`  | `String, Boolean` | false |
+| index | 显示下标, 可选值`true`/`false`  | `Boolean` | false |
+| index_trigger | 下标触发滑动的方式, 可选值`click`/`hover`/`false`  | `String`/`Boolean` | click |
 | sliding_num | 同时滑动的滑块个数  | `Number` | 1 |
 | loop | 无限循环滑动  | `Boolean` | true |
 | free | 滑块自由滑动  | `Boolean` | false |

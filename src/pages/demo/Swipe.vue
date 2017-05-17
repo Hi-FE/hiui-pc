@@ -15,11 +15,20 @@
         </SwipeSlide>
       </Swipe>
       <br>
-      <p>滑动过程中改变index</p>
       <p>当前下标是 {{ trigger_index }}</p>
       <Swipe v-model="trigger_index" :trigger="'progress'">
         <SwipeSlide v-for="(n, index) in 5" :key="index">
-          <div class="content"> {{ index }} </div>
+          <div class="content"> {{ index }} <p>滑动过程中改变index</p></div>
+        </SwipeSlide>
+      </Swipe>
+      <Swipe :index="true">
+        <SwipeSlide v-for="(n, index) in 5" :key="index">
+          <div class="content"> {{ index }} <p>显示index</p></div>
+        </SwipeSlide>
+      </Swipe>
+      <Swipe :index="true" :index_trigger="'hover'">
+        <SwipeSlide v-for="(n, index) in 5" :key="index">
+          <div class="content"> {{ index }} <p>index hover触发滑动</p></div>
         </SwipeSlide>
       </Swipe>
     </demo-item>
@@ -121,11 +130,20 @@
   </SwipeSlide>
 </Swipe>
 <br>
-<p>滑动过程中改变index</p>
 <p>当前下标是 {{ trigger_index }}</p>
 <Swipe v-model="trigger_index" :trigger="'progress'">
   <SwipeSlide v-for="(n, index) in 5" :key="index">
-    <div class="content"> {{index}} </div>
+    <div class="content"> {{index}} <p>滑动过程中改变index</p></div>
+  </SwipeSlide>
+</Swipe>
+<Swipe :index="true">
+  <SwipeSlide v-for="(n, index) in 5" :key="index">
+    <div class="content"> {{index}} <p>显示index</p></div>
+  </SwipeSlide>
+</Swipe>
+<Swipe :index="true" :index_trigger="'hover'">
+  <SwipeSlide v-for="(n, index) in 5" :key="index">
+    <div class="content"> {{index}} <p>index hover触发滑动</p></div>
   </SwipeSlide>
 </Swipe>
         `,

@@ -12,6 +12,8 @@
 
 <style lang="stylus">
   @import './style/';
+
+  bounce();
 </style>
 
 <script>

@@ -16,6 +16,12 @@
 
 <style lang="stylus">
   @import './style/';
+
+  bounce-center();
+  slide-down();
+  slide-up();
+  slide-left();
+  slide-right();
 </style>
 
 <script>

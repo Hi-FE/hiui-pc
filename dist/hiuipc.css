@@ -2115,7 +2115,7 @@ to {
   margin-top: 8px;
 }
 .hiui-input.error {
-  border-color: #f02f45;
+  border-color: #f02f45 !important;
 }
 .hiui-input.error:hover {
   border-color: #f02f45 !important;
@@ -5998,14 +5998,57 @@ https://github.com/yahoo/pure/blob/master/LICENSE.md
     opacity: 0;
 }
 }
-.hiui-swipe {
-  min-height: 50px;
+.hiui-swipe .indexs {
+  position: absolute;
+  z-index: 9;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
 }
-.hiui-swipe .swiper-button {
+.hiui-swipe .indexs .index {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background-color: rgba(255,255,255,0.5);
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+.hiui-swipe .indexs .index.active {
+  background-color: #fff;
+}
+.hiui-swipe .indexs .index + .index {
+  margin-left: 14px;
+}
+.hiui-swipe .swipe-button {
+  width: 34px;
+  height: 34px;
+  position: absolute;
+  z-index: 9;
+  top: 50%;
   transform: translateY(-50%);
   margin: 0;
+  cursor: pointer;
 }
-.hiui-swipe .swiper-button .arrow {
+.hiui-swipe .swipe-button.disabled {
+  opacity: 0.3;
+}
+.hiui-swipe .swipe-button.disabled .disabled-mask {
+  display: block;
+}
+.hiui-swipe .swipe-button.prev {
+  left: 14px;
+}
+.hiui-swipe .swipe-button.prev .arrow.left:hover {
+  transform: translateX(-10%);
+}
+.hiui-swipe .swipe-button.next {
+  right: 14px;
+}
+.hiui-swipe .swipe-button.next .arrow.right:hover {
+  transform: translateX(10%);
+}
+.hiui-swipe .swipe-button .arrow {
   transition: transform 0.3s, background-color 0.3s;
   position: absolute;
   width: 34px;
@@ -6014,26 +6057,25 @@ https://github.com/yahoo/pure/blob/master/LICENSE.md
   border-radius: 100%;
   background-color: rgba(0,0,0,0.2);
 }
-.hiui-swipe .swiper-button .arrow:hover {
+.hiui-swipe .swipe-button .arrow:hover {
   background-color: rgba(0,0,0,0.4);
 }
-.hiui-swipe .swiper-button .arrow .icon {
+.hiui-swipe .swipe-button .arrow .icon {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
-.hiui-swipe .swiper-button-prev {
-  left: 14px;
-}
-.hiui-swipe .swiper-button-prev .arrow.left:hover {
-  transform: translateX(-10%);
-}
-.hiui-swipe .swiper-button-next {
-  right: 14px;
-}
-.hiui-swipe .swiper-button-next .arrow.right:hover {
-  transform: translateX(10%);
+.hiui-swipe .swipe-button .disabled-mask {
+  position: absolute;
+  z-index: 9;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background-color: transparent;
+  cursor: not-allowed;
 }
 /**
  * Swiper 3.4.2

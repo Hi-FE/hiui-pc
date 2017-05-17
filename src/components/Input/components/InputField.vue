@@ -11,7 +11,7 @@
                 @blur="$emit('blur')"
                 @keyup.enter="$emit('enter')"
                 @input="$emit('input', $event.target.value)"
-                @change="$emit('input', reformStr($event.target.value))"></textarea>
+                @change="$emit('input', reformStr($event.target.value)), $emit('change', reformStr($event.target.value))"></textarea>
       <textarea class="hidden-textarea" :ref="'hidden_textarea'" :rows="rows" :value="value"></textarea>
     </template>
     <input v-else
@@ -24,7 +24,7 @@
            @blur="$emit('blur')"
            @keyup.enter="$emit('enter')"
            @input="$emit('input', $event.target.value)"
-           @change="$emit('input', reformStr($event.target.value))">
+           @change="$emit('input', reformStr($event.target.value)), $emit('change', reformStr($event.target.value))">
   </div>
 </template>
 

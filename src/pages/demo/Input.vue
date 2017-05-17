@@ -4,6 +4,7 @@
       <Input size="sm" v-model="size_test"></Input>
       <Input size="md" v-model="size_test"></Input>
       <Input size="lg" v-model="size_test"></Input>
+      <p>{{ size_test }}</p>
     </demo-item>
     <demo-item name="labelFloat" description="标题浮动" :code="label_code" slot="right">
       <Input label="我是浮动标题" v-model="label_test"></Input>

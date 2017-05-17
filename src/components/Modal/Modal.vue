@@ -1,10 +1,10 @@
 <template>
   <transition name="fade">
     <div v-if="show" :class="component_class">
-      <div v-if="maskShow" class="hiui-modal-mask" @click="closeModal('mask')"></div>
+      <div v-if="use_mask" class="hiui-modal-mask" @click="closeModal('mask')"></div>
       <transition :name="transitionName[type]">
         <div v-show="modal_show" :class="modal_class">
-          <Icon v-if="btnShow" :class="icon_class" name="close" role="button" @click.native="closeModal()"></Icon>
+          <Icon v-if="use_close" :class="icon_class" name="close" role="button" @click.native="closeModal()"></Icon>
           <div :class="body_class">
             <slot></slot>
           </div>
@@ -38,23 +38,23 @@
           return ['center', 'top', 'bottom', 'left', 'right'].some((str) => str === val)
         }
       },
-      btnShow: {
+      use_close: {
         default: true,
         type: Boolean
       },
-      maskShow: {
+      use_mask: {
         default: true,
         type: Boolean
       },
-      maskClose: {
+      mask_close: {
         default: true,
         type: Boolean
       },
-      preventScroll: {
+      prevent_scroll: {
         default: true,
         type: Boolean
       },
-      className: [String, Array]
+      classname: [String, Array]
     },
     model: {
       prop: 'show',
@@ -78,7 +78,7 @@
           this.modal_show = val
         })
 
-        this.preventScroll && document.documentElement.classList[val ? 'add' : 'remove']('hiui-modal-banScroll')
+        this.prevent_scroll && document.documentElement.classList[val ? 'add' : 'remove']('hiui-modal-banScroll')
       }
     },
     computed: {
@@ -92,7 +92,7 @@
           prefixCls,
           `${prefixCls}-${this.type}`,
           {
-            [`${prefixCls}-hasMask`]: this.maskShow
+            [`${prefixCls}-hasMask`]: this.use_mask
           }
         ]
         return classNames
@@ -101,11 +101,11 @@
         let classNames = [
           `${prefixCls}-body`
         ]
-        if (Array.isArray(this.className)) {
-          classNames = classNames.concat(this.className)
+        if (Array.isArray(this.classname)) {
+          classNames = classNames.concat(this.classname)
         } else {
           classNames.push({
-            [this.className]: this.className
+            [this.classname]: this.classname
           })
         }
         return classNames
@@ -118,7 +118,7 @@
     },
     methods: {
       closeModal (name) {
-        if (name === 'mask' && !this.maskClose) {
+        if (name === 'mask' && !this.mask_close) {
           return false
         }
         this.$emit('switch', false)

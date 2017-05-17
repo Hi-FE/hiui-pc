@@ -2,55 +2,55 @@
   <demo title="Modal" class="modal-demo">
     <demo-item name="type" description="类型" :code="code" slot="left">
       <Btn @click="show = true">Center Modal</Btn>
-      <Modal class-name="test-modal" v-model="show">
+      <Modal classname="test-modal" v-model="show">
         <h1>Title</h1>
         <p>This is a test txt.</p>
       </Modal>
 
       <Btn @click="top_show = true">Top Modal</Btn>
-      <Modal type="top" class-name="test-modal" v-model="top_show">
+      <Modal type="top" classname="test-modal" v-model="top_show">
         <h1>Title</h1>
         <p>This is a test txt.</p>
       </Modal>
 
       <Btn @click="bottom_show = true">Bottom Modal</Btn>
-      <Modal type="bottom" class-name="test-modal" v-model="bottom_show">
+      <Modal type="bottom" classname="test-modal" v-model="bottom_show">
         <h1>Title</h1>
         <p>This is a test txt.</p>
       </Modal>
 
       <Btn @click="left_show = true">Left Modal</Btn>
-      <Modal type="left" class-name="test-modal" v-model="left_show">
+      <Modal type="left" classname="test-modal" v-model="left_show">
         <h1>Title</h1>
         <p>This is a test txt.</p>
       </Modal>
 
       <Btn @click="right_show = true">Right Modal</Btn>
-      <Modal type="right" class-name="test-modal" v-model="right_show">
+      <Modal type="right" classname="test-modal" v-model="right_show">
         <h1>Title</h1>
         <p>This is a test txt.</p>
       </Modal>
     </demo-item>
 
-    <demo-item name="mask-close" description="点击遮罩层不关闭" :code="mask_close_code" slot="right">
+    <demo-item name="mask_close" description="点击遮罩层不关闭" :code="mask_close_code" slot="right">
       <Btn @click="mask_cloe_show = true">Modal</Btn>
-      <Modal class-name="test-modal" :mask-close="false" v-model="mask_cloe_show">
+      <Modal classname="test-modal" :mask_close="false" v-model="mask_cloe_show">
         <h1>Title</h1>
         <p>This is a test txt.</p>
       </Modal>
     </demo-item>
 
-    <demo-item name="mask-close" description="不显示遮罩层" :code="mask_show_code" slot="right">
+    <demo-item name="mask_close" description="不显示遮罩层" :code="mask_show_code" slot="right">
       <Btn @click="mask_show = true">Modal</Btn>
-      <Modal class-name="blue-modal" :mask-show="false" v-model="mask_show">
+      <Modal classname="blue-modal" :use_mask="false" v-model="mask_show">
         <h1>Title</h1>
         <p>This is a test txt.</p>
       </Modal>
     </demo-item>
 
-    <demo-item name="prevent-scroll" description="不禁止滚动" :code="prevent_code" slot="left">
+    <demo-item name="prevent_scroll" description="不禁止滚动" :code="prevent_code" slot="left">
       <Btn @click="prevent_show = true">Modal</Btn>
-      <Modal class-name="center-modal" :prevent-scroll="false" v-model="prevent_show">
+      <Modal classname="center-modal" :prevent_scroll="false" v-model="prevent_show">
         <h1>Title</h1>
         <p>This is a test txt.</p>
       </Modal>
@@ -97,45 +97,45 @@
         mask_show: false,
         prevent_show: false,
         code: `
-<Modal class-name="test-modal" v-model="show">
+<Modal classname="test-modal" v-model="show">
   <h1>Title</h1>
   <p>This is a test txt.</p>
 </Modal>
 
-<Modal type="top" class-name="test-modal" v-model="top_show">
+<Modal type="top" classname="test-modal" v-model="top_show">
   <h1>Title</h1>
   <p>This is a test txt.</p>
 </Modal>
 
-<Modal type="bottom" class-name="test-modal" v-model="bottom_show">
+<Modal type="bottom" classname="test-modal" v-model="bottom_show">
   <h1>Title</h1>
   <p>This is a test txt.</p>
 </Modal>
 
-<Modal type="left" class-name="test-modal" v-model="left_show">
+<Modal type="left" classname="test-modal" v-model="left_show">
   <h1>Title</h1>
   <p>This is a test txt.</p>
 </Modal>
 
-<Modal type="right" class-name="test-modal" v-model="right_show">
+<Modal type="right" classname="test-modal" v-model="right_show">
   <h1>Title</h1>
   <p>This is a test txt.</p>
 </Modal>
         `,
         mask_close_code: `
-<Modal class-name="test-modal" :mask-close="false" v-model="mask_cloe_show">
+<Modal classname="test-modal" :mask_close="false" v-model="mask_cloe_show">
   <h1>Title</h1>
   <p>This is a test txt.</p>
 </Modal>
         `,
         mask_show_code: `
-<Modal class-name="blue-modal" :mask-show="false" v-model="mask_show">
+<Modal classname="blue-modal" :use_mask="false" v-model="mask_show">
   <h1>Title</h1>
   <p>This is a test txt.</p>
 </Modal>
         `,
         prevent_code: `
-<Modal class-name="center-modal" :prevent-scroll="false" v-model="prevent_show">
+<Modal classname="center-modal" :prevent_scroll="false" v-model="prevent_show">
   <h1>Title</h1>
   <p>This is a test txt.</p>
 </Modal>

@@ -1,33 +1,44 @@
 <template>
   <div :class="component_class" @mouseenter="is_hover = true" @mouseleave="is_hover = false">
 
-    <!-- Content -->
-    <div class="swiper-wrapper">
-      <slot></slot>
-    </div>
+      <!-- Content -->
+      <div class="swiper-wrapper">
+        <slot></slot>
+      </div>
 
-    <!--  Arrows -->
-    <template v-if="arrow">
-      <transition name="fade">
-        <div class="swiper-button swiper-button-next"
-             ref="next_btn"
-             v-show="arrow !== 'hover' || is_hover">
-          <span class="arrow right">
-            <Icon class="icon" name="arrowright" :size="16" color="#fff"></Icon>
-          </span>
-        </div>
-      </transition>
-      <transition name="fade">
-        <div class="swiper-button swiper-button-prev"
-             ref="pre_btn"
-             v-show="arrow !== 'hover' || is_hover">
-           <span class="arrow left">
-             <Icon class="icon" name="arrowleft" :size="16" color="#fff"></Icon>
-           </span>
-        </div>
-      </transition>
-      <div class="swiper-style" v-html="`<style> .hiui-swipe.uid-${_uid} .swiper-button{ width:34px;height:34px;background-image: inherit;pointer-events: inherit; }</style>`"></div>
-    </template>
+      <!-- Index -->
+      <div class="indexs" v-if="index">
+        <span class="index"
+              v-for="(item, i) in slides_len"
+              :class="{ active: i === swiper.realIndex }"
+              @click="index_trigger === 'click' && slideTo(i, swiper.activeIndex)"
+              @mouseenter="index_trigger === 'hover' && slideTo(i, swiper.activeIndex)"></span>
+      </div>
+
+      <!--  Arrow -->
+      <template v-if="arrow && swiper">
+        <transition name="fade">
+          <div class="swipe-button next"
+               v-show="arrow !== 'hover' || is_hover"
+               :class="{ disabled: !loop &&  swiper.activeIndex === slides_len - 1 }">
+            <span class="arrow right" @click="swiper.slideNext()">
+              <Icon class="icon" name="arrowright" :size="16" color="#fff"></Icon>
+            </span>
+            <div class="disabled-mask"></div>
+          </div>
+        </transition>
+        <transition name="fade">
+          <div class="swipe-button prev"
+               v-show="arrow !== 'hover' || is_hover"
+               :class="{ disabled: !loop &&  swiper.activeIndex === 0 }">
+             <span class="arrow left" @click="swiper.slidePrev()">
+               <Icon class="icon" name="arrowleft" :size="16" color="#fff"></Icon>
+             </span>
+             <div class="disabled-mask"></div>
+          </div>
+        </transition>
+      </template>
+
   </div>
 </template>
 
@@ -53,9 +64,11 @@
       coverflow: Boolean,
       loop: { type: Boolean, default: true },
       autoplay: Boolean,
-      trigger: { type: String, default: 'change' }, // 'progress'
-      arrow: { type: [String, Boolean], default: 'hover' }, // true, false, 'hover'
-      refresh_by: {} // 用于监听异步数据，便于更新swiper，也可用v-if代替
+      index: Boolean,
+      index_trigger: { type: [String, Boolean], default: 'click' },
+      trigger: { type: String, default: 'change' },
+      arrow: { type: [String, Boolean], default: 'hover' },
+      refresh_by: {}
     },
     data () {
       return {
@@ -78,7 +91,7 @@
         ]
       },
       config: function () {
-        const { $refs, preview, between, sliding_num, free, loop, autoplay, value } = this;
+        const { preview, between, sliding_num, free, loop, autoplay, value } = this;
         const autoplay_speed = 5000
         // default config
         let config = {
@@ -88,8 +101,6 @@
           freeMode: free,
           loop: loop,
           initialSlide: value,
-          nextButton: $refs.next_btn,
-          prevButton: $refs.pre_btn,
           autoplay: autoplay ? autoplay_speed : undefined,
           slideToClickedSlide: true,
           onInit: () => {
@@ -127,6 +138,11 @@
         config = { ...config, ...coverflow, ...progress }
         return config
       },
+      slides_len: function () {
+        if (!this.swiper) return 0;
+        const len = this.swiper.slides.length;
+        return this.loop ? len - this.preview * 2 : len
+      },
       reset: function () {
         let { preview, between, free, coverflow, loop, sliding_num, autoplay } = this;
         return {
@@ -141,7 +157,7 @@
       }
     },
     mounted: function () {
-      this.init();
+      this.$nextTick(() => this.init())
     },
     watch: {
       value: function (index, old_index) {
@@ -167,6 +183,17 @@
       update: function () {
         this.swiper && this.swiper.update();
         this.$emit('inited');
+      },
+      slideTo: function (target, active) {
+        let { loop, preview, slides_len, swiper } = this;
+        let len = swiper.slides.length
+        let speed = swiper.params.speed
+        if (loop) {
+          let is_first = active === len - preview && target === 0;
+          let is_last = active === preview - 1 && target === slides_len - 1
+          if (is_first || is_last) speed = 0;
+        }
+        this.swiper.slideTo(target + preview, speed)
       },
       getRealIndex: function (index) {
         const { swiper, loop } = this;

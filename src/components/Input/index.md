@@ -39,9 +39,9 @@
 | 事件 | 说明 | 类型 | 使用 | 结果 |
 | ----|:-----| ---- | ---- | ---- |
 | form-verify | 验证当前选择器是否选中 | 触发事件 | `component.$emit('form-verify')`/`this.$root.$emit('form-verify')` | - |
-| error | 触发错误提示 | 触发事件 | `component.$emit('error', '错误提示')` | - |
-| correct | 触发正确提示 | 触发事件 | `component.$emit('correct')` | - |
-| clear | 清除提示 | 触发事件 | `component.$emit('clear')` | - |
+| error | 手动触发错误提示（需要手动清除提示，否则一直存在） | 触发事件 | `component.$emit('error', '错误提示')` | - |
+| correct | 手动触发正确提示 | 触发事件 | `component.$emit('correct')` | - |
+| clear | 手动清除提示 | 触发事件 | `component.$emit('clear')` | - |
 | verify | 返回验证结果 | 监听事件 | `@verify="result = argument[0]"` | `true`/`false` |
 | enter | 用户按下Enter键时触发 | 监听事件 | `@enter="dosomething"` |  - |
 

@@ -23,6 +23,7 @@
                   @blur="blurHandler(is_edited)"
                   @enter="enterHandler"
                   @input="inputHandler"
+                  @change="$emit('change', arguments[0])"
                   @verify="verifyHandler"></InputField>
 
       <InputTip :tip="err_tip"
@@ -69,7 +70,7 @@
     },
     data () {
       return {
-        _tip: '',
+        custom_tip: '',
         val: '',
         is_hover: false,
         is_focus: false,
@@ -109,7 +110,7 @@
       },
       // 错误提示
       err_tip: function () {
-        return this._tip || this.tip
+        return this.custom_tip || this.tip
       }
     },
     watch: {
@@ -125,8 +126,8 @@
         const { is_edited, no_verify } = this;
         this.verify_result = verify_result;
         if (verify_result && is_edited) {
-          this.is_error = !no_verify && !verify_result;
-          this.is_correct = !no_verify && verify_result;
+          this.is_error = !no_verify && !verify_result || !!this.custom_tip;
+          this.is_correct = !no_verify && verify_result && !this.custom_tip;
         } else {
           this.is_error = false
           this.is_correct = false;
@@ -136,12 +137,13 @@
       focusHandler: function () {
         this.is_focus = true
         this.is_error = false
+        this.is_correct = false
       },
       blurHandler: function (is_edited) {
         this.is_focus = false
         if (is_edited) {
-          this.is_error = !this.no_verify && !this.verify_result;
-          this.is_correct = !this.no_verify && this.verify_result;
+          this.is_error = !this.no_verify && !this.verify_result || !!this.custom_tip;
+          this.is_correct = !this.no_verify && this.verify_result && !this.custom_tip;
         }
       },
       enterHandler: function () {
@@ -150,6 +152,7 @@
       inputHandler: function (val) {
         this.is_edited = true
         this.is_correct = false
+        this.is_error = false
         this.val = val
         this.$emit('input', val);
       },
@@ -161,19 +164,19 @@
         this.$root.$on('form-verify', handler)
         this.$on('form-verify', handler)
         this.$on('error', (tip) => {
-          this._tip = tip
+          this.custom_tip = tip
           this.is_error = true;
           this.is_correct = false;
           this.$emit('verify', false)
         })
         this.$on('correct', () => {
-          this._tip = ''
+          this.custom_tip = ''
           this.is_error = false;
           this.is_correct = true;
           this.$emit('verify', true)
         })
         this.$on('clear', () => {
-          this._tip = ''
+          this.custom_tip = ''
           this.is_error = false;
           this.is_correct = false;
           this.$emit('verify', false)

@@ -11,9 +11,8 @@
 
   .hiui-tab-item {
     position: relative;
-    height: _tab_height;
-    line-height: _tab_height;
     display: inline-block;
+    height: 100%;
     text-align: center;
     font-size: 14px;
     color: #777;
@@ -105,9 +104,9 @@
       &.active {
         color: _tab_card_active_color;
         background-color: _white;
-        height: _tab_height + 1px;
         border-bottom: 0;
-        transform: translateZ(0);
+        padding-top: 1px;
+        transform: translateY(1px);
       }
     }
   }

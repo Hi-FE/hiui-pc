@@ -102,6 +102,10 @@ export default {
         name: 'Swipe',
         cn_name: '走马灯',
         path: '/Swipe'
+      }, {
+        name: 'Modal',
+        cn_name: '弹出层',
+        path: '/Modal'
       }/* data-out */]
     }]
   }]

@@ -25,6 +25,7 @@
 | trigger | 标签切换事件触发类型, 可选值`click/hover`  | `String` | `click` |
 | type | 标签类型，可选值`padding/no_padding/fix_width/fix_width:String`  | `String` | `padding` |
 | width | 容器宽度  | `String/Number` | - |
+| height | 标签高度，可选值为 `Number / "auto"`  | `String/Number` | `40` |
 | theme | 标签主题，可选值` - /card/ticket`  | `String` | - |
 | active-style | 选中时标签样式  | `Object` | - |
 

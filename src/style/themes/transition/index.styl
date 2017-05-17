@@ -1,0 +1,115 @@
+/*- bounce-center -----------------------------------------------------------------*/
+.bounce-center-enter-active {
+  animation: bounce-center-in .5s;
+}
+.bounce-center-leave-active {
+  animation: bounce-center-out .2s;
+}
+@keyframes bounce-center-in {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+@keyframes bounce-center-out {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+  }
+}
+/*- bounce -----------------------------------------------------------------*/
+.bounce-enter-active {
+  animation: bounce-in .5s;
+}
+.bounce-leave-active {
+  animation: bounce-out .2s;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes bounce-out {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+}
+/*- fade-----------------------------------------------------------------*/
+.fade-enter-active {
+  animation: fade-in .3s;
+}
+.fade-leave-active {
+  animation: fade-out .3s;
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+/*- slide-up -----------------------------------------------------------------*/
+.slide-up-enter, .slide-up-leave, .slide-up-leave-to {
+  transform: translateY(30px);
+  opacity: 0;
+}
+.slide-up-enter-active, .slide-up-leave-active {
+  transition: all .3s ease;
+}
+/*- slide-down -----------------------------------------------------------------*/
+.slide-down-enter, .slide-down-leave, .slide-down-leave-to {
+  transform: translateY(-30px);
+  opacity: 0;
+}
+.slide-down-enter-active, .slide-down-leave-active {
+  transition: all .3s ease;
+}
+/*- slide-left -----------------------------------------------------------------*/
+.slide-left-enter, .slide-left-leave, .slide-left-leave-to {
+  transform: translateX(30px);
+  opacity: 0;
+}
+.slide-left-enter-active, .slide-left-leave-active {
+  transition: all .3s ease;
+}
+/*- slide-right -----------------------------------------------------------------*/
+.slide-right-enter, .slide-right-leave, .slide-right-leave-to {
+  transform: translateX(-30px);
+  opacity: 0;
+}
+.slide-right-enter-active, .slide-right-leave-active {
+  transition: all .3s ease;
+}

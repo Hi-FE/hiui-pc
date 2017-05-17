@@ -96,6 +96,10 @@ export default new Router({
       path: '/Components/Swipe',
       name: 'Swipe',
       component: require('@/components/Swipe/index.md')
+    }, {
+      path: '/Components/Modal',
+      name: 'Modal',
+      component: require('@/components/Modal/index.md')
     }/* router */]
   }]
 })

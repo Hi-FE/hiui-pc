@@ -1,7 +1,7 @@
 <template>
   <Row :gutter="10">
     <template v-for="(type, i) in icons">
-      <Col :xlg="3" :lg="4" :md="6" :sm="8">
+      <vCol :xlg="3" :lg="4" :md="6" :sm="8">
         <div class="icon-item" @click="clickHandle(i)" v-clipboard:copy='`<Icon name="${type}"></Icon>`'>
           <Icon :size="26" :name="type" />
           <div class="icon-name" @click.stop="void 0">{{ type }}</div>
@@ -11,7 +11,7 @@
             </div>
           </transition>
         </div>
-      </Col>
+      </vCol>
     </template>
   </Row>
 </template>
@@ -67,6 +67,10 @@
 
 <script>
   export default {
+    components: {
+      Row: require('@/components/Grid/Row'),
+      vCol: require('@/components/Grid/Col')
+    },
     data () {
       return {
         timer: null,

@@ -12,10 +12,8 @@
 
 <style lang="stylus">
   @import './style/';
-  .bounce-enter-active {animation: bounce-in .3s; }
-  .bounce-leave-active {animation: bounce-out .1s; }
-  @keyframes bounce-in {0% {transform: scale(0.5); opacity: 0; } 50% {transform: scale(1.05); } 100% {transform: scale(1); opacity: 1; } }
-  @keyframes bounce-out {0% {transform: scale(1); opacity: 1; } 100% {transform: scale(0.5); opacity: 0; } }
+
+  bounce();
 </style>
 
 <script>

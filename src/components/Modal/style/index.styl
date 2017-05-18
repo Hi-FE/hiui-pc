@@ -1,0 +1,123 @@
+@import '../../style/';
+
+.hiui-modal-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+
+  .hiui-modal-mask {
+    position: absolute;
+    z-index: 998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .8);
+    display: table;
+    transition: opacity .3s ease;
+  }
+}
+
+.hiui-modal {
+  position: absolute;
+  z-index: 1000;
+
+  .hiui-modal-close {
+    position: absolute;
+    font-size: 18px;
+    cursor: pointer;
+    opacity: .6;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &-center {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    .hiui-modal-close {
+      right: 5px;
+      top: 0;
+    }
+  }
+
+  &-top {
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    .hiui-modal-close {
+      right: 5px;
+      top: 100%;
+      transform: translateY(5px);
+    }
+  }
+
+  &-bottom {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    .hiui-modal-close {
+      right: 5px;
+      bottom: 100%;
+      transform: translateY(-5px);
+    }
+  }
+
+  &-left {
+    top: 0;
+    left: 0;
+    height: 100%;
+
+    .hiui-modal-close {
+      left: 100%;
+      top: 5px;
+      transform: translateX(5px);
+    }
+  }
+
+  &-right {
+    top: 0;
+    right: 0;
+    height: 100%;
+
+    .hiui-modal-close {
+      right: 100%;
+      top: 5px;
+      transform: translateX(-5px);
+    }
+  }
+
+  &:not(&-center) .hiui-modal-close {
+    color: #666;
+  }
+
+  &-hasMask:not(&-center) .hiui-modal-close {
+    color: #fff;
+  }
+}
+
+.hiui-modal-body {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: #fff;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, .16);
+}
+
+.hiui-modal-banScroll {
+  overflow: hidden;
+
+  body {
+    overflow: hidden;
+  }
+}
+
+

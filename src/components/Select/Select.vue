@@ -11,7 +11,7 @@
       <span class="arrow" :style="custom_style.arrow"></span>
     </div>
     <!-- 下拉内容 -->
-    <transition name="slide-down">
+    <transition name="select-slide-down">
       <div class="body"
            v-show="is_active">
         <slot>
@@ -36,8 +36,8 @@
   @import './style/';
   .tab-hack { position:absolute;opacity:0 }
   .disabled-mask { position:absolute;z-index:9;top:0;left:0;bottom:0;right:0;background-color:rgba(255,255,255,.6);cursor:not-allowed }
-  .slide-down-enter-active, .slide-down-leave-active {transition: opacity .3s, transform .3s; }
-  .slide-down-enter, .slide-down-leave-active {opacity: 0;transform: translateY(-15px) }
+  .select-slide-down-enter-active, .select-slide-down-leave-active {transition: opacity .3s, transform .3s; }
+  .select-slide-down-enter, .select-slide-down-leave-active {opacity: 0;transform: translateY(-15px) }
 </style>
 
 <script>

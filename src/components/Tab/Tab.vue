@@ -47,6 +47,7 @@
         type: String
       },
       width: [Number, String],
+      height: [Number, String],
       theme: String,
       activeStyle: Object
     },
@@ -91,9 +92,21 @@
         return this.type && this.type.split(':')[0]
       },
       tab_style () {
-        return this.width ? {
-          width: this.width + (typeof this.width === 'number' ? 'px' : '')
-        } : null
+        let style = {}
+
+        if (this.width) {
+          style.width = this.width + (typeof this.width === 'number' ? 'px' : '')
+        }
+        if (this.height === 'auto') {
+          style.height = 'auto'
+          style.lineHeight = 'inherit'
+        }
+        if (typeof this.height === 'number') {
+          style.height = `${this.height}px`
+          style.lineHeight = `${this.height}px`
+        }
+
+        return style
       },
       tab_data () {
         return Array.from(this.data, (item) => typeof item === 'object' ? item : { name: item })

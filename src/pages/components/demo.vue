@@ -1,14 +1,14 @@
 <template>
   <Row class="demo-container" :gutter="20">
-    <Col span="24">
+    <vCol span="24">
       <slot></slot>
-    </Col>
-    <Col ref="left" span="12">
+    </vCol>
+    <vCol ref="left" span="12">
       <slot name="left"></slot>
-    </Col>
-    <Col rref="right" span="12">
+    </vCol>
+    <vCol rref="right" span="12">
       <slot name="right"></slot>
-    </Col>
+    </vCol>
   </Row>
 </template>
 
@@ -26,6 +26,10 @@
 <script>
   export default {
     name: 'demo',
+    components: {
+      Row: require('@/components/Grid/Row'),
+      vCol: require('@/components/Grid/Col')
+    },
     props: {
       title: {
         default: '',

@@ -20,7 +20,7 @@
         <transition name="fade">
           <div class="swipe-button next"
                v-show="arrow !== 'hover' || is_hover"
-               :class="{ disabled: !loop &&  swiper.activeIndex === slides_len - 1 }">
+               :class="{ disabled: !loop &&  swiper.activeIndex === slides_len - preview }">
             <span class="arrow right" @click="swiper.slideNext()">
               <Icon class="icon" name="arrowright" :size="16" color="#fff"></Icon>
             </span>

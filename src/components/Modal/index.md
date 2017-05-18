@@ -25,5 +25,7 @@
 | use_close | 是否显示关闭按钮 | `Boolean` | `true` |
 | use_mask | 是否显示遮罩层 | `Boolean` | `false` |
 | mask_close | 点击遮罩层是否关闭弹出层 | `Boolean` | `true` |
-| classname | 自定义弹出层类名 | `String/Array` | - |
+| use_shadow | 是否使用阴影 | `Boolean` | `true` |
+| background_color | 弹出层背景色 | `String` | `#fff` |
+| border_radius | 弹出层圆角 | `String` | `0` |
 | prevent_scroll | 是否禁止页面滚动 | `Boolean` | `true` |

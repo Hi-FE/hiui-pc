@@ -3,9 +3,9 @@
     <div v-if="show" :class="component_class">
       <div v-if="use_mask" class="hiui-modal-mask" @click="closeModal('mask')"></div>
       <transition :name="transitionName[type]">
-        <div v-show="modal_show" :class="modal_class">
+        <div v-show="modal_show" :class="container_class">
           <Icon v-if="use_close" :class="icon_class" name="close" role="button" @click.native="closeModal()"></Icon>
-          <div :class="body_class">
+          <div :class="body_class" :style="body_style">
             <slot></slot>
           </div>
         </div>
@@ -25,6 +25,7 @@
 </style>
 
 <script>
+  import { isValid, getStyles } from '@/tools';
   const prefixCls = 'hiui-modal'
 
   export default {
@@ -35,7 +36,7 @@
         default: 'center',
         type: String,
         validator (val) {
-          return ['center', 'top', 'bottom', 'left', 'right'].some((str) => str === val)
+          return isValid(['center', 'top', 'bottom', 'left', 'right'], val)
         }
       },
       use_close: {
@@ -54,7 +55,12 @@
         default: true,
         type: Boolean
       },
-      classname: [String, Array]
+      use_shadow: {
+        default: true,
+        type: Boolean
+      },
+      border_radius: String,
+      background_color: String
     },
     model: {
       prop: 'show',
@@ -87,7 +93,7 @@
           `${prefixCls}-wrap`
         ]
       },
-      modal_class () {
+      container_class () {
         let classNames = [
           prefixCls,
           `${prefixCls}-${this.type}`,
@@ -99,16 +105,18 @@
       },
       body_class () {
         let classNames = [
-          `${prefixCls}-body`
+          `${prefixCls}-body`,
+          {
+            [`${prefixCls}-body-use_shadow`]: this.use_shadow
+          }
         ]
-        if (Array.isArray(this.classname)) {
-          classNames = classNames.concat(this.classname)
-        } else {
-          classNames.push({
-            [this.classname]: this.classname
-          })
-        }
         return classNames
+      },
+      body_style () {
+        return getStyles({
+          backgroundColor: this.background_color,
+          borderRadius: this.border_radius
+        })
       },
       icon_class () {
         return [

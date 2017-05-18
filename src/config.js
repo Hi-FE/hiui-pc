@@ -48,6 +48,14 @@ export default {
         name: 'Loading',
         cn_name: '加载条',
         path: '/Loading'
+      }, {
+        name: 'SmoothScroll',
+        cn_name: '平滑滚动',
+        path: '/SmoothScroll'
+      }, {
+        name: 'BackTop',
+        cn_name: '回到顶部',
+        path: '/BackTop'
       }/* base */]
     }, {
       title: 'Data in',

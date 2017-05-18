@@ -132,6 +132,12 @@
       },
       scroll () {
         this.scrollTop = window.pageYOffset || (document.documentElement.scrollTop + document.body.scrollTop)
+      },
+      reset () {
+        this.loadmore_scrollTop = 0
+        this.current_loaded = 0
+        this.scrollTop = 0
+        this.status = 'normal'
       }
     },
     mounted() {

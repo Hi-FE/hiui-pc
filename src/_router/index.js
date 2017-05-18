@@ -100,6 +100,14 @@ export default new Router({
       path: '/Components/Modal',
       name: 'Modal',
       component: require('@/components/Modal/index.md')
+    }, {
+      path: '/Components/SmoothScroll',
+      name: 'SmoothScroll',
+      component: require('@/components/SmoothScroll/index.md')
+    }, {
+      path: '/Components/BackTop',
+      name: 'BackTop',
+      component: require('@/components/BackTop/index.md')
     }/* router */]
   }]
 })

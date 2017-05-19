@@ -23,7 +23,7 @@
 
   .nav {
     width: 100%;
-    padding: 20px;
+    padding: 20px 15px;
 
     .nav-li {
       small {
@@ -37,18 +37,17 @@
       margin-left: 30px;
 
       .nav-child {
-        padding: 8px 15px;
+        padding: 15px 15px;
 
         &:hover {
           color: _blue_deep;
-          cursor: po
         }
       }
 
       .nav-child-title {
         font-size: 14px;
         color: #999;
-        margin: 5px 0;
+        margin: 10px 0;
       }
     }
   }

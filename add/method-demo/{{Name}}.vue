@@ -1,6 +1,6 @@
 <template>
   <demo title="Icon" class="icon-demo">
-    <demo-item name="default" description="默认" :code="size_code" lang="js">
+    <demo-item name="default" description="默认" :code="code" lang="js">
       <Btn @click.native="${{name}}()">{{Name}}</Btn>
     </demo-item>
   </demo>
@@ -14,7 +14,7 @@
   export default {
     data () {
       return {
-        size_code: `
+        code: `
 this.${{name}}()
         `
       }

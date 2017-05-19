@@ -1,23 +1,23 @@
 <template>
   <demo title="Tab" class="tab-demo">
     <demo-item name="default" description="默认" :code="code" slot="left">
-      <Tab :data="arr" v-model="default_index"></Tab>
+      <Tab :data="['标签一', '标签二', '标签三']" v-model="default_index"></Tab>
     </demo-item>
 
     <demo-item name="type" description="类型" :code="type_code" slot="right">
-      <Tab :data="arr" v-model="type_index" type="no_padding"></Tab>
-      <Tab :data="arr" v-model="type_index" type="fix_width"></Tab>
-      <Tab :data="arr" v-model="type_index" type="fix_width:25%"></Tab>
+      <Tab :data="['标签一', '标签二', '标签三']" v-model="type_index" type="no_padding"></Tab>
+      <Tab :data="['标签一', '标签二', '标签三']" v-model="type_index" type="fix_width"></Tab>
+      <Tab :data="['标签一', '标签二', '标签三']" v-model="type_index" type="fix_width:25%"></Tab>
     </demo-item>
 
     <demo-item name="theme" description="主题" :code="theme_code" slot="left">
-      <Tab :data="arr" v-model="theme_index"></Tab>
-      <Tab :data="arr" v-model="theme_index" theme="card"></Tab>
-      <Tab :data="arr" v-model="theme_index" theme="ticket" type="fix_width"></Tab>
+      <Tab :data="['标签一', '标签二', '标签三']" v-model="theme_index"></Tab>
+      <Tab :data="['标签一', '标签二', '标签三']" v-model="theme_index" theme="card"></Tab>
+      <Tab :data="['标签一', '标签二', '标签三']" v-model="theme_index" theme="ticket" type="fix_width"></Tab>
     </demo-item>
 
     <demo-item name="trigger" description="触发类型" :code="trigger_code" slot="right">
-      <Tab :data="arr" v-model="trigger_index" trigger="hover"></Tab>
+      <Tab :data="['标签一', '标签二', '标签三']" v-model="trigger_index" trigger="hover"></Tab>
     </demo-item>
 
     <demo-item name="icon" description="图标" :code="icon_code" slot="left">
@@ -47,7 +47,7 @@
     </demo-item>
 
     <demo-item name="activeStyle" description="选中样式" :code="style_code" slot="right">
-      <Tab :data="arr" v-model="style_index" :active-style="{ color: '#f02f45', borderBottomColor: '#f02f45' }"></Tab>
+      <Tab :data="['标签一', '标签二', '标签三']" v-model="style_index" :active-style="{ color: '#f02f45', borderBottomColor: '#f02f45' }"></Tab>
     </demo-item>
   </demo>
 </template>
@@ -64,7 +64,6 @@
   export default {
     data () {
       return {
-        arr: ['标签一', '标签二', '标签三'],
         default_index: 0,
         type_index: 0,
         theme_index: 0,
@@ -72,20 +71,20 @@
         icon_index: 0,
         style_index: 0,
         code: `
-<Tab :data="arr" v-model="default_index"></Tab>
+<Tab :data="['标签一', '标签二', '标签三']" v-model="default_index"></Tab>
         `,
         type_code: `
-<Tab :data="arr" v-model="type_index" type="no_padding"></Tab>
-<Tab :data="arr" v-model="type_index" type="fix_width"></Tab>
-<Tab :data="arr" v-model="type_index" type="fix_width:25%"></Tab>
+<Tab :data="['标签一', '标签二', '标签三']" v-model="type_index" type="no_padding"></Tab>
+<Tab :data="['标签一', '标签二', '标签三']" v-model="type_index" type="fix_width"></Tab>
+<Tab :data="['标签一', '标签二', '标签三']" v-model="type_index" type="fix_width:25%"></Tab>
         `,
         theme_code: `
-<Tab :data="arr" v-model="theme_index"></Tab>
-<Tab :data="arr" v-model="theme_index" theme="card"></Tab>
-<Tab :data="arr" v-model="theme_index" theme="ticket" type="fix_width"></Tab>
+<Tab :data="['标签一', '标签二', '标签三']" v-model="theme_index"></Tab>
+<Tab :data="['标签一', '标签二', '标签三']" v-model="theme_index" theme="card"></Tab>
+<Tab :data="['标签一', '标签二', '标签三']" v-model="theme_index" theme="ticket" type="fix_width"></Tab>
         `,
         trigger_code: `
-<Tab :data="arr" v-model="trigger_index" trigger="hover"></Tab>
+<Tab :data="['标签一', '标签二', '标签三']" v-model="trigger_index" trigger="hover"></Tab>
         `,
         icon_code: `
 <Tab :data="['Home', 'Cart', 'User']" v-model="icon_index"></Tab>
@@ -113,7 +112,7 @@
   }]" v-model="icon_index"></Tab>
         `,
         style_code: `
-<Tab :data="arr" v-model="style_index" :active-style="{ color: '#f02f45', borderBottomColor: '#f02f45' }"></Tab>
+<Tab :data="['标签一', '标签二', '标签三']" v-model="style_index" :active-style="{ color: '#f02f45', borderBottomColor: '#f02f45' }"></Tab>
         `
       }
     }

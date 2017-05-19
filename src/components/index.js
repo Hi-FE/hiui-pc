@@ -1,4 +1,6 @@
 /* base */
+import BackTop from './BackTop'
+import SmoothScroll from './SmoothScroll'
 import Loading from './Loading'
 import Spinner from './Spinner'
 import Btn from './Btn'
@@ -22,6 +24,7 @@ import Toast from './Toast'
 
 const install = (Vue) => {
   /* component */
+  Vue.component(BackTop.name, BackTop)
   Vue.component(Modal.name, Modal)
   Vue.component(Swipe.name, Swipe)
   Vue.component(SwipeSlide.name, SwipeSlide)
@@ -41,6 +44,7 @@ const install = (Vue) => {
   Vue.component(Calendar.name, Calendar)
 
   /* method */
+  Vue.use(SmoothScroll)
   Vue.use(Calendar)
   Vue.use(Loading)
   Vue.use(Toast)
@@ -52,6 +56,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export default {
   /* export */
+  BackTop,
+  SmoothScroll,
   Modal,
   Swipe,
   Tab,

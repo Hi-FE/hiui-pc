@@ -25,10 +25,15 @@
 | done | 是否已经全部加载完毕  | `Boolean` | `false` |
 | interval | 手动点击加载出现间隔  | `Number` | `3` |
 | offset | 距离到容器底部`300px`时加载 | `Number` | `300` |
+| real_time | 是否每次滚动都监听容器高度 | `Boolean` | `false` |
 
 | 事件 | 说明 | 参数 | 默认值 |
 | ----|:-----| ---- | ---- |
-| load-method* | 加载时调用方法 | `[next <Function:异步加载完毕后调用>, err: <Function:加载出错时调用>]` | - |
+| load-method | 加载时调用方法 | `[next <Function:异步加载完毕后调用>, err: <Function:加载出错时调用>]` | - |
+
+| 方法 | 说明 | 参数 | 默认值 |
+| ----|:-----| ---- | ---- |
+| reset | 重置组件状态 | - | - |
 
 ## Slot
 

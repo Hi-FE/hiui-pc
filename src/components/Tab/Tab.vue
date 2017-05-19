@@ -19,8 +19,6 @@
 
 <script>
   import Icon from '../Icon'
-  import 'purecss/build/base-min.css';
-  import 'purecss/build/grids-min.css';
 
   const prefixCls = 'hiui-tab'
 
@@ -46,6 +44,7 @@
         default: 'padding',
         type: String
       },
+      font_size: Number,
       width: [Number, String],
       height: [Number, String],
       theme: String,
@@ -53,7 +52,6 @@
     },
     data () {
       return {
-        isPercent: false
       }
     },
     computed: {
@@ -68,25 +66,25 @@
       },
       item_class () {
         return [
-          `${prefixCls}-item`,
-          {
-            [`pure-u-1-${this.data.length}`]: this.isPercent
-          }
+          `${prefixCls}-item`
         ]
       },
       item_style () {
-        let style
+        let style = {}
         if (this.bar_type === 'fix_width') {
           let val = this.type.split(':')[1]
 
-          this.isPercent = !val
-
-          style = val && {
-            width: val
+          if (val) {
+            style.width = val
+          } else {
+            style.width = `${1 / this.data.length * 100}%`
           }
         }
 
-        return style || {}
+        if (typeof this.font_size === 'number') {
+          style.fontSize = `${this.font_size}px`
+        }
+        return style
       },
       bar_type () {
         return this.type && this.type.split(':')[0]

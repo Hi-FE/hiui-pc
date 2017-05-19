@@ -1,6 +1,6 @@
 <template>
-  <transition name="fade">
-    <div v-if="show" :class="component_class" :style="component_style">
+  <transition name="fade" @after-leave="afterLeave">
+    <div v-show="modal_show" v-if="isExist" :class="component_class" :style="component_style">
       <div v-if="use_mask" class="hiui-modal-mask" @click="closeModal('mask')"></div>
       <transition :name="transitionName[type]">
         <div v-show="modal_show" :class="container_class">
@@ -40,6 +40,13 @@
           return isValid(['center', 'top', 'bottom', 'left', 'right'], val)
         }
       },
+      render_type: {
+        default: 'show',
+        type: String,
+        validator (val) {
+          return isValid(['show', 'if'], val)
+        }
+      },
       use_close: {
         default: true,
         type: Boolean
@@ -71,6 +78,7 @@
     data () {
       return {
         modal_show: this.show,
+        isExist: this.render_type === 'show' || this.show,
         transitionName: {
           center: 'bounce-center',
           top: 'slide-down',
@@ -82,6 +90,7 @@
     },
     watch: {
       show (val) {
+        this.isExist = true
         this.$nextTick(() => {
           this.modal_show = val
         })
@@ -137,6 +146,9 @@
           return false
         }
         this.$emit('switch', false)
+      },
+      afterLeave () {
+        this.isExist = this.render_type === 'show'
       }
     }
   }

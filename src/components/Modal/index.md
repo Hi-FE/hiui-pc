@@ -25,6 +25,7 @@
 | use_close | 是否显示关闭按钮 | `Boolean` | `true` |
 | use_mask | 是否显示遮罩层 | `Boolean` | `false` |
 | mask_close | 点击遮罩层是否关闭弹出层 | `Boolean` | `true` |
+| render_type | 组件渲染类型，可选值`show/if` | `String` | `show` |
 | use_shadow | 是否使用阴影 | `Boolean` | `true` |
 | background_color | 弹出层背景色 | `String` | `#fff` |
 | zIndex | 组件的堆叠层级 | `String/Number` | `999` |

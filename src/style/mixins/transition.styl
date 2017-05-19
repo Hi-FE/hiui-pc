@@ -93,37 +93,41 @@ fade() {
 /*- slide-up -----------------------------------------------------------------*/
 slide-up() {
   .slide-up-enter, .slide-up-leave-to {
-    transform: translateY(30px);
+    transform: translate3d(0, 30px, 0);
+    opacity: 0;
   }
   .slide-up-enter-active, .slide-up-leave-active {
-    transition: all .3s;
+    transition: all .5s ease;
   }
 }
 
 /*- slide-down -----------------------------------------------------------------*/
 slide-down() {
   .slide-down-enter, .slide-down-leave-to {
-    transform: translateY(-30px);
+    transform: translate3d(0, -30px, 0);
+    opacity: 0;
   }
   .slide-down-enter-active, .slide-down-leave-active {
-    transition: all .3s;
+    transition: all .5s ease;
   }
 }
 /*- slide-left -----------------------------------------------------------------*/
 slide-left() {
   .slide-left-enter, .slide-left-leave-to {
-    transform: translateX(30px);
+    transform: translate3d(30px), 0, 0;
+    opacity: 0;
   }
   .slide-left-enter-active, .slide-left-leave-active {
-    transition: all .3s;
+    transition: all .5s ease;
   }
 }
 /*- slide-right -----------------------------------------------------------------*/
 slide-right() {
   .slide-right-enter, .slide-right-leave-to {
-    transform: translateX(-30px);
+    transform: translate3d(-30px, 0, 0);
+    opacity: 0;
   }
   .slide-right-enter-active, .slide-right-leave-active {
-    transition: all .3s;
+    transition: all .5s ease;
   }
 }

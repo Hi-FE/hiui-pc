@@ -1,20 +1,23 @@
 <template>
-  <div v-if="show" :class="component_class" :style="component_style">
-    <div v-if="use_mask" class="hiui-modal-mask" @click="closeModal('mask')"></div>
-    <transition :name="transitionName[type]">
-      <div v-show="modal_show" :class="container_class">
-        <Icon v-if="use_close" :class="icon_class" name="close" role="button" @click.native="closeModal()"></Icon>
-        <div :class="body_class" :style="body_style">
-          <slot></slot>
+  <transition name="fade">
+    <div v-if="show" :class="component_class" :style="component_style">
+      <div v-if="use_mask" class="hiui-modal-mask" @click="closeModal('mask')"></div>
+      <transition :name="transitionName[type]">
+        <div v-show="modal_show" :class="container_class">
+          <Icon v-if="use_close" :class="icon_class" name="close" role="button" @click.native="closeModal()"></Icon>
+          <div :class="body_class" :style="body_style">
+            <slot></slot>
+          </div>
         </div>
-      </div>
-    </transition>
-  </div>
+      </transition>
+    </div>
+  </transition>
 </template>
 
 <style lang="stylus">
   @import './style/';
 
+  fade();
   bounce-center();
   slide-down();
   slide-up();

@@ -15,6 +15,7 @@ import Switch from './Switch'
 import Calendar from './Calendar'
 
 /* data-out */
+import Popover from './Popover'
 import Modal from './Modal'
 import { Swipe, SwipeSlide } from './Swipe'
 import Tab from './Tab'
@@ -24,6 +25,7 @@ import Toast from './Toast'
 
 const install = (Vue) => {
   /* component */
+  // Vue.component(Popover.name, Popover)
   Vue.component(BackTop.name, BackTop)
   Vue.component(Modal.name, Modal)
   Vue.component(Swipe.name, Swipe)
@@ -44,6 +46,7 @@ const install = (Vue) => {
   Vue.component(Calendar.name, Calendar)
 
   /* method */
+  Vue.use(Popover)
   Vue.use(SmoothScroll)
   Vue.use(Calendar)
   Vue.use(Loading)
@@ -56,6 +59,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export default {
   /* export */
+  Popover,
   BackTop,
   SmoothScroll,
   Modal,

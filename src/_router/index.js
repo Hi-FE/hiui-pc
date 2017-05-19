@@ -108,6 +108,10 @@ export default new Router({
       path: '/Components/BackTop',
       name: 'BackTop',
       component: require('@/components/BackTop/index.md')
+    }, {
+      path: '/Components/Popover',
+      name: 'Popover',
+      component: require('@/components/Popover/index.md')
     }/* router */]
   }]
 })

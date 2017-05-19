@@ -10,8 +10,8 @@
   .swipe-button {
     width: _size_md; height: _size_md; position:absolute;z-index:9;top:50%;transform: translateY(-50%);margin:0;cursor:pointer;
     &.disabled {
-      opacity: .3
       .disabled-mask { display:block }
+      .arrow { background-color: rgba(0,0,0,.1) }
     }
     &.prev {
       left: _gap_xsm;

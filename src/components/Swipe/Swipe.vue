@@ -20,9 +20,9 @@
         <transition name="fade">
           <div class="swipe-button next"
                v-show="arrow !== 'hover' || is_hover"
-               :class="{ disabled: !loop &&  swiper.activeIndex === slides_len - preview }">
+               :class="{ disabled: arrow_disabled_status.next}">
             <span class="arrow right" @click="swiper.slideNext()">
-              <Icon class="icon" name="arrowright" :size="16" color="#fff"></Icon>
+              <Icon class="icon" name="arrowright" :size="16" :color="arrow_disabled_status.next ? 'rgba(221, 221, 221, .4)' : '#fff'"></Icon>
             </span>
             <div class="disabled-mask"></div>
           </div>
@@ -30,9 +30,9 @@
         <transition name="fade">
           <div class="swipe-button prev"
                v-show="arrow !== 'hover' || is_hover"
-               :class="{ disabled: !loop &&  swiper.activeIndex === 0 }">
+               :class="{ disabled: arrow_disabled_status.prev }">
              <span class="arrow left" @click="swiper.slidePrev()">
-               <Icon class="icon" name="arrowleft" :size="16" color="#fff"></Icon>
+               <Icon class="icon" name="arrowleft" :size="16" :color="arrow_disabled_status.prev ? 'rgba(221, 221, 221, .4)' : '#fff'"></Icon>
              </span>
              <div class="disabled-mask"></div>
           </div>
@@ -142,6 +142,13 @@
         if (!this.swiper) return 0;
         const len = this.swiper.slides.length;
         return this.loop ? len - this.preview * 2 : len
+      },
+      arrow_disabled_status: function () {
+        const { loop, preview, swiper, slides_len } = this;
+        return {
+          prev: !loop && swiper.activeIndex === 0,
+          next: !loop && swiper.activeIndex === slides_len - preview
+        }
       },
       reset: function () {
         let { preview, between, free, coverflow, loop, sliding_num, autoplay } = this;

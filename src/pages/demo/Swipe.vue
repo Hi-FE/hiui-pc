@@ -6,6 +6,11 @@
           <div class="content"> {{ index }} </div>
         </SwipeSlide>
       </Swipe>
+      <Swipe :loop="false">
+        <SwipeSlide v-for="(n, index) in 5" :key="index">
+          <div class="content"> {{ index }} </div>
+        </SwipeSlide>
+      </Swipe>
     </demo-item>
     <demo-item name="index" description="下标" :code="index_code" slot="left">
       <p>当前下标是 {{ index }}</p>
@@ -118,7 +123,12 @@
         code: `
 <Swipe>
   <SwipeSlide v-for="(n, index) in 5" :key="index">
-    <div class="content"> {{index}} </div>
+    <div class="content"> {{ index}} </div>
+  </SwipeSlide>
+</Swipe>
+<Swipe :loop="false">
+  <SwipeSlide v-for="(n, index) in 5" :key="index">
+    <div class="content"> {{ index}} </div>
   </SwipeSlide>
 </Swipe>
         `,

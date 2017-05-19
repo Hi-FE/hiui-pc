@@ -1,6 +1,6 @@
 <template>
   <span :class="component_class" :style="component_style">
-    <small>&yen;</small><em> <slot></slot></em>
+    <small>{{ symbol }}</small><em><slot></slot></em><span class="hiui-price-suffix" :style="suffix_style" v-if="suffix">{{ suffix }}</span>
   </span>
 </template>
 
@@ -26,9 +26,22 @@
         type: String,
         default: '#f02f45'
       },
-      fontSize: {
+      font_size: {
         type: Number,
         default: 24
+      },
+      no_shrink: {
+        type: Boolean,
+        default: false
+      },
+      symbol: {
+        type: String,
+        default: '￥'
+      },
+      suffix: [String, Number],
+      suffix_size: {
+        type: Number,
+        default: 16
       }
     },
     data () {
@@ -41,15 +54,21 @@
           prefixCls,
           {
             [`${prefixCls}-sup`]: this.super,
-            [`${prefixCls}-delete`]: this.delete
+            [`${prefixCls}-delete`]: this.delete,
+            [`${prefixCls}-noShrink`]: this.no_shrink
           }
         ]
       },
       component_style () {
         return {
           'color': this.color,
-          'font-size': `${this.fontSize}px`,
-          'line-height': `${this.fontSize}px`
+          'font-size': `${this.font_size}px`,
+          'line-height': `${this.font_size}px`
+        }
+      },
+      suffix_style () {
+        return {
+          'font-size': `${this.suffix_size}px`
         }
       }
     }

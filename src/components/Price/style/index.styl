@@ -12,6 +12,11 @@
     font-size: 50%;
   }
 
+  .hiui-price-suffix {
+    margin-left: 3px;
+    text-decoration: none;
+  }
+
   &.sup em {
     vertical-align: top;
     line-height: 1;
@@ -23,7 +28,14 @@
     line-height: 1.36;
   }
 
+  &-noShrink small {
+    font-size: inherit;
+    vertical-align: baseline;
+  }
+
   &-delete {
-    text-decoration: line-through;
+    em, small {
+      text-decoration: line-through;
+    }
   }
 }

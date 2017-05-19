@@ -46,6 +46,10 @@
       done: {
         default: false,
         type: Boolean
+      },
+      real_time: {
+        default: false,
+        type: Boolean
       }
     },
     data () {
@@ -76,6 +80,7 @@
     },
     watch: {
       scrollTop (val) {
+        this.real_time && this.getLoadmoreTop()
         if (!this.done && this.status === 'normal' && val >= this.loadmore_scrollTop) {
           this.loadmore()
         }
@@ -134,10 +139,10 @@
         this.scrollTop = window.pageYOffset || (document.documentElement.scrollTop + document.body.scrollTop)
       },
       reset () {
-        this.loadmore_scrollTop = 0
         this.current_loaded = 0
         this.scrollTop = 0
         this.status = 'normal'
+        this.getLoadmoreTop()
       }
     },
     mounted() {

@@ -27,5 +27,6 @@
 | mask_close | 点击遮罩层是否关闭弹出层 | `Boolean` | `true` |
 | use_shadow | 是否使用阴影 | `Boolean` | `true` |
 | background_color | 弹出层背景色 | `String` | `#fff` |
+| zIndex | 组件的堆叠层级 | `String/Number` | `999` |
 | border_radius | 弹出层圆角 | `String` | `0` |
 | prevent_scroll | 是否禁止页面滚动 | `Boolean` | `true` |

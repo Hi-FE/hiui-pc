@@ -1,17 +1,15 @@
 <template>
-  <transition name="fade">
-    <div v-if="show" :class="component_class">
-      <div v-if="use_mask" class="hiui-modal-mask" @click="closeModal('mask')"></div>
-      <transition :name="transitionName[type]">
-        <div v-show="modal_show" :class="container_class">
-          <Icon v-if="use_close" :class="icon_class" name="close" role="button" @click.native="closeModal()"></Icon>
-          <div :class="body_class" :style="body_style">
-            <slot></slot>
-          </div>
+  <div v-if="show" :class="component_class" :style="component_style">
+    <div v-if="use_mask" class="hiui-modal-mask" @click="closeModal('mask')"></div>
+    <transition :name="transitionName[type]">
+      <div v-show="modal_show" :class="container_class">
+        <Icon v-if="use_close" :class="icon_class" name="close" role="button" @click.native="closeModal()"></Icon>
+        <div :class="body_class" :style="body_style">
+          <slot></slot>
         </div>
-      </transition>
-    </div>
-  </transition>
+      </div>
+    </transition>
+  </div>
 </template>
 
 <style lang="stylus">
@@ -60,7 +58,8 @@
         type: Boolean
       },
       border_radius: String,
-      background_color: String
+      background_color: String,
+      zIndex: [Number, String]
     },
     model: {
       prop: 'show',
@@ -92,6 +91,11 @@
         return [
           `${prefixCls}-wrap`
         ]
+      },
+      component_style () {
+        return getStyles({
+          zIndex: this.zIndex
+        })
       },
       container_class () {
         let classNames = [

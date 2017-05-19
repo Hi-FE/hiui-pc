@@ -25,6 +25,7 @@
 | done | 是否已经全部加载完毕  | `Boolean` | `false` |
 | interval | 手动点击加载出现间隔  | `Number` | `3` |
 | offset | 距离到容器底部`300px`时加载 | `Number` | `300` |
+| real_time | 是否每次滚动都监听容器高度 | `Boolean` | `false` |
 
 | 事件 | 说明 | 参数 | 默认值 |
 | ----|:-----| ---- | ---- |

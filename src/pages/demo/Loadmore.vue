@@ -3,18 +3,10 @@
     <!-- Default -->
     <demo-item name="default" description="默认" :code="code">
       <Btn @click="setShow(0)" class="show-btn">Show</Btn>
-      <Btn @click="switchType" class="show-btn">Switch Type</Btn>
-      <Loadmore ref="loadmore" v-if="show[0]" @load-method="getNextPage" :done="cur >= total">
-        <template v-if="type === 'list'">
-          <div v-for="item in list" class="block">
-            List.{{ item }}
-          </div>
-        </template>
-        <template v-if="type === 'item'">
-          <div v-for="item in list" class="block">
-            Item.{{ item }}
-          </div>
-        </template>
+      <Loadmore v-if="show[0]" @load-method="getNextPage" :done="cur >= total">
+        <div v-for="item in list" class="block">
+          List.{{ item }}
+        </div>
       </Loadmore>
     </demo-item>
 
@@ -112,7 +104,6 @@
   export default {
     data () {
       return {
-        type: 'list',
         cur: 1,
         total: 10,
         show: [false, false, false],
@@ -193,15 +184,6 @@ getNextPage (next, err) {
             resolve()
           }, time)
         })
-      },
-      switchType () {
-        this.type = 'item'
-        this.cur = 1
-        this.list = []
-        clearTimeout(this.timer)
-        this.getList(0)
-
-        this.$refs.loadmore.reset()
       }
     }
   }

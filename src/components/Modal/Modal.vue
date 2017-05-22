@@ -69,7 +69,7 @@
       },
       border_radius: String,
       background_color: String,
-      zIndex: [Number, String]
+      z_index: [Number, String]
     },
     model: {
       prop: 'show',
@@ -106,7 +106,7 @@
       },
       component_style () {
         return getStyles({
-          zIndex: this.zIndex
+          zIndex: this.z_index
         })
       },
       container_class () {

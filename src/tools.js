@@ -11,3 +11,11 @@ export const getStyles = (obj) => {
 export const isValid = (rule, val) => {
   return rule.some((str) => str === val)
 }
+
+export const on = (elem, type, fn) => {
+  elem.addEventListener(type, fn, false)
+}
+
+export const off = (elem, type, fn) => {
+  elem.removeEventListener(type, fn, false)
+}

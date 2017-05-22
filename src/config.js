@@ -115,10 +115,6 @@ export default {
         cn_name: '弹出层',
         path: '/Modal'
       }, {
-        name: 'popover',
-        cn_name: '弹出框',
-        path: '/popover'
-      }, {
         name: 'Popover',
         cn_name: '弹出框',
         path: '/Popover'

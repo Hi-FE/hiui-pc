@@ -28,6 +28,7 @@
 | render_type | 组件渲染类型，可选值`show/if` | `String` | `show` |
 | use_shadow | 是否使用阴影 | `Boolean` | `true` |
 | background_color | 弹出层背景色 | `String` | `#fff` |
+| overflow | 弹出层的overflow | `String` | `visible` |
 | z_index | 组件的堆叠层级 | `String/Number` | `999` |
 | border_radius | 弹出层圆角 | `String` | `0` |
 | prevent_scroll | 是否禁止页面滚动 | `Boolean` | `true` |

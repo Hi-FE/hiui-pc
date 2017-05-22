@@ -1,8 +1,8 @@
-export const getStyles = (obj) => {
+export const getStyles = (obj, unit) => {
   let result = {}
   for (let key in obj) {
     if (obj[key]) {
-      result[key] = obj[key]
+      result[key] = obj[key] + (unit || '')
     }
   }
   return Object.keys(result).length > 0 ? result : null

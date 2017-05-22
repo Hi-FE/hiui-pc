@@ -67,6 +67,7 @@
         default: true,
         type: Boolean
       },
+      overflow: String,
       border_radius: String,
       background_color: String,
       z_index: [Number, String]
@@ -131,7 +132,8 @@
       body_style () {
         return getStyles({
           backgroundColor: this.background_color,
-          borderRadius: this.border_radius
+          borderRadius: this.border_radius,
+          overflow: this.overflow
         })
       },
       icon_class () {
@@ -150,6 +152,9 @@
       afterLeave () {
         this.isExist = this.render_type === 'show'
       }
+    },
+    mounted () {
+      console.log(this.$slots)
     }
   }
 </script>

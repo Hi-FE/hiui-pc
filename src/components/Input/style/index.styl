@@ -1,16 +1,15 @@
 @import '../../style/';
 
 .hiui-input {
-  vertical-align: top; position: relative; display: inline-block; background-color:#fff; border-radius:2px; height:_input_height_md; transition:border-color .3s; transition:border-color .3s, box-shadow .3s; cursor:text;
+  vertical-align: top; position: relative; display: inline-block; background-color:#fff; border-radius:2px; transition:border-color .3s; transition:border-color .3s, box-shadow .3s; cursor:text;
 
   &.textarea { height: auto !important; }
 
   &.with-border {
     border:1px solid _grey;
-  }
-
-  &:not(.textarea) {
-    padding: 0 _gap_xsm;
+    &:not(.textarea) {
+      padding: 0 10px;
+    }
   }
 
   &:not(.disabled):hover {
@@ -45,6 +44,9 @@
 
 for size in _size {
   .hiui-input-{size} {
-    width: _input_width_ + size;height: _input_height_ + size; font-size: _input_font_ + size;
+    width: _input_width_ + size;height: _size_ + size; font-size: _input_font_ + size;
+  }
+  .hiui-input-{size}.float {
+    height: _input_float_height_ + size;
   }
 }

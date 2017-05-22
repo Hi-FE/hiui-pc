@@ -1,7 +1,7 @@
 @import '../../style/';
 
 .hiui-select {
-  cursor:pointer; transition:border-color .3s, box-shadow .3s; position:relative; height:_select_height_md; width:_select_width_md; padding:0 15px 0 10px; border-radius: 2px; border:1px solid _grey; display:inline-block;
+  cursor:pointer; transition:border-color .3s, box-shadow .3s; position:relative; padding:0 15px 0 10px; border-radius: 2px; border:1px solid _grey; display:inline-block;
 
 
   &.hover {
@@ -78,7 +78,7 @@
     }
 
     .arrow {
-      transition: transform .3s, border-color .3s; border:1px solid _grey; border-width:0 1px 1px 0; width:8px; height:8px; position:absolute; z-index:1; right:0; top:50%; transform:translateY(-50%) rotate(45deg)
+      margin-top:-1px;transform-origin: center 5px;transition: transform .3s, border-color .3s; border:1px solid _grey; border-width:0 1px 1px 0; width:8px; height:8px; position:absolute; z-index:1; right:0; top:50%; transform:translateY(-50%) rotate(45deg)
     }
 
   }
@@ -91,7 +91,10 @@
 
 for size in _size {
   .hiui-select-{size} {
-    font-size: _select_font_ + size; height:_select_height_ + size; width:_select_width_ + size;
+    font-size: _select_font_ + size; height:_size_ + size; width:_select_width_ + size;
+  }
+  .hiui-select-{size}.float {
+    height:_select_float_height_ + size;
   }
 }
 

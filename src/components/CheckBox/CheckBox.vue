@@ -2,7 +2,7 @@
   <span :class="component_class">
     <span class="box">
       <transition name="bounce">
-        <i class="item" :style="{ backgroundColor: color }" v-show="active"></i>
+        <i class="item" :style="{ backgroundColor: color }" v-show="is_active"></i>
       </transition>
     </span>
     <input class="hidden-input" :id="_uid" type="checkbox" :value="cur_value" @click="triggerHandler(cur_value)">
@@ -29,7 +29,10 @@
       color: String,
       disabled: Boolean,
       value: {},
-      checked: Array
+      checked: {
+        type: Array,
+        default: () => []
+      }
     },
     model: {
       prop: 'checked',
@@ -37,7 +40,7 @@
     },
     data () {
       return {
-        active: false
+        cur_checked: []
       }
     },
     computed: {
@@ -47,28 +50,34 @@
           `${prefixCls}-${this.size}`,
           {
             disabled: this.disabled,
-            active: this.active
+            active: this.is_active
           }
         ]
+      },
+      is_active: function () {
+        return this.cur_checked.findIndex(item => this.cur_value === item) !== -1
       },
       cur_value: function () {
         return this.value || this.$slots.default[0].text
       }
     },
+    watch: {
+      checked: function (checked) {
+        this.cur_checked = [].concat(checked)
+      }
+    },
     created: function () {
-      const { checked, cur_value } = this;
-      if (!this.disabled) this.active = checked.findIndex(item => cur_value === item) !== -1
+      this.cur_checked = [].concat(this.checked)
     },
     methods: {
       triggerHandler: function (target) {
         if (this.disabled) return;
-        let checked = [].concat(this.checked)
+        let checked = this.cur_checked
         let index = checked.findIndex(item => {
           return item === target
         })
         if (index !== -1) checked.splice(index, 1)
         else checked.push(target)
-        this.active = index === -1
         this.$emit('input', checked);
       }
     }

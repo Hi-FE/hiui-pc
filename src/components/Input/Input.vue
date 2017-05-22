@@ -82,11 +82,11 @@
     },
     computed: {
       component_class () {
-        const { is_error, is_focus, disabled, is_animated, size, type, with_border } = this;
+        const { is_error, is_focus, disabled, is_animated, size, type, with_border, label } = this;
         return [
           prefixCls,
           `${prefixCls}-${size}`,
-          { error: is_error, focus: is_focus, disabled, animated: is_animated, 'with-border': with_border, textarea: type === 'textarea' }
+          { error: is_error, focus: is_focus, disabled, animated: is_animated, 'with-border': with_border, textarea: type === 'textarea', float: label != null }
         ]
       },
       custom_style: function () {

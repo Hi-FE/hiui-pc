@@ -37,6 +37,7 @@
     },
     data () {
       return {
+        cur_checked: ''
       }
     },
     computed: {
@@ -49,8 +50,8 @@
         ]
       },
       is_active: function () {
-        const { cur_value, checked } = this;
-        return cur_value === checked
+        const { cur_value, cur_checked } = this;
+        return cur_value === cur_checked
       },
       active_style: function () {
         return {
@@ -61,11 +62,18 @@
         return this.value || this.$slots.default[0].text
       }
     },
+    watch: {
+      checked: function (checked) {
+        this.cur_checked = checked;
+      }
+    },
+    created: function () {
+      this.cur_checked = this.checked
+    },
     methods: {
       triggerHandler: function (value) {
-        const { checked } = this
-        value = checked === value && checked ? '' : value;
-        this.$emit('input', value)
+        this.cur_checked = this.cur_checked === value && this.cur_checked ? '' : value;
+        this.$emit('input', this.cur_checked)
       }
     }
   }

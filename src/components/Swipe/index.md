@@ -32,4 +32,4 @@
 | free | 滑块自由滑动  | `Boolean` | false |
 | coverflow | coverflow过渡效果  | `Boolean` | false |
 | autoplay | 自动滑动  | `Boolean` | false |
-| refresh_by | 指定数据源，用于刷新Swipe，可以使用v-if代替 | - | - |
+| update_by | 指定更新数据源，Swipe会监听它，用于更新Swipe状态 | - | - |

@@ -68,7 +68,7 @@
       index_trigger: { type: [String, Boolean], default: 'click' },
       trigger: { type: String, default: 'change' },
       arrow: { type: [String, Boolean], default: 'hover' },
-      refresh_by: {}
+      update_by: {}
     },
     data () {
       return {
@@ -172,10 +172,13 @@
         if (!swiper || (trigger === 'progress' && is_sliding)) return;
         swiper.slideTo(this.getRealIndex(index))
       },
-      refresh_by: function () {
-        this.$nextTick(() => {
-          this.update();
-        })
+      update_by: {
+        deep: true,
+        handler: function () {
+          this.$nextTick(() => {
+            this.update();
+          })
+        }
       },
       reset: function () {
         this.swiper.destroy(true, true);
@@ -188,7 +191,7 @@
         this.inited = true;
       },
       update: function () {
-        this.swiper && this.swiper.update();
+        this.swiper && this.swiper.update(true);
         this.$emit('inited');
       },
       slideTo: function (target, active) {

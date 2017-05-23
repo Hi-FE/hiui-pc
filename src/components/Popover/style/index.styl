@@ -99,6 +99,11 @@ triangle(_size, _color, _direction, _inner_triangle) {
   background-color: #fff;
   min-width: 180px;
   border: 1px solid #ccc;
+  border-radius: _border_radius;
+
+  &-use_shadow {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04);
+  }
 
   _multilocations = left, left-top, left-bottom, right, right-top, right-bottom, top, top-left, top-right, bottom, bottom-left, bottom-right;
 

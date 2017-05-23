@@ -1,5 +1,5 @@
 <template>
-  <transition name="fade" @after-leave="afterLeave">
+  <transition name="hiui-modal-fade" @after-leave="afterLeave">
     <div v-show="modal_show" v-if="isExist" :class="component_class" :style="component_style">
       <div v-if="use_mask" class="hiui-modal-mask" @click="closeModal('mask')"></div>
       <transition :name="transitionName[type]">
@@ -17,12 +17,12 @@
 <style lang="stylus">
   @import './style/';
 
-  fade();
-  bounce-center();
-  slide-down();
-  slide-up();
-  slide-left();
-  slide-right();
+  fade('hiui-modal-');
+  bounce-center('hiui-modal-');
+  slide-down('hiui-modal-');
+  slide-up('hiui-modal-');
+  slide-left('hiui-modal-');
+  slide-right('hiui-modal-');
 </style>
 
 <script>
@@ -81,11 +81,11 @@
         modal_show: this.show,
         isExist: this.render_type === 'show' || this.show,
         transitionName: {
-          center: 'bounce-center',
-          top: 'slide-down',
-          bottom: 'slide-up',
-          left: 'slide-right',
-          right: 'slide-left'
+          center: 'hiui-modal-bounce-center',
+          top: 'hiui-modal-slide-down',
+          bottom: 'hiui-modal-slide-up',
+          left: 'hiui-modal-slide-right',
+          right: 'hiui-modal-slide-left'
         }
       }
     },
@@ -152,9 +152,6 @@
       afterLeave () {
         this.isExist = this.render_type === 'show'
       }
-    },
-    mounted () {
-      console.log(this.$slots)
     }
   }
 </script>

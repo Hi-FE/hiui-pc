@@ -102,7 +102,6 @@
           loop: loop,
           initialSlide: value,
           autoplay: autoplay ? autoplay_speed : undefined,
-          slideToClickedSlide: true,
           onInit: () => {
             this.$emit('inited');
           },
@@ -115,6 +114,7 @@
         }
         // coverflow config
         const coverflow = this.coverflow ? {
+          slideToClickedSlide: true,
           centeredSlides: true,
           effect: 'coverflow',
           coverflow: {

@@ -1,6 +1,6 @@
 <template>
   <span>
-    <transition name="fade">
+    <transition :name="transitionName[reverse_type]">
       <div ref="popover" v-show="show" :class="component_class" :style="component_style">
         <slot></slot>
       </div>
@@ -11,7 +11,12 @@
 
 <style lang="stylus">
   @import './style/';
-  fade();
+
+  _t = .3s;
+  slide-down('hiui-popover-', _t);
+  slide-up('hiui-popover-', _t);
+  slide-left('hiui-popover-', _t);
+  slide-right('hiui-popover-', _t);
 </style>
 
 <script>
@@ -58,7 +63,12 @@
         default: true,
         type: [String, Boolean]
       },
-      width: Number
+      use_shadow: {
+        default: true,
+        type: [String, Boolean]
+      },
+      width: Number,
+      border_radius: Number
     },
     data () {
       return {
@@ -71,10 +81,19 @@
         timer: null,
         reverse: false,
         scrollTop: 0,
-        scrollLeft: 0
+        scrollLeft: 0,
+        transitionName: {
+          top: 'hiui-popover-slide-down',
+          bottom: 'hiui-popover-slide-up',
+          left: 'hiui-popover-slide-right',
+          right: 'hiui-popover-slide-left'
+        }
       }
     },
     watch: {
+      show (val) {
+        val ? this.$emit('show') : this.$emit('hide')
+      },
       scrollTop (val) {
         if (this.show) {
           this.updateTrigger()
@@ -124,7 +143,8 @@
         return [
           prefixCls,
           {
-            [`${prefixCls}-${this.current_placement}`]: this.show_arrow
+            [`${prefixCls}-${this.current_placement}`]: this.show_arrow,
+            [`${prefixCls}-use_shadow`]: this.use_shadow
           }
         ]
       },
@@ -134,11 +154,11 @@
       component_width () {
         return {
           width: this.width ? `${this.width}px` : '',
+          borderRadius: this.border_radius ? `${this.border_radius}px` : '',
           borderColor: this.border_color
         }
       },
       component_border () {
-        console.log(this.border_color)
         return this.border_color === false ? {
           border: 'none'
         } : {}
@@ -220,7 +240,6 @@
         this.$nextTick(this.update)
       },
       close () {
-        console.log('close')
         this.timer = setTimeout(() => {
           this.show = false
           this.timer = null
@@ -250,8 +269,12 @@
       }
     },
     mounted () {
-      let el = this.reference = this.$slots.reference[0].elm || this.$refs.reference
+      let el = this.reference = this.$refs.reference
       let popover = this.$refs.popover
+
+      if (!el && this.$slots.reference && this.$slots.reference[0]) {
+        el = this.reference = this.$slots.reference[0].elm
+      }
 
       switch (this.trigger) {
         case 'hover': {

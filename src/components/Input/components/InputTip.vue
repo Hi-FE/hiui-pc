@@ -1,6 +1,6 @@
 <template>
   <div :class="component_class">
-    <transition name="slide-up">
+    <transition name="float-up">
       <div class="tip-wrapper" v-show="is_correct || is_error">
 
           <!-- 成功提示 -->
@@ -33,8 +33,8 @@
       }
     }
   }
-  .slide-up-enter-active, .slide-up-leave-active {transition: opacity .3s, transform .3s; }
-  .slide-up-enter, .slide-up-leave-active {opacity: 0;transform: translateY(15px) }
+  .float-up-enter-active, .float-up-leave-active {transition: opacity .3s, transform .3s; }
+  .float-up-enter, .float-up-leave-active {opacity: 0;transform: translateY(15px) }
 </style>
 
 <script>

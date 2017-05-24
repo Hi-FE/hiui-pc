@@ -57,6 +57,7 @@
       label: String,
       icon: String,
       default_first: Boolean,
+      clear_invalid: Boolean,
       disabled: Boolean,
       float: Boolean
     },
@@ -148,7 +149,8 @@
       },
       dealErrorValue: function () {
         const { is_error_value } = this;
-        // value不存在data中，则清空或者应用第一个选项
+        if (!this.clear_invalid) return;
+        // value不存在data中，则清空
         if (is_error_value) {
           this.$emit('input', '');
           this.$emit('verify', false);

@@ -152,6 +152,9 @@
       afterLeave () {
         this.isExist = this.render_type === 'show'
       }
+    },
+    destroyed () {
+      document.documentElement.classList.remove('hiui-modal-banScroll')
     }
   }
 </script>

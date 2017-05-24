@@ -32,6 +32,7 @@
 | float | 标题是否浮动 | `Boolean` | `false` |
 | disabled | 是否禁用 | `Boolean` | `false` |
 | default_first | 是否默认选中第一个选项 | `Boolean` | `false` |
+| clear_invalid | 是否自动清空无效值, 如果value并未存在data数据中 | `Boolean` | `false` |
 
 
 | 事件 | 说明 | 类型 | 使用 | 结果 |

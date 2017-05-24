@@ -123,15 +123,8 @@
     },
     methods: {
       verifyHandler: function (verify_result) {
-        const { is_edited, no_verify } = this;
+        const { no_verify } = this;
         this.verify_result = verify_result;
-        if (verify_result && is_edited) {
-          this.is_error = !no_verify && !verify_result || !!this.custom_tip;
-          this.is_correct = !no_verify && verify_result && !this.custom_tip;
-        } else {
-          this.is_error = false
-          this.is_correct = false;
-        }
         this.$emit('verify', no_verify || verify_result)
       },
       focusHandler: function () {

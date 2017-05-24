@@ -27,7 +27,7 @@
     <demo-item name="style" description="自定义样式" :code="style_code" slot="right">
       <div class="btn-group">
         <Btn class="solid-btn" prefix="rollback">Back</Btn>
-        <Btn class="star-btn" size="lg" prefix="search">查询航班</Btn>
+        <Btn class="star-btn" prefix="star">Star</Btn>
         <Btn class="cir-btn" prefix="search"></Btn>
         <Btn class="fixed-width-btn" suffix="shoppingcart" size="lg">购买</Btn>
       </div>

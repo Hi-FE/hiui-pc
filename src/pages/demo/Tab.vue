@@ -5,19 +5,19 @@
     </demo-item>
 
     <demo-item name="type" description="类型" :code="type_code" slot="right">
-      <Tab :data="['标签一', '标签二', '标签三']" v-model="type_index" type="no_padding"></Tab>
-      <Tab :data="['标签一', '标签二', '标签三']" v-model="type_index" type="fix_width"></Tab>
-      <Tab :data="['标签一', '标签二', '标签三']" v-model="type_index" type="fix_width:25%"></Tab>
+      <Tab :data="['标签一', '标签二', '标签三']" v-model="type_index" :type="'no_padding'"></Tab>
+      <Tab :data="['标签一', '标签二', '标签三']" v-model="type_index" :type="'fix_width'"></Tab>
+      <Tab :data="['标签一', '标签二', '标签三']" v-model="type_index" :type="'fix_width:25%'"></Tab>
     </demo-item>
 
     <demo-item name="theme" description="主题" :code="theme_code" slot="left">
       <Tab :data="['标签一', '标签二', '标签三']" v-model="theme_index"></Tab>
-      <Tab :data="['标签一', '标签二', '标签三']" v-model="theme_index" theme="card"></Tab>
-      <Tab :data="['标签一', '标签二', '标签三']" v-model="theme_index" theme="ticket" type="fix_width"></Tab>
+      <Tab :data="['标签一', '标签二', '标签三']" v-model="theme_index" :theme="'card'"></Tab>
+      <Tab :data="['标签一', '标签二', '标签三']" v-model="theme_index" :theme="'ticket'" :type="'fix_width'"></Tab>
     </demo-item>
 
     <demo-item name="trigger" description="触发类型" :code="trigger_code" slot="right">
-      <Tab :data="['标签一', '标签二', '标签三']" v-model="trigger_index" trigger="hover"></Tab>
+      <Tab :data="['标签一', '标签二', '标签三']" v-model="trigger_index" :trigger="'hover'"></Tab>
     </demo-item>
 
     <demo-item name="icon" description="图标" :code="icon_code" slot="left">
@@ -74,14 +74,14 @@
 <Tab :data="['标签一', '标签二', '标签三']" v-model="default_index"></Tab>
         `,
         type_code: `
-<Tab :data="['标签一', '标签二', '标签三']" v-model="type_index" type="no_padding"></Tab>
-<Tab :data="['标签一', '标签二', '标签三']" v-model="type_index" type="fix_width"></Tab>
-<Tab :data="['标签一', '标签二', '标签三']" v-model="type_index" type="fix_width:25%"></Tab>
+<Tab :data="['标签一', '标签二', '标签三']" v-model="type_index" :type="'no_padding'"></Tab>
+<Tab :data="['标签一', '标签二', '标签三']" v-model="type_index" :type="'fix_width'"></Tab>
+<Tab :data="['标签一', '标签二', '标签三']" v-model="type_index" :type="'fix_width:25%'"></Tab>
         `,
         theme_code: `
 <Tab :data="['标签一', '标签二', '标签三']" v-model="theme_index"></Tab>
-<Tab :data="['标签一', '标签二', '标签三']" v-model="theme_index" theme="card"></Tab>
-<Tab :data="['标签一', '标签二', '标签三']" v-model="theme_index" theme="ticket" type="fix_width"></Tab>
+<Tab :data="['标签一', '标签二', '标签三']" v-model="theme_index" :theme="'card'"></Tab>
+<Tab :data="['标签一', '标签二', '标签三']" v-model="theme_index" :theme="'ticket'" :type="'fix_width'"></Tab>
         `,
         trigger_code: `
 <Tab :data="['标签一', '标签二', '标签三']" v-model="trigger_index" trigger="hover"></Tab>

@@ -3,21 +3,21 @@
     <demo-item name="placement" description="位置" :code="code" slot="left">
       <div class="wrap">
         <div class="top">
-          <Popover placement="top-left">
+          <Popover :placement="'top-left'">
             <div class="test">
               Popover <br />
               This is a test txt.
             </div>
             <Btn slot="reference">上左</Btn>
           </Popover>
-          <Popover placement="top">
+          <Popover :placement="'top'">
             <div class="test">
               Popover <br />
               This is a test txt.
             </div>
             <Btn slot="reference">上中</Btn>
           </Popover>
-          <Popover placement="top-right">
+          <Popover :placement="'top-right'">
             <div class="test">
               Popover <br />
               This is a test txt.
@@ -28,21 +28,21 @@
 
         <div class="center">
           <div class="left">
-            <Popover placement="left-top">
+            <Popover :placement="'left-top'">
               <div class="test">
                 Popover <br />
                 This is a test txt.
               </div>
               <Btn slot="reference">左上</Btn>
             </Popover>
-            <Popover placement="left">
+            <Popover :placement="'left'">
               <div class="test">
                 Popover <br />
                 This is a test txt.
               </div>
               <Btn slot="reference">左中</Btn>
             </Popover>
-            <Popover placement="left-bottom">
+            <Popover :placement="'left-bottom'">
               <div class="test">
                 Popover <br />
                 This is a test txt.
@@ -52,21 +52,21 @@
           </div>
 
           <div class="right">
-            <Popover placement="right-top">
+            <Popover :placement="'right-top'">
               <div class="test">
                 Popover <br />
                 This is a test txt.
               </div>
               <Btn slot="reference">右上</Btn>
             </Popover>
-            <Popover placement="right">
+            <Popover :placement="'right'">
               <div class="test">
                 Popover <br />
                 This is a test txt.
               </div>
               <Btn slot="reference">右中</Btn>
             </Popover>
-            <Popover placement="right-bottom">
+            <Popover :placement="'right-bottom'">
               <div class="test">
                 Popover <br />
                 This is a test txt.
@@ -77,21 +77,21 @@
         </div>
 
         <div class="bottom">
-          <Popover placement="bottom-left">
+          <Popover :placement="'bottom-left'">
             <div class="test">
               Popover <br />
               This is a test txt.
             </div>
             <Btn slot="reference">下左</Btn>
           </Popover>
-          <Popover placement="bottom">
+          <Popover :placement="'bottom'">
             <div class="test">
               Popover <br />
               This is a test txt.
             </div>
             <Btn slot="reference">下中</Btn>
           </Popover>
-          <Popover placement="bottom-right">
+          <Popover :placement="'bottom-right'">
             <div class="test">
               Popover <br />
               This is a test txt.
@@ -201,62 +201,62 @@
         show: true,
         val: '',
         code: `
-<Popover placement="top-left">
+<Popover :placement="'top-left'">
   <content></content>
   <Btn slot="reference">上左</Btn>
 </Popover>
 
-<Popover placement="top">
+<Popover :placement="'top'">
   <content></content>
   <Btn slot="reference">上中</Btn>
 </Popover>
 
-<Popover placement="top-right">
+<Popover :placement="'top-right'">
   <content></content>
   <Btn slot="reference">上右</Btn>
 </Popover>
 
-<Popover placement="left-top">
+<Popover :placement="'left-top'">
   <content></content>
   <Btn slot="reference">左上</Btn>
 </Popover>
 
-<Popover placement="left">
+<Popover :placement="'left'">
   <content></content>
   <Btn slot="reference">左中</Btn>
 </Popover>
 
-<Popover placement="left-bottom">
+<Popover :placement="'left-bottom'">
   <content></content>
   <Btn slot="reference">左下</Btn>
 </Popover>
 
-<Popover placement="right-top">
+<Popover :placement="'right-top'">
   <content></content>
   <Btn slot="reference">右上</Btn>
 </Popover>
 
-<Popover placement="right">
+<Popover :placement="'right'">
   <content></content>
   <Btn slot="reference">右中</Btn>
 </Popover>
 
-<Popover placement="right-bottom">
+<Popover :placement="'right-bottom'">
   <content></content>
   <Btn slot="reference">右下</Btn>
 </Popover>
 
-<Popover placement="bottom-left">
+<Popover :placement="'bottom-left'">
   <content></content>
   <Btn slot="reference">下左</Btn>
 </Popover>
 
-<Popover placement="bottom">
+<Popover :placement="'bottom'">
   <content></content>
   <Btn slot="reference">下中</Btn>
 </Popover>
 
-<Popover placement="bottom-right">
+<Popover :placement="'bottom-right'">
   <content></content>
   <Btn slot="reference">下右</Btn>
 </Popover>

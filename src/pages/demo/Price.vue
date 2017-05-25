@@ -8,8 +8,8 @@
 
     <demo-item name="color" description="颜色" :code="color_code" slot="right">
       <Price>99</Price>
-      <Price color="#00a0e9">998</Price>
-      <Price color="rgba(99, 99, 99, 1)">9998</Price>
+      <Price :color="'#00a0e9'">998</Price>
+      <Price :color="'rgba(99, 99, 99, 1)'">9998</Price>
     </demo-item>
 
     <demo-item name="super" description="价格符号对其文本上标" :code="super_code" slot="left">
@@ -51,8 +51,8 @@
         `,
         color_code: `
 <Price>99</Price>
-<Price color="#00a0e9">998</Price>
-<Price color="rgba(99, 99, 99, 1)">9998</Price>
+<Price :color="'#00a0e9'">998</Price>
+<Price :color="'rgba(99, 99, 99, 1)'">9998</Price>
         `,
         super_code: `
 <Price :super="true">24</Price>

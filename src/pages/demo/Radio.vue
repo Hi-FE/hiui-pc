@@ -7,9 +7,9 @@
       <p class="radio-result">已选中：{{ test }}</p>
     </demo-item>
     <demo-item name="value" description="指定值" :code="value_code" slot="right">
-      <Radio :value="1" v-model="value_test">单选按钮</Radio>
-      <Radio :value="2" v-model="value_test">单选按钮2</Radio>
-      <Radio :value="3" v-model="value_test">单选按钮3</Radio>
+      <Radio :value="0" v-model="value_test">单选按钮</Radio>
+      <Radio :value="1" v-model="value_test">单选按钮2</Radio>
+      <Radio :value="2" v-model="value_test">单选按钮3</Radio>
       <p class="radio-result">已选中：{{ value_test }}</p>
     </demo-item>
     <demo-item name="status" description="状态" :code="status_code" slot="left">
@@ -36,7 +36,7 @@
     data () {
       return {
         test: '',
-        value_test: '',
+        value_test: 0,
         status_test: '',
         color_test: '',
         code: `

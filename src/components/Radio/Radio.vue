@@ -29,6 +29,7 @@
         type: String
       },
       color: String,
+      reselect: Boolean,
       disabled: Boolean
     },
     model: {
@@ -59,7 +60,7 @@
         }
       },
       cur_value: function () {
-        return this.value || this.$slots.default[0].text
+        return this.value == null ? this.$slots.default[0].text : this.value
       }
     },
     watch: {
@@ -72,7 +73,7 @@
     },
     methods: {
       triggerHandler: function (value) {
-        this.cur_checked = this.cur_checked === value && this.cur_checked ? '' : value;
+        this.cur_checked = this.reselect && this.cur_checked === value && this.cur_checked !== '' ? '' : value;
         this.$emit('input', this.cur_checked)
       }
     }

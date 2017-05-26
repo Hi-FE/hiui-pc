@@ -58,7 +58,7 @@
         return this.cur_checked.findIndex(item => this.cur_value === item) !== -1
       },
       cur_value: function () {
-        return this.value || this.$slots.default[0].text
+        return this.value == null ? this.$slots.default[0].text : this.value
       }
     },
     watch: {

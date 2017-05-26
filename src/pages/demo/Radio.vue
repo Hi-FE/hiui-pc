@@ -22,6 +22,11 @@
       <Radio color="rgb(0, 160, 233)" v-model="color_test">单选按钮2(蓝色)</Radio>
       <p class="radio-result">已选中：{{ color_test }}</p>
     </demo-item>
+    <demo-item name="reselect" description="重选(选中状态再次点击则取消)" :code="reselect_code" slot="left">
+      <Radio v-model="reselect_test" :reselect="true">单选按钮</Radio>
+      <Radio v-model="reselect_test" :reselect="true">单选按钮2</Radio>
+      <p class="radio-result">已选中：{{ reselect_test }}</p>
+    </demo-item>
   </demo>
 </template>
 
@@ -39,6 +44,7 @@
         value_test: 0,
         status_test: '',
         color_test: '',
+        reselect_test: '',
         code: `
 <Radio v-model="test" size="sm">单选按钮</Radio>
 <Radio v-model="test" size="md">单选按钮2</Radio>
@@ -60,6 +66,11 @@
 <Radio v-model="color_test">单选按钮</Radio>
 <Radio color="rgb(0, 160, 233)" v-model="color_test">单选按钮2(蓝色)</Radio>
 <p class="radio-result">已选中：{{ color_test }}</p>
+        `,
+        reselect_code: `
+<Radio v-model="reselect_test" :reselect="true">单选按钮</Radio>
+<Radio v-model="reselect_test" :reselect="true">单选按钮2</Radio>
+<p class="radio-result">已选中：{{ reselect_test }}</p>
         `
       }
     }

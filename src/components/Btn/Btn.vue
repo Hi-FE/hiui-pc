@@ -1,5 +1,5 @@
 <template>
-  <button :class="component_class" @click="handleClick">
+  <button :class="component_class" @click="handleClick" :disabled="disabled">
     <Icon v-if="is_loading" name="loading" :rotate="true"></Icon>
     <Icon v-if="!is_loading && prefix" :name="prefix"></Icon>
     <span v-if="loading_text">

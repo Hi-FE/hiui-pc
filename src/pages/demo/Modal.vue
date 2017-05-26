@@ -8,25 +8,25 @@
       </Modal>
 
       <Btn @click="top_show = true">Top Modal</Btn>
-      <Modal type="top" v-model="top_show">
+      <Modal :type="'top'" v-model="top_show">
         <h1>Title</h1>
         <p>This is a test txt.</p>
       </Modal>
 
       <Btn @click="bottom_show = true">Bottom Modal</Btn>
-      <Modal type="bottom" v-model="bottom_show">
+      <Modal :type="'bottom'" v-model="bottom_show">
         <h1>Title</h1>
         <p>This is a test txt.</p>
       </Modal>
 
       <Btn @click="left_show = true">Left Modal</Btn>
-      <Modal type="left" v-model="left_show">
+      <Modal :type="'left'" v-model="left_show">
         <h1>Title</h1>
         <p>This is a test txt.</p>
       </Modal>
 
       <Btn @click="right_show = true">Right Modal</Btn>
-      <Modal type="right" v-model="right_show">
+      <Modal :type="'right'" v-model="right_show">
         <h1>Title</h1>
         <p>This is a test txt.</p>
       </Modal>
@@ -102,22 +102,22 @@
   <p>This is a test txt.</p>
 </Modal>
 
-<Modal type="top" v-model="top_show">
+<Modal :type="'top'" v-model="top_show">
   <h1>Title</h1>
   <p>This is a test txt.</p>
 </Modal>
 
-<Modal type="bottom" v-model="bottom_show">
+<Modal :type="'bottom'" v-model="bottom_show">
   <h1>Title</h1>
   <p>This is a test txt.</p>
 </Modal>
 
-<Modal type="left" v-model="left_show">
+<Modal :type="'left'" v-model="left_show">
   <h1>Title</h1>
   <p>This is a test txt.</p>
 </Modal>
 
-<Modal type="right" v-model="right_show">
+<Modal :type="'right'" v-model="right_show">
   <h1>Title</h1>
   <p>This is a test txt.</p>
 </Modal>
@@ -129,7 +129,7 @@
 </Modal>
         `,
         mask_show_code: `
-<Modal modal_class="blue-modal" :use_mask="false" v-model="mask_show">
+<Modal :use_mask="false" v-model="mask_show">
   <h1>Title</h1>
   <p>This is a test txt.</p>
 </Modal>

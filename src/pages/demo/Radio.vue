@@ -1,9 +1,9 @@
 <template>
   <demo title="Radio" class="radio-demo">
     <demo-item name="size" description="大小" :code="code" slot="left">
-      <Radio v-model="test" size="sm">单选按钮</Radio>
-      <Radio v-model="test" size="md">单选按钮2</Radio>
-      <Radio v-model="test" size="lg">单选按钮3</Radio>
+      <Radio v-model="test" :size="'sm'">单选按钮</Radio>
+      <Radio v-model="test" :size="'md'">单选按钮2</Radio>
+      <Radio v-model="test" :size="'lg'">单选按钮3</Radio>
       <p class="radio-result">已选中：{{ test }}</p>
     </demo-item>
     <demo-item name="value" description="指定值" :code="value_code" slot="right">
@@ -19,7 +19,7 @@
     </demo-item>
     <demo-item name="color" description="颜色" :code="color_code" slot="right">
       <Radio v-model="color_test">单选按钮</Radio>
-      <Radio color="rgb(0, 160, 233)" v-model="color_test">单选按钮2(蓝色)</Radio>
+      <Radio :color="'rgb(0, 160, 233)'" v-model="color_test">单选按钮2(蓝色)</Radio>
       <p class="radio-result">已选中：{{ color_test }}</p>
     </demo-item>
     <demo-item name="reselect" description="重选(选中状态再次点击则取消)" :code="reselect_code" slot="left">
@@ -46,9 +46,9 @@
         color_test: '',
         reselect_test: '',
         code: `
-<Radio v-model="test" size="sm">单选按钮</Radio>
-<Radio v-model="test" size="md">单选按钮2</Radio>
-<Radio v-model="test" size="lg">单选按钮3</Radio>
+<Radio v-model="test" :size="'sm'">单选按钮</Radio>
+<Radio v-model="test" :size="'md'">单选按钮2</Radio>
+<Radio v-model="test" :size="'lg'">单选按钮3</Radio>
 <p class="radio-result">已选中：{{ test }}</p>
         `,
         value_code: `
@@ -64,7 +64,7 @@
         `,
         color_code: `
 <Radio v-model="color_test">单选按钮</Radio>
-<Radio color="rgb(0, 160, 233)" v-model="color_test">单选按钮2(蓝色)</Radio>
+<Radio :color="'rgb(0, 160, 233)'" v-model="color_test">单选按钮2(蓝色)</Radio>
 <p class="radio-result">已选中：{{ color_test }}</p>
         `,
         reselect_code: `

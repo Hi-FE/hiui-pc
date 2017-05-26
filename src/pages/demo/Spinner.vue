@@ -1,9 +1,9 @@
 <template>
   <demo title="Spinner" class="spinner-demo">
     <demo-item name="color" description="颜色" :code="color_code" slot="left">
-      <Spinner color="pink"></Spinner>
-      <Spinner color="#87db83"></Spinner>
-      <Spinner color="rgba(255, 66, 66, 1)"></Spinner>
+      <Spinner :color="'pink'"></Spinner>
+      <Spinner :color="'#87db83'"></Spinner>
+      <Spinner :color="'rgba(255, 66, 66, 1)'"></Spinner>
     </demo-item>
 
     <demo-item name="size" description="尺寸" :code="size_code" slot="right">
@@ -51,9 +51,9 @@
 <Spinner :size="60"></Spinner>
         `,
         color_code: `
-<Spinner color="pink"></Spinner>
-<Spinner color="#87db83"></Spinner>
-<Spinner color="rgba(255, 66, 66, 1)"></Spinner>
+<Spinner :color="'pink'"></Spinner>
+<Spinner :color="'#87db83'"></Spinner>
+<Spinner :color="'rgba(255, 66, 66, 1)'"></Spinner>
         `,
         wrap_code: `
 <article class="article">

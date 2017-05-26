@@ -2,14 +2,14 @@
   <demo title="Switch" class="switch-demo">
     <!-- Size -->
     <demo-item name="size" description="尺寸" :code="code" slot="left">
-      <vSwitch size="sm" v-model="val"></vSwitch>
-      <vSwitch size="md" v-model="val"></vSwitch>
-      <vSwitch size="lg" v-model="val"></vSwitch>
+      <vSwitch :size="'sm'" v-model="val"></vSwitch>
+      <vSwitch :size="'md'" v-model="val"></vSwitch>
+      <vSwitch :size="'lg'" v-model="val"></vSwitch>
     </demo-item>
 
     <!-- Color -->
     <demo-item name="style" description="自定义样式" :code="color_code" slot="right">
-      <vSwitch class="green" v-model="val"></vSwitch>
+      <vSwitch :class="'green'" v-model="val"></vSwitch>
     </demo-item>
 
     <!-- Status -->
@@ -48,12 +48,12 @@
     data () {
       return {
         code: `
-<vSwitch size="sm" v-model="val"></vSwitch>
-<vSwitch size="md" v-model="val"></vSwitch>
-<vSwitch size="lg" v-model="val"></vSwitch>
+<vSwitch :size="'sm'" v-model="val"></vSwitch>
+<vSwitch :size="'md'" v-model="val"></vSwitch>
+<vSwitch :size="'lg'" v-model="val"></vSwitch>
         `,
         color_code: `
-<vSwitch class="green" v-model="val"></vSwitch>
+<vSwitch :class="'green'" v-model="val"></vSwitch>
 
 <style lang="stylus">
 .green {

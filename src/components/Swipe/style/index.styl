@@ -1,6 +1,7 @@
 @import '../../style/';
 
 .hiui-swipe {
+  position:relative;
   .indexs {
     position:absolute;z-index:9;left:50%;bottom:_gap_xsm;transform:translateX(-50%);
     .index { display: inline-block;width: _swipe_size;height: _swipe_size;border-radius:100%;background-color:rgba(255,255,255,.5);transition: background-color .3s;cursor:pointer }
@@ -11,23 +12,30 @@
     width: _size_md; height: _size_md; position:absolute;z-index:9;top:50%;transform: translateY(-50%);margin:0;cursor:pointer;
     &.disabled {
       .disabled-mask { display:block }
-      .arrow { background-color: rgba(0,0,0,.1) }
+      .arrow { opacity:.5 }
     }
     &.prev {
-      left: _gap_xsm;
+      left: _gap_xsm - 2;
+      &.outer { left: - + _gap_sm - 2 }
       .arrow.left{
-        &:hover{ transform: translateX(-10%); }
+        left: 0
+        &:not(.outer):hover{ transform: translateX(-10%); }
       }
     }
     &.next{
-      right: _gap_xsm
+      right: _gap_xsm;
+      &.outer { right: - + _gap_sm - 2 }
       .arrow.right{
-        &:hover{ transform: translateX(10%); }
+        right:0
+        &:not(.outer):hover{ transform: translateX(10%); }
       }
     }
+    &.outer { height:_size_o_md;width: _size_o_md*0.5 + 2 }
+
     .arrow{
       transition: transform .3s, background-color .3s;position: absolute;width: _size_md;height: _size_md;display: block;border-radius: 100%;background-color: rgba(0, 0, 0, .2);
       &:hover { background-color:rgba(0, 0, 0, .4) }
+      &.outer { border-radius: 0;background-color:rgba(204, 204, 204, .6);height:_size_o_md;width: _size_o_md*0.5 }
       .icon{
         position: absolute;left:50%;top:50%;transform: translate(-50%,-50%);
       }

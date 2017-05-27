@@ -25,6 +25,7 @@
 | between | 每个滑块之间的间距  | `Number` | 0 |
 | trigger | index的触发时机, 可选值`change`/`progress`  | `String` | change |
 | arrow | 箭头, 可选值`true`/`false`/`'hover'`  | `String, Boolean` | false |
+| outer_arrow | 是否显示外部箭头, 可选值`true`/`false` | `Boolean` | false |
 | index | 显示下标, 可选值`true`/`false`  | `Boolean` | false |
 | index_trigger | 下标触发滑动的方式, 可选值`click`/`hover`/`false`  | `String`/`Boolean` | click |
 | sliding_num | 同时滑动的滑块个数  | `Number` | 1 |
@@ -33,3 +34,9 @@
 | coverflow | coverflow过渡效果  | `Boolean` | false |
 | autoplay | 自动滑动  | `Boolean` | false |
 | update_by | 指定更新数据源，Swipe会监听它，用于更新Swipe状态 | - | - |
+
+| 事件 | 说明 | 类型 | 使用 | 结果 |
+| ----|:----- | ---- | ---- | ---- |
+| slide-to | 滑动到指定index | 触发事件 | `component.$emit('slide-to', 0)` | - |
+| slide-next | 滑动到后一个 | 触发事件 | `component.$emit('slide-next')` | - |
+| slide-prev | 滑动到前一个 | 触发事件 | `component.$emit('slide-prev')` | - |

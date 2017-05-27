@@ -53,6 +53,11 @@
           <div class="content"> {{ index }} <p>无箭头</p> </div>
         </SwipeSlide>
       </Swipe>
+      <Swipe :arrow="true" :outer_arrow="true">
+        <SwipeSlide v-for="(n, index) in 5" :key="index">
+          <div class="content"> {{ index }} <p>外部箭头</p> </div>
+        </SwipeSlide>
+      </Swipe>
     </demo-item>
     <demo-item name="custom slide" description="自定义滑动" :code="sliding_code" slot="left">
       <p>同时展示多个Slide</p>
@@ -101,6 +106,16 @@
           <div class="content"> {{ index }} </div>
         </SwipeSlide>
       </Swipe>
+    </demo-item>
+    <demo-item name="event" description="事件" :code="event_code" slot="right">
+      <Swipe ref="swiper">
+        <SwipeSlide v-for="(n, index) in 5" :key="index">
+          <div class="content"> {{ index }} </div>
+        </SwipeSlide>
+      </Swipe>
+      <Btn @click.native="$refs.swiper.$emit('slide-prev')">前一个</Btn>
+      <Btn @click.native="$refs.swiper.$emit('slide-next')">后一个</Btn>
+      <Btn @click.native="$refs.swiper.$emit('slide-to', 1)">到第二个</Btn>
     </demo-item>
   </demo>
 </template>
@@ -173,6 +188,11 @@
     <div class="content"> {{index}} <p>无箭头</p> </div>
   </SwipeSlide>
 </Swipe>
+<Swipe :arrow="true" :outer_arrow="true">
+  <SwipeSlide v-for="(n, index) in 5" :key="index">
+    <div class="content"> {{ index}} <p>外部箭头</p> </div>
+  </SwipeSlide>
+</Swipe>
         `,
         sliding_code: `
 <p>同时展示多个Slide</p>
@@ -221,6 +241,16 @@
     <div class="content"> {{index}} </div>
   </SwipeSlide>
 </Swipe>
+        `,
+        event_code: `
+<Swipe ref="swiper">
+  <SwipeSlide v-for="(n, index) in 5" :key="index">
+    <div class="content"> {{ index}} </div>
+  </SwipeSlide>
+</Swipe>
+<Btn @click.native="$refs.swiper.$emit('slide-prev')">前一个</Btn>
+<Btn @click.native="$refs.swiper.$emit('slide-next')">后一个</Btn>
+<Btn @click.native="$refs.swiper.$emit('slide-to', 1)">到第二个</Btn>
         `
       }
     }

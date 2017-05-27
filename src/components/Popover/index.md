@@ -29,6 +29,7 @@
 | border_radius | 边框圆角 | `Number` | `3` |
 | use_shadow | 是否有边框阴影 | `Boolean` | `true` |
 | width | 弹出框宽度，默认`最小宽度150px` | `Number` | -  |
+| z_index | 组件的堆叠层级，默认`199` | `Number` | -  |
 
 | 事件 | 说明 | 回调参数 |
 | ---- |:-----| ---- |

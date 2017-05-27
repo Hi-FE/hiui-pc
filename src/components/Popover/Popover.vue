@@ -68,6 +68,7 @@
         type: [String, Boolean]
       },
       width: Number,
+      z_index: Number,
       border_radius: Number
     },
     data () {
@@ -141,7 +142,8 @@
         return {
           width: this.width ? `${this.width}px` : '',
           borderRadius: this.border_radius ? `${this.border_radius}px` : '',
-          borderColor: this.border_color
+          borderColor: this.border_color,
+          zIndex: this.z_index
         }
       },
       component_border () {

@@ -1,6 +1,6 @@
 {
   "name": "hiui-pc",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "UI components for wantu.cn",
   "homepage": "https://hi-fe.github.io/hiui-pc/",
   "main": "./dist/hiuipc.js",

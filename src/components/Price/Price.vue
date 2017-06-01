@@ -1,6 +1,6 @@
 <template>
   <span :class="component_class" :style="component_style">
-    <small>{{ symbol }}</small><em><slot></slot></em><small class="hiui-price-suffix" :style="suffix_style" v-if="suffix">{{ suffix }}</small>
+    <small :style="suffix_style">{{ symbol }}</small><em><slot></slot></em><small class="hiui-price-suffix" :style="suffix_style" v-if="suffix">{{ suffix }}</small>
   </span>
 </template>
 
@@ -39,7 +39,7 @@
         default: '￥'
       },
       suffix: [String, Number],
-      suffix_size: Number
+      text_size: Number
     },
     data () {
       return {
@@ -65,7 +65,7 @@
       },
       suffix_style () {
         return {
-          'font-size': `${this.suffix_size}px`
+          'font-size': `${this.text_size}px`
         }
       }
     }

@@ -25,6 +25,6 @@
 | super | 价格符号是否对其文本的上标  | `Boolean` | `false` |
 | delete | 是否为`Del`样式  | `Boolean` | `false` |
 | suffix | 后缀文本  | `String/Number` | - |
-| suffix_size | 后缀文本字体大小  | `Number` | `16` |
-| no_shrink | 价格符号不缩小  | `Boolean` | `false` |
+| text_size | 文本和符号大小  | `Number` | - |
+| no_shrink | 文本和符号价格符号不缩小  | `Boolean` | `false` |
 | symbol | 价格符号  | `String` | `￥` |

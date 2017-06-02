@@ -28,6 +28,9 @@
 | outer_arrow | 是否显示外部箭头, 可选值`true`/`false` | `Boolean` | false |
 | index | 显示下标, 可选值`true`/`false`  | `Boolean` | false |
 | index_trigger | 下标触发滑动的方式, 可选值`click`/`hover`/`false`  | `String`/`Boolean` | click |
+| arrow_offset | 箭头y轴偏差   | `Number` | - |
+| index_x_offset | 下标x轴偏差  | `Number` | - |
+| index_y_offset | 下标y轴偏差  | `Number` | - |
 | sliding_num | 同时滑动的滑块个数  | `Number` | 1 |
 | loop | 无限循环滑动  | `Boolean` | true |
 | free | 滑块自由滑动  | `Boolean` | false |

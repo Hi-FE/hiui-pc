@@ -36,6 +36,11 @@
           <div class="content"> {{ index }} <p>index hover触发滑动</p></div>
         </SwipeSlide>
       </Swipe>
+      <Swipe :index="true" :index_x_offset="15" :index_y_offset="-10">
+        <SwipeSlide v-for="(n, index) in 5" :key="index">
+          <div class="content"> {{ index }} <p>调整下标偏差</p></div>
+        </SwipeSlide>
+      </Swipe>
     </demo-item>
     <demo-item name="arrow" description="箭头" :code="arrow_code" slot="right">
       <Swipe>
@@ -56,6 +61,11 @@
       <Swipe :arrow="true" :outer_arrow="true">
         <SwipeSlide v-for="(n, index) in 5" :key="index">
           <div class="content"> {{ index }} <p>外部箭头</p> </div>
+        </SwipeSlide>
+      </Swipe>
+      <Swipe :arrow="true" :outer_arrow="true" :arrow_offset="-15">
+        <SwipeSlide v-for="(n, index) in 5" :key="index">
+          <div class="content"> {{ index }} <p>调整箭头偏差</p> </div>
         </SwipeSlide>
       </Swipe>
     </demo-item>
@@ -171,6 +181,11 @@
     <div class="content"> {{index}} <p>index hover触发滑动</p></div>
   </SwipeSlide>
 </Swipe>
+<Swipe :index="true" :index_x_offset="15" :index_y_offset="-10">
+  <SwipeSlide v-for="(n, index) in 5" :key="index">
+    <div class="content"> {{ index}} <p>调整下标偏差</p></div>
+  </SwipeSlide>
+</Swipe>
         `,
         arrow_code: `
 <Swipe>
@@ -191,6 +206,11 @@
 <Swipe :arrow="true" :outer_arrow="true">
   <SwipeSlide v-for="(n, index) in 5" :key="index">
     <div class="content"> {{ index}} <p>外部箭头</p> </div>
+  </SwipeSlide>
+</Swipe>
+<Swipe :arrow="true" :outer_arrow="true" :arrow_offset="-15">
+  <SwipeSlide v-for="(n, index) in 5" :key="index">
+    <div class="content"> {{ index}} <p>调整箭头偏差</p> </div>
   </SwipeSlide>
 </Swipe>
         `,

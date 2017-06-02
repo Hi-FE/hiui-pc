@@ -8,56 +8,24 @@
         </div>
 
         <!-- Index -->
-        <div class="indexs" v-if="index">
-          <span class="index"
-                v-for="(item, i) in slides_len"
-                :class="{ active: i === swiper.realIndex }"
-                @click="index_trigger === 'click' && slideTo(i)"
-                @mouseenter="index_trigger === 'hover' && slideTo(i)"></span>
-        </div>
+        <SwipeIndex v-if="index"
+                    :swiper="swiper"
+                    :slides_len="slides_len"
+                    :index_trigger="index_trigger"
+                    :index_x_offset="index_x_offset"
+                    :index_y_offset="index_y_offset"
+                    @active="slideTo"></SwipeIndex>
 
       </div>
 
       <!--  Arrow -->
-      <template v-if="arrow && swiper">
-          <transition name="fade">
-            <div class="swipe-button next"
-                 v-show="arrow !== 'hover' || is_hover"
-                 :class="{ disabled: arrow_disabled_status.next, outer: outer_arrow}">
-
-              <!-- 外部矩形箭头 -->
-              <span class="arrow outer right" v-if="outer_arrow" @click="swiper.slideNext()">
-                <Icon class="icon" name="right" :size="20" color="#323232"></Icon>
-              </span>
-
-              <!-- 内部圆形箭头 -->
-              <span class="arrow right" v-else @click="swiper.slideNext()">
-                <Icon class="icon" name="arrowright" :size="16" color="#fff"></Icon>
-              </span>
-
-              <div class="disabled-mask"></div>
-            </div>
-          </transition>
-          <transition name="fade">
-            <div class="swipe-button prev"
-                 v-show="arrow !== 'hover' || is_hover"
-                 :class="{ disabled: arrow_disabled_status.prev, outer: outer_arrow}">
-
-              <!-- 外部矩形箭头 -->
-               <span class="arrow outer left" v-if="outer_arrow" @click="swiper.slidePrev()">
-                 <Icon class="icon" name="left" :size="20" color="#323232"></Icon>
-               </span>
-
-               <!-- 内部圆形箭头 -->
-               <span class="arrow left" v-else @click="swiper.slidePrev()">
-                 <Icon class="icon" name="arrowleft" :size="16" color="#fff"></Icon>
-               </span>
-
-               <div class="disabled-mask"></div>
-            </div>
-          </transition>
-
-      </template>
+      <SwipeArrow v-if="arrow && swiper" v-show="arrow !== 'hover' || is_hover"
+                  :swiper="swiper"
+                  :outer_arrow="outer_arrow"
+                  :loop="loop"
+                  :preview="preview"
+                  :arrow_offset="arrow_offset"
+                  :slides_len="slides_len"></SwipeArrow>
 
   </div>
 </template>
@@ -89,6 +57,9 @@
       trigger: { type: String, default: 'change' },
       arrow: { type: [String, Boolean], default: 'hover' },
       outer_arrow: {type: Boolean},
+      arrow_offset: Number,
+      index_x_offset: Number,
+      index_y_offset: Number,
       update_by: {}
     },
     data () {
@@ -101,7 +72,9 @@
     },
     components: {
       Icon,
-      SwipeSlide: require('./SwipeSlide.vue')
+      SwipeSlide: require('./SwipeSlide.vue'),
+      SwipeArrow: require('./components/arrow.vue'),
+      SwipeIndex: require('./components/index.vue')
     },
     computed: {
       component_class () {

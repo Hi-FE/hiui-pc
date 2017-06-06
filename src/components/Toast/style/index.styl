@@ -5,31 +5,88 @@
   top: 50px;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 8px 15px;
-  background-color #666;
-  border-radius: 4px;
+  border-radius: _border_radius;
   color: #fff;
   z-index: 99999;
+  background-color: _white;
+  letter-spacing: -.2em;
+  border-radius: _border_radius;
+  overflow: hidden;
 
-  &.hiui-toast-default {
-    background-color #666;
+  &-default {
+    border: 1px solid #666;
+
+    .hiui-toast-content {
+      background-color #666;
+    }
+    .hiui-icon {
+      color: #666;
+    }
   }
 
-  &.hiui-toast-primary {
-    background-color: _blue;
+  &-primary {
+    border: 1px solid _blue;
+
+    .hiui-toast-content {
+      background-color: _blue;
+    }
+    .hiui-icon {
+      color: _blue;
+    }
   }
 
-  &.hiui-toast-error {
-    background-color: _red;
+  &-error {
+    border: 1px solid _red;
+
+    .hiui-toast-content {
+      background-color: _red;
+    }
+    .hiui-icon {
+      color: _red;
+    }
   }
 
-  &.hiui-toast-warning {
-    background-color: _yellow;
+  &-warning {
+    border: 1px solid _yellow;
+
+    .hiui-toast-content {
+      color: #333;
+      background-color: _yellow;
+    }
+    .hiui-icon {
+      color: _yellow;
+    }
   }
 
-  &.hiui-toast-success {
-    background-color: _green;
+  &-success {
+    border: 1px solid _green;
+
+    .hiui-toast-content {
+      background-color: _green;
+    }
+    .hiui-icon {
+      color: _green;
+    }
   }
+
+  &-show_icon {
+    .hiui-toast-content {
+    }
+  }
+
+  .hiui-icon {
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    height: 100%;
+  }
+}
+
+.hiui-toast-content {
+  display: inline-block;
+  padding: 8px 15px;
+  background-color #666;
+  letter-spacing: 0;
 }
 
 .hiui_fade-enter-active, .hiui_fade-leave-active {

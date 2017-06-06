@@ -7,8 +7,8 @@ import Btn from './Btn'
 import Icon from './Icon'
 
 /* data-in */
-import vCalendar from './vCalendar'
-// import Calendar from './Calendar'
+// import vCalendar from './vCalendar'
+import Calendar from './Calendar'
 import Radio from './Radio'
 import Input from './Input'
 import {Select, SelectItem} from './Select'
@@ -26,8 +26,8 @@ import Toast from './Toast'
 
 const install = (Vue) => {
   /* component */
-  Vue.component(vCalendar.name, vCalendar)
-  // Vue.component(Calendar.name, Calendar)
+  // Vue.component(vCalendar.name, vCalendar)
+  Vue.component(Calendar.name, Calendar)
   Vue.component(BackTop.name, BackTop)
   Vue.component(Modal.name, Modal)
   Vue.component(Swipe.name, Swipe)
@@ -46,9 +46,9 @@ const install = (Vue) => {
   Vue.component(Switch.name, Switch)
 
   /* method */
+  // Vue.use(vCalendar)
   Vue.use(Popover)
   Vue.use(SmoothScroll)
-  Vue.use(vCalendar)
   Vue.use(Loading)
   Vue.use(Toast)
 }
@@ -59,8 +59,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export default {
   /* export */
-  vCalendar,
-  // Calendar,
+  // vCalendar,
+  Calendar,
   Popover,
   BackTop,
   SmoothScroll,

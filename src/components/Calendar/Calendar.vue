@@ -102,7 +102,7 @@
         if (this.mark_today && formatDate(date, 'yyyy-MM-dd') === formatDate(this.today, 'yyyy-MM-dd')) {
           className.push('today')
         }
-        if (this.filter && !this.filter(date, formatDate(date, this.format))) {
+        if (this.filter && !this.filter(date)) {
           className.push('disabled')
         }
         if (this.rules.length) {
@@ -112,8 +112,12 @@
         }
         return className
       },
-      fromToday () {
-
+      fromToday (date) {
+        console.log(date < new Date())
+        if (date < new Date()) {
+          return false
+        }
+        return true
       }
     }
   }

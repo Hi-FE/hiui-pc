@@ -8,84 +8,62 @@
   border-radius: _border_radius;
   color: #fff;
   z-index: 99999;
-  background-color: _white;
   letter-spacing: -.2em;
-  border-radius: _border_radius;
+  box-shadow: 0 5px 15px -5px rgba(0, 0, 0, .5);
   overflow: hidden;
 
   &-default {
-    border: 1px solid #666;
+    background-color #666;
 
-    .hiui-toast-content {
-      background-color #666;
-    }
     .hiui-icon {
       color: #666;
     }
   }
 
   &-primary {
-    border: 1px solid _blue;
+    background-color: _blue;
 
-    .hiui-toast-content {
-      background-color: _blue;
-    }
     .hiui-icon {
       color: _blue;
     }
   }
 
   &-error {
-    border: 1px solid _red;
+    background-color: _red;
 
-    .hiui-toast-content {
-      background-color: _red;
-    }
     .hiui-icon {
       color: _red;
     }
   }
 
   &-warning {
-    border: 1px solid _yellow;
+    color: #333;
+    background-color: _yellow;
 
-    .hiui-toast-content {
-      color: #333;
-      background-color: _yellow;
-    }
     .hiui-icon {
       color: _yellow;
     }
   }
 
   &-success {
-    border: 1px solid _green;
+    background-color: _green;
 
-    .hiui-toast-content {
-      background-color: _green;
-    }
     .hiui-icon {
       color: _green;
     }
   }
 
-  &-show_icon {
-    .hiui-toast-content {
-    }
-  }
-
   .hiui-icon {
     display: inline-block;
-    width: 30px;
-    text-align: center;
+    color: #fff;
     height: 100%;
+    margin-left: 10px;
   }
 }
 
 .hiui-toast-content {
   display: inline-block;
-  padding: 8px 15px;
-  background-color #666;
+  padding: 8px 10px;
   letter-spacing: 0;
 }
 

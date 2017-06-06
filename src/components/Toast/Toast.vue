@@ -1,7 +1,7 @@
 <template>
   <transition name="hiui_fade" @after-leave="afterLeave">
     <div v-if="show" :class="component_class">
-      <Icon v-if="type" :name="iconType[type]" :size="16"></Icon>
+      <Icon v-if="show_icon" :name="iconType[type]" :size="16"></Icon>
       <div class="hiui-toast-content">{{ content }}</div>
     </div>
   </transition>

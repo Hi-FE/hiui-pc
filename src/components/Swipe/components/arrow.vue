@@ -12,7 +12,7 @@
       </span>
 
       <!-- inner arrow -->
-      <span class="arrow" :class="direction" v-else @click="direction === 'left' ? swiper.slidePrev() : swiper.slideNext()">
+      <span class="arrow inner" :class="direction" v-else @click="direction === 'left' ? swiper.slidePrev() : swiper.slideNext()">
         <Icon class="icon" :name="`arrow${direction}`" :size="16" color="#fff"></Icon>
       </span>
 
@@ -44,9 +44,10 @@
     &.outer { height:_size_o_md;width: _size_o_md*0.5 + 5;font-weight:bold }
 
     .arrow{
-      transition: transform .3s, background-color .3s;position: absolute;width: _size_md;height: _size_md;display: block;border-radius: 100%;background-color: rgba(0, 0, 0, .2);
+      transition: transform .3s, background-color .3s;position: absolute;width: _size_md;height: _size_md;display: block;border-radius: 100%;background-color: rgba(0, 0, 0, .3);
       &.outer { border-radius: 0;background-color:transparent;height:_size_o_md;width: _size_o_md*0.5 }
-      &:not(.outer):hover{ background-color: rgba(0, 0, 0, .4) }
+      &.inner .icon { font-weight:bold }
+      &:not(.outer):hover{ background-color: rgba(0, 0, 0, .5) }
       .icon{
         position: absolute;left:50%;top:50%;transform: translate(-50%,-50%);
       }

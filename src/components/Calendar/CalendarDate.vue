@@ -1,15 +1,24 @@
 <template>
-  <table :class="component_class">
-    <thead>
+  <table :class="component_class" :style="component_style">
+    <tbody>
       <tr>
         <th v-for="d in days">
           {{ d }}
         </th>
       </tr>
-    </thead>
-    <tbody :class="component_class">
       <tr v-for="row in allDays">
-        <td v-for="obj in row" :class="[obj.className]">
+        <td
+          v-for="obj in row"
+          :class="[
+            obj.className,
+            {
+              disabled: obj.disabled,
+              today: obj.isToday,
+              active: obj.active
+            }
+          ]"
+          @click="clickDay(obj)"
+          >
           {{ obj.day }}
         </td>
       </tr>
@@ -18,10 +27,10 @@
 </template>
 
 <script>
-  const prefixCls = 'hiui-calendar-day'
+  const prefixCls = 'hiui-calendar-date'
 
   export default {
-    name: 'CalendarDay',
+    name: 'CalendarDate',
     props: {
       year: Number,
       month: Number,
@@ -31,6 +40,11 @@
         default() {
           return ['日', '一', '二', '三', '四', '五', '六']
         }
+      },
+      width: String,
+      height: {
+        type: String,
+        default: '250px'
       }
     },
     data () {
@@ -44,6 +58,12 @@
         return [
           prefixCls
         ]
+      },
+      component_style () {
+        return {
+          width: this.width,
+          height: this.height
+        }
       },
       firstDay () {
         let day = new Date(this.year, this.month).getDay()
@@ -70,26 +90,32 @@
             if (cur < this.firstDay) {
               let day = this.prevMonthDays - (this.firstDay - cur - 1)
               let date = new Date(this.year, this.month - 1, day)
+              let filter_result = this.filter(date)
               result[i].push({
                 day,
                 date,
-                className: ['prev_month'].concat(this.filter(date))
+                ...filter_result,
+                className: ['prev_month']
               })
             } else if (cur >= this.firstDay + this.curMonthDays) {
               let day = cur - (this.firstDay + this.curMonthDays - 1)
               let date = new Date(this.year, this.month + 1, day)
+              let filter_result = this.filter(date)
               result[i].push({
                 day,
                 date,
-                className: ['next_month'].concat(this.filter(date))
+                ...filter_result,
+                className: ['next_month']
               })
             } else {
               let day = cur - this.firstDay + 1
-              let date = new Date(this.year, this.month, day, day)
+              let date = new Date(this.year, this.month, day)
+              let filter_result = this.filter(date)
               result[i].push({
                 day,
                 date,
-                className: ['cur_month'].concat(this.filter(date))
+                ...filter_result,
+                className: ['cur_month']
               })
             }
           }
@@ -99,7 +125,15 @@
       }
     },
     methods: {
+      clickDay (obj) {
+        if (obj.disabled || obj.active) {
+          return false
+        }
 
+        obj.callback && obj.callback(obj.date)
+
+        this.$emit('click_day', obj)
+      }
     }
   }
 </script>

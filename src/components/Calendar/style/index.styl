@@ -5,17 +5,23 @@
   display: inline-block;
   padding: 20px;
   border: 1px solid #ccc;
+  box-sizing: content-box;
   line-height: normal;
 
-  header {
+  .hiui-calendar-header {
     position: relative;
-    padding: 10px;
     font-size: 16px;
     text-align: center;
 
     span {
       margin: 0 5px;
-      corsor: pointer;
+      font-size: 18px;
+      cursor: pointer;
+      transition: all .3s;
+
+      &:hover {
+        color: _blue;
+      }
     }
 
     .hiui-icon {
@@ -40,17 +46,17 @@
     }
   }
 
-  .hiui-calendar-day {
-    width: 100%;
+  .hiui-calendar-date {
     overflow: hidden;
     cursor: default;
+    display: table;
+    margin: 0;
 
     tbody {
       position: relative;
-    }
-
-    thead {
-      position: relative;
+      display: table;
+      width: 100%;
+      height: 100%;
     }
 
     tr {
@@ -60,11 +66,13 @@
     }
 
     th, td {
-      width: auto;
+      width: floor(100% / 7%);
       text-align: center;
       user-select: none;
       border: none;
       cursor: pointer;
+      font-size: 14px;
+      padding: 0;
     }
 
     th {
@@ -72,34 +80,41 @@
     }
 
     td {
-      padding: 8px 5px;
       border: 1px solid #fff;
-      background-color: #f7f7f7;
+      background-color: #efefef;
       transition: all .2s;
 
       &.cur_month {
-        color: #000;
+        color: #333;
+        font-weight: 600;
       }
 
-      &.prev_month, next_month {
-        color: #999;
+      &.prev_month, &.next_month {
+        color: #777;
+        background-color: #f7f7f7;
       }
 
       &.today {
         box-shadow: inset 0 0 0 1px _blue;
       }
 
+      &.active {
+        color: _white;
+        background-color: _blue;
+        cursor: default;
+      }
+
       &.disabled {
-        background-color: #f7f7f7;
-        color: #e3e3e3;
+        color: #ccc;
         cursor: not-allowed;
+        font-weight: normal;
 
         &.cur_month {
-          color: #c3c3c3;
+          // color: #ccc;
         }
       }
 
-      &:not(.disabled):hover {
+      &:not(.disabled):not(.active):hover {
         color: _white;
         background-color: _blue_light;
       }

@@ -1,7 +1,8 @@
 <template>
   <demo title="Calendar" class="calendar-demo">
     <demo-item name="default" description="默认" :code="code">
-      <Calendar v-model="date" :filter="fromToday" :rules="['fromToday']"></Calendar>
+      <div>{{ format_date }}</div>
+      <Calendar v-model="date" :format_date.sync="format_date" :filter="fromToday" :rules="['unableSun', 'unableSat']"></Calendar>
     </demo-item>
   </demo>
 </template>
@@ -14,7 +15,8 @@
   export default {
     data () {
       return {
-        date: new Date(),
+        date: null,
+        format_date: '',
         code: `
 <Calendar></Calendar>
         `
@@ -22,9 +24,6 @@
     },
     methods: {
       fromToday (date) {
-        if (date < new Date()) {
-          return false
-        }
         return true
       }
     }

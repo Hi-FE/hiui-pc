@@ -5,31 +5,66 @@
   top: 50px;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 8px 15px;
-  background-color #666;
-  border-radius: 4px;
+  border-radius: _border_radius;
   color: #fff;
   z-index: 99999;
+  letter-spacing: -.2em;
+  box-shadow: 0 5px 15px -5px rgba(0, 0, 0, .5);
+  overflow: hidden;
 
-  &.hiui-toast-default {
+  &-default {
     background-color #666;
+
+    .hiui-icon {
+      color: #666;
+    }
   }
 
-  &.hiui-toast-primary {
+  &-primary {
     background-color: _blue;
+
+    .hiui-icon {
+      color: _blue;
+    }
   }
 
-  &.hiui-toast-error {
+  &-error {
     background-color: _red;
+
+    .hiui-icon {
+      color: _red;
+    }
   }
 
-  &.hiui-toast-warning {
+  &-warning {
+    color: #333;
     background-color: _yellow;
+
+    .hiui-icon {
+      color: _yellow;
+    }
   }
 
-  &.hiui-toast-success {
+  &-success {
     background-color: _green;
+
+    .hiui-icon {
+      color: _green;
+    }
   }
+
+  .hiui-icon {
+    display: inline-block;
+    color: #fff;
+    height: 100%;
+    margin-left: 10px;
+  }
+}
+
+.hiui-toast-content {
+  display: inline-block;
+  padding: 8px 10px;
+  letter-spacing: 0;
 }
 
 .hiui_fade-enter-active, .hiui_fade-leave-active {

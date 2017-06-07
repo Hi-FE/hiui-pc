@@ -48,7 +48,8 @@
       width: [Number, String],
       height: [Number, String],
       theme: String,
-      activeStyle: Object
+      activeStyle: Object,
+      gap: Number
     },
     data () {
       return {
@@ -83,6 +84,15 @@
 
         if (typeof this.font_size === 'number') {
           style.fontSize = `${this.font_size}px`
+        }
+
+        if (typeof this.gap === 'number') {
+          if (this.bar_type === 'no_padding') {
+            style.marginRight = `${this.gap}px`
+          }
+          if (this.bar_type === 'padding') {
+            style.padding = `0 ${this.gap / 2}px`
+          }
         }
         return style
       },

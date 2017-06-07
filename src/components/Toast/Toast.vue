@@ -1,7 +1,8 @@
 <template>
   <transition name="hiui_fade" @after-leave="afterLeave">
     <div v-if="show" :class="component_class">
-      {{ content }}
+      <Icon v-if="show_icon" :name="iconType[type]" :size="16"></Icon>
+      <div class="hiui-toast-content">{{ content }}</div>
     </div>
   </transition>
 </template>
@@ -20,8 +21,19 @@
         show: false,
         content: '',
         time: 2000,
-        type: '',
-        callback: null
+        type: 'default',
+        callback: null,
+        iconType: {
+          'default': 'info-circle',
+          'primary': 'info-circle',
+          'success': 'check-circle',
+          'error': 'close-circle',
+          'warning': 'exclamation-circle'
+        },
+        show_icon: {
+          type: Boolean,
+          default: true
+        }
       }
     },
     computed: {
@@ -29,7 +41,8 @@
         return [
           prefixCls,
           {
-            [`${prefixCls}-${this.type}`]: this.type && this.type !== 'default'
+            [`${prefixCls}-${this.type}`]: this.type,
+            [`${prefixCls}-show_icon`]: this.show_icon
           }
         ]
       }

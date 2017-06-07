@@ -7,12 +7,13 @@ import Btn from './Btn'
 import Icon from './Icon'
 
 /* data-in */
+import vCalendar from './vCalendar'
+// import Calendar from './Calendar'
 import Radio from './Radio'
 import Input from './Input'
 import {Select, SelectItem} from './Select'
 import CheckBox from './CheckBox'
 import Switch from './Switch'
-import Calendar from './Calendar'
 
 /* data-out */
 import Popover from './Popover'
@@ -25,7 +26,8 @@ import Toast from './Toast'
 
 const install = (Vue) => {
   /* component */
-  // Vue.component(Popover.name, Popover)
+  Vue.component(vCalendar.name, vCalendar)
+  // Vue.component(Calendar.name, Calendar)
   Vue.component(BackTop.name, BackTop)
   Vue.component(Modal.name, Modal)
   Vue.component(Swipe.name, Swipe)
@@ -41,14 +43,12 @@ const install = (Vue) => {
   Vue.component(Spinner.name, Spinner)
   Vue.component(Btn.name, Btn)
   Vue.component(Icon.name, Icon)
-  // Vue.component(Bar.name, Bar)
   Vue.component(Switch.name, Switch)
-  Vue.component(Calendar.name, Calendar)
 
   /* method */
   Vue.use(Popover)
   Vue.use(SmoothScroll)
-  Vue.use(Calendar)
+  Vue.use(vCalendar)
   Vue.use(Loading)
   Vue.use(Toast)
 }
@@ -59,6 +59,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export default {
   /* export */
+  vCalendar,
+  // Calendar,
   Popover,
   BackTop,
   SmoothScroll,
@@ -71,7 +73,6 @@ export default {
   Loadmore,
   Select,
   CheckBox,
-  Calendar,
   Loading,
   Spinner,
   Btn,

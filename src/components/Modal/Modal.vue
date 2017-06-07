@@ -26,7 +26,7 @@
 </style>
 
 <script>
-  import { isValid, getStyles } from '@/tools';
+  import { isValid, getStyles, on, off } from '@/tools';
   const prefixCls = 'hiui-modal'
 
   export default {
@@ -96,7 +96,15 @@
           this.modal_show = val
         })
 
-        this.prevent_scroll && document.documentElement.classList[val ? 'add' : 'remove']('hiui-modal-banScroll')
+        if (this.prevent_scroll) {
+          if (val) {
+            on(document.documentElement, 'mousewheel', this.noScroll)
+            on(document.documentElement, 'DOMMouseScroll', this.noScroll)
+          } else {
+            off(document.documentElement, 'mousewheel', this.noScroll)
+            off(document.documentElement, 'DOMMouseScroll', this.noScroll)
+          }
+        }
       }
     },
     computed: {
@@ -143,6 +151,9 @@
       }
     },
     methods: {
+      noScroll (e) {
+        e.preventDefault()
+      },
       closeModal (name) {
         if (name === 'mask' && !this.mask_close) {
           return false
@@ -154,7 +165,7 @@
       }
     },
     destroyed () {
-      document.documentElement.classList.remove('hiui-modal-banScroll')
+      document.body.classList.remove('hiui-modal-banScroll')
     }
   }
 </script>

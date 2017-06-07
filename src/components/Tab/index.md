@@ -27,6 +27,7 @@
 | width | 容器宽度  | `String/Number` | - |
 | height | 标签高度，可选值为 `Number / "auto"`  | `String/Number` | `40` |
 | font_size | 字体大小  | `Number` | `14` |
+| gap | 标签之间的间隔  | `Number` | - |
 | theme | 标签主题，可选值` - /card/ticket`  | `String` | - |
 | active-style | 选中时标签样式  | `Object` | - |
 

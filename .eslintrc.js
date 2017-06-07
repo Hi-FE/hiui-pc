@@ -15,6 +15,7 @@ module.exports = {
     "semi": 0,
     "eol-last": 0,
     "camelcase": 0,
+    "no-unused-vars": 0,
     "space-before-function-paren": 0,
     // allow paren-less arrow functions
     'arrow-parens': 0,

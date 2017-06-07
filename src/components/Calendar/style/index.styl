@@ -8,6 +8,11 @@
   box-sizing: content-box;
   line-height: normal;
 
+  .hiui-calendar-wrap {
+    display: inline-block;
+    padding: 5px;
+  }
+
   .hiui-calendar-header {
     position: relative;
     font-size: 16px;
@@ -19,7 +24,11 @@
       cursor: pointer;
       transition: all .3s;
 
-      &:hover {
+      &.year-range {
+        cursor: default;
+      }
+
+      &:not(.year-range):hover {
         color: _blue;
       }
     }
@@ -45,79 +54,139 @@
       right: 10px;
     }
   }
+}
 
-  .hiui-calendar-date {
-    overflow: hidden;
-    cursor: default;
+// 日历
+.hiui-calendar-date {
+  overflow: hidden;
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+
+  tbody {
+    position: relative;
     display: table;
-    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
 
-    tbody {
-      position: relative;
-      display: table;
-      width: 100%;
-      height: 100%;
-    }
+  tr {
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
 
-    tr {
-      border: none;
-      outline: none;
-      box-shadow: none;
-    }
+  th, td {
+    width: floor(100% / 7%);
+    text-align: center;
+    user-select: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0;
+  }
 
-    th, td {
-      width: floor(100% / 7%);
-      text-align: center;
-      user-select: none;
-      border: none;
-      cursor: pointer;
-      font-size: 14px;
-      padding: 0;
-    }
+  th {
+    color: #333;
+  }
 
-    th {
+  td {
+    border: 1px solid #fff;
+    background-color: #efefef;
+    transition: all .2s;
+
+    &.cur_month {
       color: #333;
+      font-weight: 600;
     }
 
-    td {
-      border: 1px solid #fff;
-      background-color: #efefef;
-      transition: all .2s;
+    &.prev_month, &.next_month {
+      color: #777;
+      background-color: #f7f7f7;
+    }
+
+    &.today {
+      box-shadow: inset 0 0 0 1px _blue;
+    }
+
+    &.inRange {
+      background-color: lighten(_blue_light, 80%);
+    }
+
+    &.active {
+      color: _white;
+      background-color: _blue;
+      cursor: default;
+    }
+
+    &.disabled {
+      color: #ccc;
+      cursor: not-allowed;
+      font-weight: normal;
 
       &.cur_month {
-        color: #333;
-        font-weight: 600;
-      }
-
-      &.prev_month, &.next_month {
-        color: #777;
-        background-color: #f7f7f7;
-      }
-
-      &.today {
-        box-shadow: inset 0 0 0 1px _blue;
-      }
-
-      &.active {
-        color: _white;
-        background-color: _blue;
-        cursor: default;
-      }
-
-      &.disabled {
-        color: #ccc;
-        cursor: not-allowed;
-        font-weight: normal;
-
-        &.cur_month {
-          // color: #ccc;
-        }
-      }
-
-      &:not(.disabled):not(.active):hover {
-        color: _white;
-        background-color: _blue_light;
+        // color: #ccc;
       }
     }
+
+    &:not(.disabled):not(.active):hover {
+      color: _white;
+      background-color: _blue_light;
+    }
   }
+}
+
+// 月历 / 年历
+.hiui-calendar-month, .hiui-calendar-year {
+  overflow: hidden;
+  font-size: 0px;
+
+  .hiui-calendar-month-item, .hiui-calendar-year-item {
+    display: inline-block;
+    font-size: 18px;
+    text-align: center;
+    background-color: #efefef;
+    border: 1px solid _white;
+    cursor: pointer;
+    transition: all .3s;
+
+    span {
+      position: relative;
+      display: inline-block;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &.today {
+      box-shadow: inset 0 0 0 1px _blue;
+    }
+
+    &.active {
+      color: _white;
+      background-color: _blue;
+      cursor: default;
+    }
+
+    &.disabled {
+      color: #ccc;
+      cursor: not-allowed;
+      font-weight: normal;
+    }
+
+    &:not(.disabled):not(.active):hover {
+      color: _white;
+      background-color: _blue_light;
+    }
+  }
+}
+
+.hiui-calendar-month .hiui-calendar-month-item {
+  width: 25%;
+  height: 33.3%;
+}
+
+.hiui-calendar-year .hiui-calendar-year-item {
+  width: 25%;
+  height: 20%;
 }

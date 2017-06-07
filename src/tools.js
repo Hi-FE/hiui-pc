@@ -40,3 +40,8 @@ export const formatDate = (date, fmt) => {
   }
   return fmt
 }
+
+export const isSameDate = (date1, date2, type) => {
+  let formatter = type !== 'year' ? type !== 'month' ? 'yyyy-MM-dd' : 'yyyy-MM' : 'yyyy'
+  return formatDate(date1, formatter) === formatDate(date2, formatter)
+}

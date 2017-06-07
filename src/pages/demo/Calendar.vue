@@ -2,7 +2,7 @@
   <demo title="Calendar" class="calendar-demo">
     <demo-item name="default" description="默认" :code="code">
       <div>{{ format_date }}</div>
-      <Calendar v-model="date" :format_date.sync="format_date" :filter="fromToday" :rules="['unableSun', 'unableSat']"></Calendar>
+      <Calendar :daterange="true" :begin_date.sync="begin_date" :end_date.sync="end_date"></Calendar>
     </demo-item>
   </demo>
 </template>
@@ -15,7 +15,8 @@
   export default {
     data () {
       return {
-        date: null,
+        begin_date: null,
+        end_date: null,
         format_date: '',
         code: `
 <Calendar></Calendar>

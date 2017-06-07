@@ -45,8 +45,8 @@ function filter (date) {
 const rules = [
   'fromToday', // 从今天起（包含今天）
   'fromTomorrow', // 从明天起（不包含今天）
-  'untillToday', // 直至今天（包含今天）
-  'untillTomorrow', // 直至明天（不包含今天）
+  'untilToday', // 直至今天（包含今天）
+  'untilTomorrow', // 直至明天（不包含今天）
   'unableSun', // 禁用周日
   'unableMon', // 禁用周一
   'unableTues', // 禁用周二

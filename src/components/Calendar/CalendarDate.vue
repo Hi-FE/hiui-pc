@@ -10,14 +10,16 @@
         <td
           v-for="obj in row"
           :class="[
-            obj.className,
+            obj.classname,
             {
               disabled: obj.disabled,
               today: obj.isToday,
+              inRange: range.length === 2 && +obj.date > range[0] && +obj.date < range[1],
               active: obj.active
             }
           ]"
           @click="clickDay(obj)"
+          @mouseenter="mouseenterDay(obj)"
           >
           {{ obj.day }}
         </td>
@@ -27,11 +29,16 @@
 </template>
 
 <script>
+  import { isSameDate } from '@/tools'
+
   const prefixCls = 'hiui-calendar-date'
 
   export default {
     name: 'CalendarDate',
     props: {
+      daterange: Boolean,
+      date: [Object, Date],
+      date_range: Array,
       year: Number,
       month: Number,
       filter: Function,
@@ -50,7 +57,8 @@
     data () {
       return {
         COL: 7,
-        ROW: 6
+        ROW: 6,
+        range: []
       }
     },
     computed: {
@@ -87,41 +95,44 @@
           result[i] = []
           for (let j = 0; j < this.COL; j++) {
             let cur = i * 7 + j
+            let day, month, date, filter_result, classname
+
             if (cur < this.firstDay) {
-              let day = this.prevMonthDays - (this.firstDay - cur - 1)
-              let date = new Date(this.year, this.month - 1, day)
-              let filter_result = this.filter(date)
-              result[i].push({
-                day,
-                date,
-                ...filter_result,
-                className: ['prev_month']
-              })
+              day = this.prevMonthDays - (this.firstDay - cur - 1)
+              month = this.month - 1
+              classname = 'prev_month'
             } else if (cur >= this.firstDay + this.curMonthDays) {
-              let day = cur - (this.firstDay + this.curMonthDays - 1)
-              let date = new Date(this.year, this.month + 1, day)
-              let filter_result = this.filter(date)
-              result[i].push({
-                day,
-                date,
-                ...filter_result,
-                className: ['next_month']
-              })
+              day = cur - (this.firstDay + this.curMonthDays - 1)
+              month = this.month + 1
+              classname = 'next_month'
             } else {
-              let day = cur - this.firstDay + 1
-              let date = new Date(this.year, this.month, day)
-              let filter_result = this.filter(date)
-              result[i].push({
-                day,
-                date,
-                ...filter_result,
-                className: ['cur_month']
-              })
+              day = cur - this.firstDay + 1
+              month = this.month
+              classname = 'cur_month'
             }
+
+            date = new Date(this.year, month, day)
+            filter_result = this.filter ? this.filter(date, 'date') : {}
+
+            result[i].push({
+              day,
+              date,
+              classname,
+              active: this.isActive(date),
+              // inRange: this.inRange(date),
+              ...filter_result
+            })
           }
         }
 
         return result
+      }
+    },
+    watch: {
+      date_range (val) {
+        if (val && val.length === 1 && this.range.length) {
+          this.range = []
+        }
       }
     },
     methods: {
@@ -133,6 +144,21 @@
         obj.callback && obj.callback(obj.date)
 
         this.$emit('click_day', obj)
+      },
+      isActive (date) {
+        if (this.daterange) {
+          return this.date_range && this.date_range.some((d) => isSameDate(d, date, 'date'))
+        } else {
+          return isSameDate(this.date, date, 'date')
+        }
+      },
+      mouseenterDay (obj) {
+        if (!this.daterange || obj.disabled || obj.active || this.date_range.length !== 1) {
+          return false
+        }
+
+        let time = +obj.date
+        this.range = [time, +this.date_range[0]].sort((a, b) => a - b)
       }
     }
   }

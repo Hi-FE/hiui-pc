@@ -1,46 +1,39 @@
 <template>
   <div :class="component_class" :style="component_style">
-    <div v-for="i in calendar_count" :class="wrap_class" :style="wrap_style">
+    <template v-for="i in calendar_count">
       <!-- 日历模式 -->
-      <template v-if="mode === 'date'">
-        <header :class="header_class" :style="header_style">
-          <Icon name="left" @click.native="prevMonth"></Icon>
-          <span @click="mode = 'year'">{{ year }}年</span>
-          <span @click="mode = 'month'">{{ month + 1 }}月</span>
-          <Icon name="right" @click.native="nextMonth"></Icon>
-        </header>
-        <CalendarDate
-          :daterange="daterange"
-          :date="date"
-          :date_range="date_range"
-          :height="calendar_height"
-          :year="year"
-          :month="month"
-          :days="days"
-          :filter="filter"
-          @click_day="clickDay"
-        >
-        </CalendarDate>
-      </template>
+      <CalendarDate
+        v-if="mode === 'date'"
+        :class="wrap_class"
+        :style="wrap_style"
+        :daterange="daterange"
+        :date="date"
+        :date_range="date_range"
+        :hover_range.sync="hover_range"
+        :height="calendar_height"
+        :header_height="header_height"
+        :days="days"
+        :filter="filter"
+        @click_day="clickDay"
+        @click_year="mode = 'year'"
+        @click_month="mode = 'month'"
+      >
+      </CalendarDate>
 
       <!-- 月历模式 -->
-      <template v-if="mode === 'month'">
-        <header :class="header_class" :style="header_style">
-          <Icon name="left" @click.native="year--"></Icon>
-          <span @click="mode = 'year'">{{ year }}年</span>
-          <Icon name="right" @click.native="year++"></Icon>
-        </header>
-        <CalendarMonth
-          :daterange="daterange"
-          :date="date"
-          :date_range="date_range"
-          :height="calendar_height"
-          :year="year"
-          :filter="filter"
-          @click_month="clickMonth"
-        >
-        </CalendarMonth>
-      </template>
+      <CalendarMonth
+        v-if="mode === 'month'"
+        :class="wrap_class"
+        :style="wrap_style"
+        :daterange="daterange"
+        :date="date"
+        :date_range="date_range"
+        :height="calendar_height"
+        :header_height="header_height"
+        :filter="filter"
+        @click_month="clickMonth"
+      >
+      </CalendarMonth>
 
       <!-- 年历模式 -->
       <template v-if="mode === 'year'">
@@ -60,7 +53,7 @@
         >
         </CalendarYear>
       </template>
-    </div>
+    </template>
   </div>
 </template>
 
@@ -128,9 +121,9 @@
           return arr.some((val) => isValid(Object.keys(Rules.date), val))
         }
       },
-      width: {
+      calendar_width: {
         type: String,
-        default: '600px'
+        default: '300px'
       },
       calendar_height: {
         type: String,
@@ -153,7 +146,8 @@
         mode: this.picker,
         year_range: 20,
         year_start: 0,
-        date_range: []
+        date_range: [],
+        hover_range: []
       }
     },
     watch: {
@@ -171,7 +165,6 @@
       },
       component_style () {
         return {
-          width: this.width
         }
       },
       wrap_class () {
@@ -181,19 +174,13 @@
       },
       wrap_style () {
         return {
-          width: `${1 / this.calendar_count * 100}%`
+          width: this.calendar_width
         }
       },
       header_class () {
         return [
           `${prefixCls}-header`
         ]
-      },
-      header_style () {
-        return {
-          height: this.header_height,
-          lineHeight: this.header_height
-        }
       },
       calendar_count () {
         return !this.daterange ? 1 : this.one_calendar ? 1 : 2
@@ -217,47 +204,20 @@
 
         // 用户自定义过滤方法
         let custom_filter = `${type}_filter`
-        if (this[custom_filter] && !this[custom_filter](date)) {
+        if (this[custom_filter] && !this[custom_filter](date, type)) {
           result.disabled = true
         }
 
         // 内置过滤方法
         if (this.rules && this.rules.length) {
           Array.from(this.rules, (filter_name) => {
-            if (Rules[type][filter_name] && Rules[type][filter_name](date)) {
+            if (Rules[type][filter_name] && Rules[type][filter_name](date, type)) {
               result.disabled = true
             }
           })
         }
 
-        // 判断是否是当前选中日期
-        // if (this.daterange) {
-        //   Array.from(this.date_range, (d) => {
-        //     result.active = formatDate(date, 'yyyy-MM-dd') === formatDate(d, 'yyyy-MM-dd')
-        //   })
-        // } else {
-        //   if (this.parse_date && +date === +this.parse_date.date) {
-        //     result.active = true
-        //   }
-        // }
-
         return result
-      },
-      prevMonth () {
-        if (this.month === 0) {
-          this.month = 11
-          this.year--
-        } else {
-          this.month--
-        }
-      },
-      nextMonth () {
-        if (this.month === 11) {
-          this.month = 0
-          this.year++
-        } else {
-          this.month++
-        }
       },
       clickDay (obj) {
         if (this.daterange) {

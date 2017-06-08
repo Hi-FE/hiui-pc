@@ -1,14 +1,40 @@
-const today = new Date()
 const WEEK = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat']
+
+const today = new Date()
 const TODAY_TIME = new Date(today.getFullYear(), today.getMonth(), today.getDate()).getTime()
+const TOMONTH_TIME = new Date(today.getFullYear(), today.getMonth(), 1).getTime()
 
-const fromToday = (date, mode) => +date < TODAY_TIME
+const fromToday = (date, mode) => {
+  if (mode === 'date') {
+    return +date < TODAY_TIME
+  } else if (mode === 'month') {
+    return +date < TOMONTH_TIME
+  }
+}
 
-const fromTomorrow = (date, mode) => +date <= TODAY_TIME
+const fromTomorrow = (date, mode) => {
+  if (mode === 'date') {
+    return +date <= TODAY_TIME
+  } else if (mode === 'month') {
+    return +date < TOMONTH_TIME
+  }
+}
 
-const untilToday = (date, mode) => +date >= TODAY_TIME
+const untilToday = (date, mode) => {
+  if (mode === 'date') {
+    return +date >= TODAY_TIME
+  } else if (mode === 'month') {
+    return +date > TOMONTH_TIME
+  }
+}
 
-const untilTomorrow = (date, mode) => +date > TODAY_TIME
+const untilTomorrow = (date, mode) => {
+  if (mode === 'date') {
+    return +date > TODAY_TIME
+  } else if (mode === 'month') {
+    return +date > TOMONTH_TIME
+  }
+}
 
 const getUnableWeek = () => {
   let obj = {}
@@ -27,6 +53,10 @@ export default {
     ...getUnableWeek()
   },
   month: {
+    fromToday,
+    fromTomorrow,
+    untilToday,
+    untilTomorrow
   },
   year: {
   }

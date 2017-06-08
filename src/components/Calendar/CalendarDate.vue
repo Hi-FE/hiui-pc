@@ -1,37 +1,47 @@
 <template>
-  <table :class="component_class" :style="component_style">
-    <tbody>
-      <tr>
-        <th v-for="d in days">
-          {{ d }}
-        </th>
-      </tr>
-      <tr v-for="row in allDays">
-        <td
-          v-for="obj in row"
-          :class="[
-            obj.classname,
-            {
-              disabled: obj.disabled,
-              today: obj.isToday,
-              inRange: range.length === 2 && +obj.date > range[0] && +obj.date < range[1],
-              active: obj.active
-            }
-          ]"
-          @click="clickDay(obj)"
-          @mouseenter="mouseenterDay(obj)"
-          >
-          {{ obj.day }}
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div>
+    <header :class="header_class" :style="header_style">
+      <Icon v-if="!filter(new Date(year, month - 1), 'month').disabled" name="left" @click.native="prevMonth"></Icon>
+      <span @click="$emit('click_year')">{{ year }}年</span>
+      <span @click="$emit('click_month')">{{ month + 1 }}月</span>
+      <Icon v-if="!filter(new Date(year, month + 1), 'month').disabled" name="right" @click.native="nextMonth"></Icon>
+    </header>
+    <table :class="component_class" :style="component_style">
+      <tbody class="hiui-calendar-date-body">
+        <tr>
+          <th v-for="d in days">
+            {{ d }}
+          </th>
+        </tr>
+        <tr v-for="row in allDays">
+          <td
+            v-for="obj in row"
+            :class="[
+              obj.classname,
+              {
+                disabled: obj.disabled,
+                today: obj.isToday,
+                inRange: inRange(obj.date),
+                isHover: isHover(obj.date),
+                active: obj.active
+              }
+            ]"
+            @click="clickDay(obj)"
+            @mouseenter="mouseenterDay(obj)"
+            >
+            {{ obj.day }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script>
   import { isSameDate } from '@/tools'
 
   const prefixCls = 'hiui-calendar-date'
+  const today = new Date()
 
   export default {
     name: 'CalendarDate',
@@ -39,9 +49,8 @@
       daterange: Boolean,
       date: [Object, Date],
       date_range: Array,
-      year: Number,
-      month: Number,
       filter: Function,
+      hover_range: Array,
       days: {
         type: Array,
         default() {
@@ -52,12 +61,19 @@
       height: {
         type: String,
         default: '250px'
+      },
+      header_height: {
+        type: String,
+        default: '60px'
       }
     },
     data () {
       return {
         COL: 7,
         ROW: 6,
+        today: today,
+        year: this.date ? this.date.getFullYear() : today.getFullYear(),
+        month: this.date ? this.date.getMonth() : today.getMonth(),
         range: []
       }
     },
@@ -72,6 +88,17 @@
           width: this.width,
           height: this.height
         }
+      },
+      header_style () {
+        return {
+          height: this.header_height,
+          lineHeight: this.header_height
+        }
+      },
+      header_class () {
+        return [
+          'hiui-calendar-header'
+        ]
       },
       firstDay () {
         let day = new Date(this.year, this.month).getDay()
@@ -131,7 +158,7 @@
     watch: {
       date_range (val) {
         if (val && val.length === 1 && this.range.length) {
-          this.range = []
+          this.$emit('update:hover_range', null)
         }
       }
     },
@@ -152,6 +179,16 @@
           return isSameDate(this.date, date, 'date')
         }
       },
+      inRange (date) {
+        return this.hover_range && this.hover_range.length === 2 && +date > this.hover_range[0] && +date < this.hover_range[1]
+      },
+      isHover (date) {
+        if (this.hover_range && this.hover_range.length === 2 && this.date_range.length === 1) {
+          return date > this.date_range[0] ? +date === +this.hover_range[1] : +date === +this.hover_range[0]
+        }
+
+        return false
+      },
       mouseenterDay (obj) {
         if (!this.daterange || obj.disabled || obj.active || this.date_range.length !== 1) {
           return false
@@ -159,6 +196,23 @@
 
         let time = +obj.date
         this.range = [time, +this.date_range[0]].sort((a, b) => a - b)
+        this.$emit('update:hover_range', this.range)
+      },
+      prevMonth () {
+        if (this.month === 0) {
+          this.month = 11
+          this.year--
+        } else {
+          this.month--
+        }
+      },
+      nextMonth () {
+        if (this.month === 11) {
+          this.month = 0
+          this.year++
+        } else {
+          this.month++
+        }
       }
     }
   }

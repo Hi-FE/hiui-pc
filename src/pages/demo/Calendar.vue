@@ -15,8 +15,14 @@
   </demo>
 </template>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
   @import '../../style/';
+
+  .calendar-demo {
+    table {
+      margin: 0!important;
+    }
+  }
 </style>
 
 <script>

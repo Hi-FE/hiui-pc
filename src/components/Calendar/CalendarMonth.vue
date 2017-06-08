@@ -108,7 +108,7 @@
 
         obj.callback && obj.callback(obj.date)
 
-        this.$emit('click_month', obj)
+        this.$emit('get_month', obj)
       }
     }
   }

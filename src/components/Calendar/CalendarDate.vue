@@ -170,7 +170,7 @@
 
         obj.callback && obj.callback(obj.date)
 
-        this.$emit('click_day', obj)
+        this.$emit('get_day', obj)
       },
       isActive (date) {
         if (this.daterange) {

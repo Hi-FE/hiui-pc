@@ -1,9 +1,11 @@
 <template>
   <div :class="component_class" :style="component_style">
-    <template v-for="i in calendar_count">
+    <template v-for="(mode, i) in calendars">
       <!-- 日历模式 -->
       <CalendarDate
         v-if="mode === 'date'"
+        ref="date"
+        :key="`date${i}`"
         :class="wrap_class"
         :style="wrap_style"
         :daterange="daterange"
@@ -14,15 +16,16 @@
         :header_height="header_height"
         :days="days"
         :filter="filter"
-        @click_day="clickDay"
-        @click_year="mode = 'year'"
-        @click_month="mode = 'month'"
+        @get_day="clickDay"
+        @click_year="calendars.splice(i, 1, 'year')"
+        @click_month="calendars.splice(i, 1, 'month')"
       >
       </CalendarDate>
 
       <!-- 月历模式 -->
       <CalendarMonth
         v-if="mode === 'month'"
+        :key="`month${i}`"
         :class="wrap_class"
         :style="wrap_style"
         :daterange="daterange"
@@ -31,7 +34,7 @@
         :height="calendar_height"
         :header_height="header_height"
         :filter="filter"
-        @click_month="clickMonth"
+        @get_month="(obj) => getMonth(obj, i)"
       >
       </CalendarMonth>
 
@@ -147,7 +150,8 @@
         year_range: 20,
         year_start: 0,
         date_range: [],
-        hover_range: []
+        hover_range: [],
+        calendars: []
       }
     },
     watch: {
@@ -181,9 +185,6 @@
         return [
           `${prefixCls}-header`
         ]
-      },
-      calendar_count () {
-        return !this.daterange ? 1 : this.one_calendar ? 1 : 2
       },
       display () {
         return this.daterange ? (`${formatDate(this.begin_date, this.format)}~${formatDate(this.end_date, this.format)}`) : formatDate(this.date, this.format)
@@ -246,10 +247,23 @@
       clickYear (obj) {
         this.year = obj.year
         this.mode = this.picker === 'year' ? 'year' : 'month'
+      },
+      getMonth ({ month }, i) {
+        this.calendars.splice(i, 1, 'date')
+
+        this.$nextTick(() => {
+          i = this.calendars.length === 2 ? +!i : i
+          if (this.$refs.date[i]) {
+            this.$refs.date[i].month = month
+          }
+        })
       }
     },
     mounted () {
+      this.calendars = !this.daterange ? [this.picker] : this.one_calendar ? [this.picker] : [this.picker, this.picker]
+
       this.year_start = ~~(this.year / 20) * 20
+
       if (this.daterange && this.begin_date) {
         this.date_range = [this.begin_date]
       }

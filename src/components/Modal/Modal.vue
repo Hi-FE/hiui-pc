@@ -165,7 +165,8 @@
       }
     },
     destroyed () {
-      document.body.classList.remove('hiui-modal-banScroll')
+      off(document.documentElement, 'mousewheel', this.noScroll)
+      off(document.documentElement, 'DOMMouseScroll', this.noScroll)
     }
   }
 </script>

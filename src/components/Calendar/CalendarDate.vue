@@ -49,6 +49,7 @@
     name: 'CalendarDate',
     props: {
       daterange: Boolean,
+      default_date: Date,
       date: [Object, Date],
       date_range: Array,
       filter: Function,
@@ -73,9 +74,8 @@
       return {
         COL: 7,
         ROW: 6,
-        today: today,
-        year: this.date ? this.date.getFullYear() : today.getFullYear(),
-        month: this.date ? this.date.getMonth() : today.getMonth(),
+        year: this.date ? this.date.getFullYear() : this.default_date.getFullYear(),
+        month: this.date ? this.date.getMonth() : this.default_date.getMonth(),
         range: []
       }
     },
@@ -221,10 +221,6 @@
           this.month++
         }
       }
-    },
-    mounted () {
-    //   this.year = this.date ? this.date.getFullYear() : today.getFullYear()
-    //   this.month = this.date ? this.date.getMonth() : today.getMonth()
     }
   }
 </script>

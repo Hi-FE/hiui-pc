@@ -8,6 +8,7 @@
         :key="`date${i}`"
         :class="wrap_class"
         :style="wrap_style"
+        :default_date="months[i]"
         :daterange="daterange"
         :date="date"
         :date_range="date_range"
@@ -85,7 +86,6 @@
   import Rules from './rules'
 
   const prefixCls = 'hiui-calendar'
-  const today = new Date()
 
   export default {
     name: 'Calendar',
@@ -114,6 +114,10 @@
         default: true
       },
       daterange: {
+        type: Boolean,
+        default: false
+      },
+      defaultNextMonth: {
         type: Boolean,
         default: false
       },
@@ -158,18 +162,13 @@
     },
     data () {
       return {
-        today: today,
-        year: this.date ? this.date.getFullYear() : today.getFullYear(),
-        month: this.date ? this.date.getMonth() : today.getMonth(),
-        mode: this.picker,
+        today: new Date(),
         year_range: 20,
         date_range: [],
         linkage_range: [],
         hover_range: [],
         calendars: []
       }
-    },
-    watch: {
     },
     computed: {
       component_class () {
@@ -195,6 +194,13 @@
         return [
           `${prefixCls}-header`
         ]
+      },
+      months () {
+        if (this.defaultNextMonth) {
+          return [this.today, new Date(this.today.getFullYear(), this.today.getMonth() + 1)]
+        } else {
+          return [new Date(this.today.getFullYear(), this.today.getMonth() - 1), this.today]
+        }
       },
       display () {
         return this.daterange ? (`${formatDate(this.begin_date, this.format)}${this.separator}${formatDate(this.end_date, this.format)}`) : formatDate(this.date, this.format)
@@ -269,6 +275,7 @@
         }
 
         this.calendars.splice(i, 1, 'date')
+        this.setLinkageRange()
 
         this.$nextTick(() => {
           if (this.$refs[`date${i}`][0]) {
@@ -284,6 +291,7 @@
         }
 
         this.calendars.splice(i, 1, 'month')
+        this.setLinkageRange()
 
         this.$nextTick(() => {
           if (this.$refs[`month${i}`][0]) {
@@ -317,9 +325,11 @@
             return null
           } else {
             let vm = this.$refs[`${name}${i}`][0]
-            return new Date(vm.year, vm.month)
+            return new Date(vm.year, vm.month + (i === 1 ? -1 : 1))
           }
         })
+
+        console.log(this.linkage_range)
       },
       update (isComplete) {
         this.$nextTick()

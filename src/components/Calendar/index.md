@@ -29,13 +29,14 @@
 | rules | 内置过滤方法，可选值看下方 | `Array` | - |
 | days | 星期名称 | `Array` | `['日', '一', '二', '三', '四', '五', '六']` |
 | lazy |  `daterange`模式时，是否懒惰完成 | `Boolean` | `true` |
+| month_offset | `daterange`模式下，默认偏移月份 | `Number` | `1` |
 | one_calendar | 是否单个日历显示，`daterange = true`时有效，默认两个日历 | `Boolean` | `false` |
 | format | 格式化展示的值, 默认`yyyy-MM-dd` | `String` | - |
 | separator | 分隔符号，`daterange`模式有效 | `String` | ` ~ ` |
 | mark_today | 是否标志今天 | `Boolean` | `true` |
 | calendar_width | 日历宽度 | `String` | `300px` |
 | calendar_height | 日历高度 | `String` | `250px` |
-| header_width | 日历宽度 | `String` | `60px` |
+| header_height | 头部高度 | `String` | `60px` |
 
 | 事件 | 说明 | 回调参数 |
 | ----|:-----| ---- |

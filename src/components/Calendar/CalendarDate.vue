@@ -1,10 +1,10 @@
 <template>
   <div>
     <header :class="header_class" :style="header_style">
-      <Icon v-if="!filter(new Date(year, month - 1), 'month').disabled" name="left" @click.native="prevMonth"></Icon>
-      <span @click="$emit('click_year')">{{ year }}年</span>
-      <span @click="$emit('click_month')">{{ month + 1 }}月</span>
-      <Icon v-if="!filter(new Date(year, month + 1), 'month').disabled" name="right" @click.native="nextMonth"></Icon>
+      <Icon v-show="!filter(new Date(year, month - 1), 'month').disabled" name="left" @click.native="prevMonth"></Icon>
+      <span @click="$emit('click_year', { year, month })">{{ year }}年</span>
+      <span @click="$emit('click_month', { year, month })">{{ month + 1 }}月</span>
+      <Icon v-show="!filter(new Date(year, month + 1), 'month').disabled" name="right" @click.native="nextMonth"></Icon>
     </header>
     <table :class="component_class" :style="component_style">
       <tbody class="hiui-calendar-date-body">
@@ -29,7 +29,9 @@
             @click="clickDay(obj)"
             @mouseenter="mouseenterDay(obj)"
             >
-            {{ obj.day }}
+            <slot :date="obj.date" :day="obj.day">
+              {{ obj.day }}
+            </slot>
           </td>
         </tr>
       </tbody>
@@ -146,7 +148,6 @@
               date,
               classname,
               active: this.isActive(date),
-              // inRange: this.inRange(date),
               ...filter_result
             })
           }
@@ -160,6 +161,12 @@
         if (val && val.length === 1 && this.range.length) {
           this.$emit('update:hover_range', null)
         }
+      },
+      month (val) {
+        this.$emit('change', {
+          year: this.year,
+          month: val
+        })
       }
     },
     methods: {
@@ -214,6 +221,10 @@
           this.month++
         }
       }
+    },
+    mounted () {
+    //   this.year = this.date ? this.date.getFullYear() : today.getFullYear()
+    //   this.month = this.date ? this.date.getMonth() : today.getMonth()
     }
   }
 </script>

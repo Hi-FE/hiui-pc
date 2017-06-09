@@ -3,8 +3,8 @@
     <template v-for="(mode, i) in calendars">
       <!-- 日历模式 -->
       <CalendarDate
-        v-if="mode === 'date'"
-        ref="date"
+        v-show="mode === 'date'"
+        :ref="`date${i}`"
         :key="`date${i}`"
         :class="wrap_class"
         :style="wrap_style"
@@ -15,16 +15,23 @@
         :height="calendar_height"
         :header_height="header_height"
         :days="days"
-        :filter="filter"
-        @get_day="clickDay"
-        @click_year="calendars.splice(i, 1, 'year')"
-        @click_month="calendars.splice(i, 1, 'month')"
+        :filter="(date, type) => filter(date, type, i)"
+        @get_day="getDate"
+        @click_month="(obj) => setMonth(obj, i)"
+        @click_year="(obj) => setYear(obj, i)"
+        @change="setLinkageRange"
       >
+        <template scope="obj">
+          <slot :day="obj.day">
+            {{ obj.day }}
+          </slot>
+        </template>
       </CalendarDate>
 
       <!-- 月历模式 -->
       <CalendarMonth
-        v-if="mode === 'month'"
+        v-show="mode === 'month'"
+        :ref="`month${i}`"
         :key="`month${i}`"
         :class="wrap_class"
         :style="wrap_style"
@@ -33,35 +40,41 @@
         :date_range="date_range"
         :height="calendar_height"
         :header_height="header_height"
-        :filter="filter"
+        :filter="(date, type) => filter(date, type, i)"
         @get_month="(obj) => getMonth(obj, i)"
+        @click_year="(obj) => setYear(obj, i)"
       >
       </CalendarMonth>
 
       <!-- 年历模式 -->
-      <template v-if="mode === 'year'">
-        <header :class="header_class" :style="header_style">
-          <Icon name="left" @click.native="year_start -= year_range"></Icon>
-          <span class="year-range">{{ year_start }} - {{ year_start + year_range }}</span>
-          <Icon name="right" @click.native="year_start += year_range"></Icon>
-        </header>
-        <CalendarYear
-          :daterange="daterange"
-          :date="date"
-          :date_range="date_range"
-          :height="calendar_height"
-          :year_start="year_start"
-          :filter="filter"
-          @click_year="clickYear"
-        >
-        </CalendarYear>
-      </template>
+      <CalendarYear
+        v-show="mode === 'year'"
+        :ref="`year${i}`"
+        :key="`year${i}`"
+        :class="wrap_class"
+        :style="wrap_style"
+        :daterange="daterange"
+        :date="date"
+        :date_range="date_range"
+        :height="calendar_height"
+        :header_height="header_height"
+        :filter="(date, type) => filter(date, type, i)"
+        @get_year="(obj) => getYear(obj, i)"
+      >
+      </CalendarYear>
     </template>
   </div>
 </template>
 
 <style lang="stylus">
   @import './style/';
+
+  fade('hiui-calendar-');
+  bounce-center('hiui-calendar-');
+  slide-down('hiui-calendar-');
+  slide-up('hiui-calendar-');
+  slide-left('hiui-calendar-');
+  slide-right('hiui-calendar-');
 </style>
 
 <script>
@@ -85,9 +98,7 @@
       date: [Object, Date],
       begin_date: [Object, Date],
       end_date: [Object, Date],
-      date_filter: Function,
-      month_filter: Function,
-      year_filter: Function,
+      custom_filter: Function,
       days: {
         type: Array,
         default() {
@@ -98,17 +109,21 @@
         type: String,
         default: 'date'
       },
+      lazy: {
+        type: Boolean,
+        default: true
+      },
       daterange: {
         type: Boolean,
         default: false
       },
+      separator: {
+        type: String,
+        default: ' ~ '
+      },
       one_calendar: {
         type: Boolean,
         default: false
-      },
-      is_inline: {
-        type: Boolean,
-        default: true
       },
       format: {
         type: String,
@@ -148,18 +163,13 @@
         month: this.date ? this.date.getMonth() : today.getMonth(),
         mode: this.picker,
         year_range: 20,
-        year_start: 0,
         date_range: [],
+        linkage_range: [],
         hover_range: [],
         calendars: []
       }
     },
     watch: {
-      mode (val) {
-        if (val === 'year') {
-          this.year_start = ~~(this.year / 20) * 20
-        }
-      }
     },
     computed: {
       component_class () {
@@ -187,11 +197,11 @@
         ]
       },
       display () {
-        return this.daterange ? (`${formatDate(this.begin_date, this.format)}~${formatDate(this.end_date, this.format)}`) : formatDate(this.date, this.format)
+        return this.daterange ? (`${formatDate(this.begin_date, this.format)}${this.separator}${formatDate(this.end_date, this.format)}`) : formatDate(this.date, this.format)
       }
     },
     methods: {
-      filter (date, type) {
+      filter (date, type, i) {
         let result = {
           disabled: false,
           isToday: false,
@@ -204,9 +214,8 @@
         }
 
         // 用户自定义过滤方法
-        let custom_filter = `${type}_filter`
-        if (this[custom_filter] && !this[custom_filter](date, type)) {
-          result.disabled = true
+        if (this.custom_filter) {
+          result.disabled = !!this.custom_filter(date, type, i)
         }
 
         // 内置过滤方法
@@ -218,55 +227,125 @@
           })
         }
 
+        if (this.daterange && !this.one_calendar && type !== 'date') {
+          if (i === 0) {
+            if (this.linkage_range[1]) {
+              result.disabled = Rules.untilSomeDate(date, this.linkage_range[1], type)
+            }
+          } else {
+            if (this.linkage_range[0]) {
+              result.disabled = Rules.fromSomeDate(date, this.linkage_range[0], type)
+            }
+          }
+        }
+
         return result
       },
-      clickDay (obj) {
+      setDate (date) {
         if (this.daterange) {
           if (this.date_range.length === 1) {
-            this.date_range = this.date_range[0] > obj.date ? [obj.date].concat(this.date_range) : this.date_range.concat([obj.date])
-            this.$nextTick()
-            .then(() => {
-              this.$emit('update:begin_date', this.date_range[0])
-              this.$emit('update:end_date', this.date_range[1])
-            })
-            .then(() => {
-              this.$emit('update:format_date', this.display)
-            })
+            this.date_range = this.date_range[0] > date ? [date].concat(this.date_range) : this.date_range.concat([date])
+
+            this.update(true)
           } else {
-            this.date_range = [obj.date]
+            this.date_range = [date]
+            !this.lazy && this.update(false)
           }
         } else {
-          this.$emit('change', obj.date)
-          this.$nextTick(() => this.$emit('update:format_date', this.display))
+          this.$emit('change', date)
+          this.$nextTick(() => {
+            this.$emit('complete', this.display)
+            this.$emit('update:format_date', this.display)
+          })
         }
       },
-      clickMonth (obj) {
-        this.month = obj.month
-        this.mode = this.picker === 'month' ? 'month' : 'date'
+      getDate ({ date }) {
+        this.setDate(date)
       },
-      clickYear (obj) {
-        this.year = obj.year
-        this.mode = this.picker === 'year' ? 'year' : 'month'
-      },
-      getMonth ({ month }, i) {
+      getMonth ({ date, month, year }, i) {
+        if (this.picker === 'month') {
+          this.setDate(date)
+          return false
+        }
+
         this.calendars.splice(i, 1, 'date')
 
         this.$nextTick(() => {
-          i = this.calendars.length === 2 ? +!i : i
-          if (this.$refs.date[i]) {
-            this.$refs.date[i].month = month
+          if (this.$refs[`date${i}`][0]) {
+            this.$refs[`date${i}`][0].month = month
+            this.$refs[`date${i}`][0].year = year
           }
         })
+      },
+      getYear ({ date, year }, i) {
+        if (this.picker === 'year') {
+          this.setDate(date)
+          return false
+        }
+
+        this.calendars.splice(i, 1, 'month')
+
+        this.$nextTick(() => {
+          if (this.$refs[`month${i}`][0]) {
+            this.$refs[`month${i}`][0].year = year
+          }
+        })
+      },
+      setMonth ({ year }, i) {
+        this.calendars.splice(i, 1, 'month')
+        this.setLinkageRange()
+
+        this.$nextTick(() => {
+          if (this.$refs[`month${i}`][0]) {
+            this.$refs[`month${i}`][0].year = year
+          }
+        })
+      },
+      setYear ({ year }, i) {
+        this.calendars.splice(i, 1, 'year')
+        this.setLinkageRange()
+
+        this.$nextTick(() => {
+          if (this.$refs[`year${i}`][0]) {
+            this.$refs[`year${i}`][0].year = year
+          }
+        })
+      },
+      setLinkageRange () {
+        this.linkage_range = Array.from(this.calendars, (name, i) => {
+          if (name !== 'date') {
+            return null
+          } else {
+            let vm = this.$refs[`${name}${i}`][0]
+            return new Date(vm.year, vm.month)
+          }
+        })
+      },
+      update (isComplete) {
+        this.$nextTick()
+        .then(() => {
+          this.$emit('update:begin_date', this.date_range[0])
+          this.$emit('update:end_date', this.date_range[1])
+        })
+        .then(() => {
+          isComplete && this.$emit('complete', this.display)
+          this.$emit('update:format_date', this.display)
+        })
+      },
+      initCalendar () {
+        this.calendars = !this.daterange ? [this.picker] : this.one_calendar ? [this.picker] : [this.picker, this.picker]
+      },
+      initDateRange () {
+        if (this.daterange && this.begin_date) {
+          this.date_range = this.end_date ? [this.begin_date, this.end_date] : [this.begin_date]
+        }
       }
     },
     mounted () {
-      this.calendars = !this.daterange ? [this.picker] : this.one_calendar ? [this.picker] : [this.picker, this.picker]
-
-      this.year_start = ~~(this.year / 20) * 20
-
-      if (this.daterange && this.begin_date) {
-        this.date_range = [this.begin_date]
-      }
+      this.initCalendar()
+      this.initDateRange()
+      this.date && this.$emit('update:format_date', this.display)
+      this.calendars.length === 2 && this.$nextTick(() => this.setLinkageRange())
     }
   }
 </script>

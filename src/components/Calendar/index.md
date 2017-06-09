@@ -22,14 +22,20 @@
 | ----|:-----| ---- | ---- |
 | date | 日历当前选中的日期，请使用`v-model`获取及设置  | `Date` | - |
 | daterange | 是否开启范围模式 | `Boolean` | `false` |
-| begin_date | 日历起始日期，`daterange = true`时有效，请设置`.sync`  | `Date` | - |
-| end_date | 日历结束日期，`daterange = true`时有效，请设置`.sync`  | `Date` | - |
+| begin_date | 日历起始日期，`daterange`模式有效，请设置`.sync`  | `Date` | - |
+| end_date | 日历结束日期，`daterange`模式有效，请设置`.sync`  | `Date` | - |
 | picker | 日历类型，可选值`date`/`month`/`year` | `String` | `date` |
-| filter | 过滤方法，具体看下方 | `Function` | - |
+| custom_filter | 过滤方法，具体看下方 | `Function` | - |
 | rules | 内置过滤方法，可选值看下方 | `Array` | - |
+| days | 星期名称 | `Array` | `['日', '一', '二', '三', '四', '五', '六']` |
+| lazy |  `daterange`模式时，是否懒惰完成 | `Boolean` | `true` |
 | one_calendar | 是否单个日历显示，`daterange = true`时有效，默认两个日历 | `Boolean` | `false` |
-| is_inline | 是否行内显示 | `Boolean` | `false` |
 | format | 格式化展示的值, 默认`yyyy-MM-dd` | `String` | - |
+| separator | 分隔符号，`daterange`模式有效 | `String` | ` ~ ` |
+| mark_today | 是否标志今天 | `Boolean` | `true` |
+| calendar_width | 日历宽度 | `String` | `300px` |
+| calendar_height | 日历高度 | `String` | `250px` |
+| header_width | 日历宽度 | `String` | `60px` |
 
 | 事件 | 说明 | 回调参数 |
 | ----|:-----| ---- |
@@ -37,8 +43,13 @@
 | change_mode | 当模式改变时的回调 | `[ mode <String:模式>]` |
 
 ```js
-function filter (date) {
-  // 返回 true 则可用，返回 false 则禁用
+/*
+ * @param date  日期
+ * @param type  渲染类型 [date, month, year]
+ * @param index 索引 (默认为0，当 daterange 时为 0 或 1)
+ */
+function custom_filter (date, type, index) {
+  // 返回 true 则禁用
   return Boolean
 }
 

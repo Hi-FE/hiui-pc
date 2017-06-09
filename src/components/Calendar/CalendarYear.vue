@@ -1,17 +1,24 @@
 <template>
-  <div :class="component_class" :style="component_style">
-    <div
-      v-for="obj in allYear"
-      :class="[
-        obj.classname,
-        {
-          disabled: obj.disabled,
-          today: obj.isToday,
-          active: obj.active
-        }
-      ]"
-      @click="clickYear(obj)">
-      <span>{{ obj.year }}</span>
+  <div>
+    <header :class="header_class" :style="header_style">
+      <Icon name="left" @click.native="year -= YEARS"></Icon>
+      <span class="year-range">{{ year_start }} - {{ year_start + YEARS }}</span>
+      <Icon name="right" @click.native="year += YEARS"></Icon>
+    </header>
+    <div :class="component_class" :style="component_style">
+      <div
+        v-for="obj in allYear"
+        :class="[
+          obj.classname,
+          {
+            disabled: obj.disabled,
+            today: obj.isToday,
+            active: obj.active
+          }
+        ]"
+        @click="clickYear(obj)">
+        <span>{{ obj.year }}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -20,6 +27,7 @@
   import { isSameDate } from '@/tools'
 
   const prefixCls = 'hiui-calendar-year'
+  const today = new Date()
 
   export default {
     name: 'CalendarYear',
@@ -27,17 +35,21 @@
       daterange: Boolean,
       date: [Object, Date],
       date_range: Array,
-      year_start: Number,
       filter: Function,
       width: String,
       height: {
         type: String,
         default: '250px'
+      },
+      header_height: {
+        type: String,
+        default: '60px'
       }
     },
     data () {
       return {
-        YEARS: 20
+        YEARS: 20,
+        year: this.date ? this.date.getFullYear() : today.getFullYear()
       }
     },
     computed: {
@@ -51,6 +63,17 @@
           width: this.width,
           height: this.height
         }
+      },
+      header_style () {
+        return {
+          height: this.header_height,
+          lineHeight: this.header_height
+        }
+      },
+      header_class () {
+        return [
+          'hiui-calendar-header'
+        ]
       },
       allYear () {
         let result = []
@@ -68,6 +91,9 @@
         }
 
         return result
+      },
+      year_start () {
+        return ~~(this.year / 20) * 20
       }
     },
     methods: {
@@ -85,7 +111,7 @@
 
         obj.callback && obj.callback(obj.date)
 
-        this.$emit('click_year', obj)
+        this.$emit('get_year', obj)
       }
     }
   }

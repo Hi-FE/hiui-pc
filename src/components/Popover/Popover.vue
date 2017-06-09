@@ -284,7 +284,7 @@
           return false
         }
 
-        this.show = false;
+        this.show = false
       },
       getScroll () {
         this.scrollLeft = window.pageXOffset || (document.documentElement.scrollLeft + document.body.scrollLeft)

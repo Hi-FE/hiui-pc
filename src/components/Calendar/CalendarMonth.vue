@@ -2,7 +2,7 @@
   <div>
     <header :class="header_class" :style="header_style">
       <Icon name="left" @click.native="year--"></Icon>
-      <span @click="mode = 'year'">{{ year }}年</span>
+      <span @click="$emit('click_year', { year })">{{ year }}年</span>
       <Icon name="right" @click.native="year++"></Icon>
     </header>
     <div :class="component_class" :style="component_style">
@@ -82,6 +82,7 @@
           let date = new Date(this.year, i, 1)
           let filter_result = this.filter ? this.filter(date, 'month') : {}
           result.push({
+            year: this.year,
             month: i,
             date,
             classname: `${prefixCls}-item`,

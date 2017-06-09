@@ -254,7 +254,7 @@
         } else {
           this.$emit('change', date)
           this.$nextTick(() => {
-            this.$emit('complete', this.display)
+            this.$emit('complete', date, this.display)
             this.$emit('update:format_date', this.display)
           })
         }
@@ -328,7 +328,7 @@
           this.$emit('update:end_date', this.date_range[1])
         })
         .then(() => {
-          isComplete && this.$emit('complete', this.display)
+          isComplete && this.$emit('complete', this.date_range, this.display)
           this.$emit('update:format_date', this.display)
         })
       },

@@ -39,8 +39,7 @@
 
 | 事件 | 说明 | 回调参数 |
 | ----|:-----| ---- |
-| change_date | 当日期改变时的回调 | `[ date <Date:单选日期>]`/`[ begin_date <Date:日期>, end_date <Date:结束日期>]` |
-| change_mode | 当模式改变时的回调 | `[ mode <String:模式>]` |
+| complete | 当日期改变时的回调 | `[[date <Date:单选日期> / [begin_date, end_date] <Array:范围日期>], format_date<String:格式化日期>]` |
 
 ```js
 /*

@@ -119,7 +119,7 @@
       },
       defaultNextMonth: {
         type: Boolean,
-        default: false
+        default: true
       },
       separator: {
         type: String,

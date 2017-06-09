@@ -29,7 +29,7 @@
 | rules | 内置过滤方法，可选值看下方 | `Array` | - |
 | days | 星期名称 | `Array` | `['日', '一', '二', '三', '四', '五', '六']` |
 | lazy |  `daterange`模式时，是否懒惰完成 | `Boolean` | `true` |
-| month_offset | `daterange`模式下，默认偏移月份 | `Number` | `1` |
+| defaultNextMonth | `daterange`模式下，默认为当前月和下个月，否者为上个月和当前月 | `Boolean` | `true` |
 | one_calendar | 是否单个日历显示，`daterange = true`时有效，默认两个日历 | `Boolean` | `false` |
 | format | 格式化展示的值, 默认`yyyy-MM-dd` | `String` | - |
 | separator | 分隔符号，`daterange`模式有效 | `String` | ` ~ ` |

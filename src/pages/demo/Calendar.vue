@@ -60,29 +60,29 @@
 
     <demo-item name="rule" description="禁用规则" :code="rule_code">
       <div class="calendar_result">
-        禁用周末<br />
+        禁用周末: {{ weekend_format_date }}<br />
         <Calendar
-          v-model="datepick_date"
+          v-model="weekend_date"
           :rules="['unableSat', 'unableSun']"
-          :format_date.sync="datepick_format_date"
+          :format_date.sync="weekend_format_date"
         >
         </Calendar>
       </div>
       <div class="calendar_result">
-        从今天起<br />
+        从今天起: {{ fromtoday_format_date }}<br />
         <Calendar
-          v-model="datepick_date"
+          v-model="fromtoday_date"
           :rules="['fromToday']"
-          :format_date.sync="datepick_format_date"
+          :format_date.sync="fromtoday_format_date"
         >
         </Calendar>
       </div>
       <div class="calendar_result">
-        自定义禁用规则<br />
+        自定义禁用规则: {{ custom_format_date }}<br />
         <Calendar
-          v-model="datepick_date"
+          v-model="custom_date"
           :custom_filter="unableFirstWeek"
-          :format_date.sync="datepick_format_date"
+          :format_date.sync="custom_format_date"
         >
         </Calendar>
       </div>
@@ -168,6 +168,13 @@
         datepick_date: null,
         monthpick_date: null,
         yearpick_date: null,
+        // 禁用规则
+        weekend_date: null,
+        weekend_format_date: '',
+        fromtoday_date: null,
+        fromtoday_format_date: '',
+        custom_date: null,
+        custom_format_date: '',
         // 格式化
         format_begin_date: null,
         format_end_date: null,

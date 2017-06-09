@@ -68,14 +68,4 @@ const rules = [
 ]
 ```
 
-## Slot
-
-| 名字 | 说明 |
-| ----|:-----|
-| day | 日期 |
-| month | 月份 |
-| year | 年份 |
-| display |  展示 |
-
-[#](https://vuefe.cn/v2/guide/components.html#作用域插槽) 使用 具有特殊属性 `scope` 的 `<template>` 元素做插槽时，可在作用域中获取 `day`/`month`/`year`数据, `nextMonth`/`prevMonth`/`nextYear`/`prevYear`/.
 

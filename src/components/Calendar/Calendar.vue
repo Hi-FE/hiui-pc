@@ -69,13 +69,6 @@
 
 <style lang="stylus">
   @import './style/';
-
-  fade('hiui-calendar-');
-  bounce-center('hiui-calendar-');
-  slide-down('hiui-calendar-');
-  slide-up('hiui-calendar-');
-  slide-left('hiui-calendar-');
-  slide-right('hiui-calendar-');
 </style>
 
 <script>
@@ -233,6 +226,7 @@
           })
         }
 
+        // daterange 联动过滤
         if (this.daterange && !this.one_calendar && type !== 'date') {
           if (i === 0) {
             if (this.linkage_range[1]) {
@@ -328,8 +322,6 @@
             return new Date(vm.year, vm.month + (i === 1 ? -1 : 1))
           }
         })
-
-        console.log(this.linkage_range)
       },
       update (isComplete) {
         this.$nextTick()

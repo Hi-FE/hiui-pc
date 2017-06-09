@@ -31,7 +31,7 @@
 | lazy |  `daterange`模式时，是否懒惰完成 | `Boolean` | `true` |
 | defaultNextMonth | `daterange`模式下，默认为当前月和下个月，否者为上个月和当前月 | `Boolean` | `true` |
 | one_calendar | 是否单个日历显示，`daterange = true`时有效，默认两个日历 | `Boolean` | `false` |
-| format | 格式化展示的值, 默认`yyyy-MM-dd` | `String` | - |
+| format | 格式化值 | `String` | `yyyy-MM-dd` |
 | separator | 分隔符号，`daterange`模式有效 | `String` | ` ~ ` |
 | mark_today | 是否标志今天 | `Boolean` | `true` |
 | calendar_width | 日历宽度 | `String` | `300px` |

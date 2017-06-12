@@ -129,6 +129,41 @@
         <Input slot="reference" v-model="lazy_format_date" :readonly="true" placeholder="lazy"></Input>
       </Popover>
     </demo-item>
+
+    <demo-item name="slot" description="自定义内容" :code="slot_code">
+      <div class="calendar_result">
+        Date: {{ slot_date }}<br />
+        Format: {{ slot_format_date }}<br />
+        <Calendar
+          calendar_width="500px"
+          calendar_height="400px"
+          v-model="slot_date"
+          :format_date.sync="slot_format_date"
+        >
+          <template scope="scope">
+            <div :style="{ padding: '4px', fontSize: '12px' }">
+              <div v-if="scope.year === today.getFullYear() && scope.month === today.getMonth() && scope.day === today.getDate()" @click="$toast('自定义绑定事件')">
+                {{ scope.day }}<br /><br />
+                余 2
+              </div>
+              <template v-else>
+                {{ scope.day }}
+              </template>
+            </div>
+          </template>
+          <template scope="scope" slot="month">
+            <div :style="{ padding: '4px', fontSize: '16px' }">
+              {{ scope.month + 1 }}月
+            </div>
+          </template>
+          <template scope="scope" slot="year">
+            <div :style="{ padding: '4px', fontSize: '14px' }">
+              {{ scope.year }}年
+            </div>
+          </template>
+        </Calendar>
+      </div>
+    </demo-item>
   </demo>
 </template>
 
@@ -147,6 +182,10 @@
       line-height: 1.6;
       display: inline-block;
     }
+
+    .diy-slot {
+      padding: 5px;
+    }
   }
 </style>
 
@@ -154,6 +193,7 @@
   export default {
     data () {
       return {
+        today: new Date(),
         // 默认单日期
         default_date: new Date(),
         default_format_date: '',
@@ -187,6 +227,9 @@
         lazy_begin_date: null,
         lazy_end_date: null,
         lazy_format_date: '',
+        // slot
+        slot_date: new Date(),
+        slot_format_date: '',
         code: `
 <div class="calendar_result">
   Date: {{ default_date }}<br />
@@ -315,6 +358,40 @@
   </Calendar>
   <Input slot="reference" v-model="lazy_format_date" :readonly="true" placeholder="lazy"></Input>
 </Popover>
+        `,
+        slot_code: `
+<div class="calendar_result">
+  Date: {{ slot_date }}<br />
+  Format: {{ slot_format_date }}<br />
+  <Calendar
+    calendar_width="500px"
+    calendar_height="400px"
+    v-model="slot_date"
+    :format_date.sync="slot_format_date"
+  >
+  <template scope="scope">
+    <div :style="{ padding: '4px', fontSize: '12px' }">
+      <div v-if="scope.year === today.getFullYear() && scope.month === today.getMonth() && scope.day === today.getDate()" @click="$toast('自定义绑定事件')">
+        {{ scope.day }}<br /><br />
+        余 2
+      </div>
+      <template v-else>
+        {{ scope.day }}
+      </template>
+    </div>
+  </template>
+  <template scope="scope" slot="month">
+    <div :style="{ padding: '4px', fontSize: '16px' }">
+      {{ scope.month + 1 }}月
+    </div>
+  </template>
+  <template scope="scope" slot="year">
+    <div :style="{ padding: '4px', fontSize: '14px' }">
+      {{ scope.year }}年
+    </div>
+  </template>
+  </Calendar>
+</div>
         `
       }
     },

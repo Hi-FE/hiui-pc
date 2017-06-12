@@ -17,7 +17,11 @@
           }
         ]"
         @click="clickMonth(obj)">
-        <span>{{ obj.month + 1 }}月</span>
+        <div class="hiui-calendar-date-slot">
+          <slot :date="obj.date" :month="obj.month" :year="year">
+            <span class="hiui-calendar-date-default-slot">{{ obj.month + 1 }}月</span>
+          </slot>
+        </div>
       </div>
     </div>
   </div>

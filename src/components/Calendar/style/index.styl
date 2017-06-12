@@ -1,5 +1,10 @@
 @import '../../style/';
 
+_month_col = 4;
+_month_row = 3;
+_year_col = 4;
+_year_row = 5;
+
 .hiui-calendar {
   z-index: 9;
   display: inline-block;
@@ -94,6 +99,7 @@
     }
 
     td {
+      position: relative;
       border: 1px solid #fff;
       background-color: #efefef;
       transition: all .2s;
@@ -130,10 +136,6 @@
         color: #ccc;
         cursor: not-allowed;
         font-weight: normal;
-
-        &.cur_month {
-          // color: #ccc;
-        }
       }
 
       &:not(.disabled):not(.active):hover, &:not(.active).isHover {
@@ -151,20 +153,13 @@
   font-size: 0px;
 
   .hiui-calendar-month-item, .hiui-calendar-year-item {
+    position: relative;
     display: inline-block;
     font-size: 18px;
-    text-align: center;
     background-color: #efefef;
     border: 1px solid _white;
     cursor: pointer;
     transition: all .3s;
-
-    span {
-      position: relative;
-      display: inline-block;
-      top: 50%;
-      transform: translateY(-50%);
-    }
 
     &.today {
       box-shadow: inset 0 0 0 1px _blue;
@@ -188,12 +183,33 @@
   }
 }
 
+
 .hiui-calendar-month .hiui-calendar-month-item {
-  width: 25%;
-  height: 33.3%;
+  width: unit(100 / _month_col, '%');
+  height: unit(100 / _month_row, '%');
 }
 
 .hiui-calendar-year .hiui-calendar-year-item {
-  width: 25%;
-  height: 20%;
+  width: unit(100 / _year_col, '%');
+  height: unit(100 / _year_row, '%');
+}
+
+// slot
+.hiui-calendar-date-slot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  white-space: normal;
+
+  .hiui-calendar-date-default-slot {
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    white-space: nowrap;
+    transform: translate(-50%, -50%);
+  }
 }

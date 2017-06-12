@@ -68,4 +68,12 @@ const rules = [
 ]
 ```
 
+## slot
+
+| 名字 | 说明 | 插槽变量 |
+| ----|:-----|:-----|
+| default | 日历内容 | `date <Date:日期对象>`, `year <Number:年份>`, `month <Number:月份>`, `date <Number:日期>` |
+| month | 月历内容 | `date <Date:日期对象>`, `year <Number:年份>`, `month <Number:月份>` |
+| year | 年历内容 | `date <Date:日期对象>`, `year <Number:年份>` |
+
 

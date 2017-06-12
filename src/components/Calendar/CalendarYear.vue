@@ -17,7 +17,11 @@
           }
         ]"
         @click="clickYear(obj)">
-        <span>{{ obj.year }}</span>
+        <div class="hiui-calendar-date-slot">
+          <slot :date="obj.date" :year="obj.year">
+            <span class="hiui-calendar-date-default-slot">{{ obj.year }}</span>
+          </slot>
+        </div>
       </div>
     </div>
   </div>

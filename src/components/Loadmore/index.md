@@ -37,11 +37,11 @@
 
 ## Slot
 
-| 名字 | 说明 |
-| ----|:-----|
-| loading | 加载中的内容 |
-| loadmore | 手动加载更多的内容 |
-| error | 出错时的内容 |
+| 名字 | 说明 | 插槽变量 |
+| ----|:-----|:-----|
+| loading | 加载中的内容 | `loadmore <Function:手动加载方法>` |
+| loadmore | 手动加载更多的内容 | `loadmore <Function:手动加载方法>` |
+| error | 出错时的内容 | `loadmore <Function:手动加载方法>` |
 
 [#](https://vuefe.cn/v2/guide/components.html#作用域插槽) 使用 具有特殊属性 `scope` 的 `<template>` 元素做插槽时，可在作用域中调用 `loadmore` 方法去继续加载.
 

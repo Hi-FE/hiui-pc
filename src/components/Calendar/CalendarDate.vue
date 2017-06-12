@@ -28,10 +28,14 @@
             ]"
             @click="clickDay(obj)"
             @mouseenter="mouseenterDay(obj)"
-            >
-            <slot :date="obj.date" :day="obj.day">
-              {{ obj.day }}
-            </slot>
+            >&nbsp;
+            <div class="hiui-calendar-date-slot">
+              <slot :date="obj.date" :day="obj.day" :month="month" :year="year">
+                <span class="hiui-calendar-date-default-slot">
+                  {{ obj.day }}
+                </span>
+              </slot>
+            </div>
           </td>
         </tr>
       </tbody>

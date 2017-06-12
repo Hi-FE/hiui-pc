@@ -23,8 +23,10 @@
         @change="setLinkageRange"
       >
         <template scope="obj">
-          <slot :day="obj.day">
-            {{ obj.day }}
+          <slot :date="obj.date" :day="obj.day" :month="obj.month" :year="obj.year">
+            <span class="hiui-calendar-date-default-slot">
+              {{ obj.day }}
+            </span>
           </slot>
         </template>
       </CalendarDate>
@@ -45,6 +47,11 @@
         @get_month="(obj) => getMonth(obj, i)"
         @click_year="(obj) => setYear(obj, i)"
       >
+        <template scope="obj">
+          <slot :date="obj.date" :month="obj.month" :year="obj.year" name="month">
+            <span class="hiui-calendar-date-default-slot">{{ obj.month + 1 }}月</span>
+          </slot>
+        </template>
       </CalendarMonth>
 
       <!-- 年历模式 -->
@@ -62,6 +69,11 @@
         :filter="(date, type) => filter(date, type, i)"
         @get_year="(obj) => getYear(obj, i)"
       >
+        <template scope="obj">
+          <slot :date="obj.date" :year="obj.year" name="year">
+            <span class="hiui-calendar-date-default-slot">{{ obj.year }}</span>
+          </slot>
+        </template>
       </CalendarYear>
     </template>
   </div>
@@ -147,7 +159,9 @@
       header_height: {
         type: String,
         default: '60px'
-      }
+      },
+      td_style: Object,
+      active_style: Object
     },
     model: {
       prop: 'date',

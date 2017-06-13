@@ -1,8 +1,6 @@
 <template>
   <div :class="component_class">
-    <template>
-      <slot></slot>
-    </template>
+    <slot></slot>
   </div>
 </template>
 

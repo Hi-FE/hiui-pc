@@ -19,7 +19,7 @@
     },
     data () {
       return {
-        inited: true
+        inited: false
       }
     },
     computed: {
@@ -30,11 +30,10 @@
         ]
       }
     },
-    created: function () {
-      // 保证父组件su-swiper初始化完成后才初始化swiper-slide
-      this.$parent.$on('inited', () => {
-        this.inited = true;
-      })
+    mounted: function () {
+      // Make sure init SwipeSlide slot after Swipe init;
+      // For slot content can get the width and others information correctly
+      this.inited = true;
     }
   }
 </script>

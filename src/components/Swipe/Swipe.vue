@@ -94,9 +94,6 @@
           loop: loop,
           initialSlide: value,
           autoplay: autoplay ? autoplay_speed : undefined,
-          onInit: () => {
-            this.$emit('inited');
-          },
           onTransitionEnd: (swiper) => {
             const { inited, trigger } = this;
             if (!inited) return;
@@ -145,7 +142,7 @@
       this.registerEvents();
     },
     mounted: function () {
-      this.$nextTick(() => this.init())
+      this.init()
     },
     watch: {
       value: function (index, old_index) {
@@ -167,11 +164,20 @@
     methods: {
       init: function () {
         this.swiper = new Swiper(this.$refs.swiper_container, this.config);
+        if (this.loop) {
+          // Loop mode
+          // Reinit swiper when SwipeSlide slot is inited
+          // Make sure .swiper-slide-duplicate is set correctly
+          // PS: .swiper-slide-duplicate is represents duplicated slide and created by swiper
+          this.$nextTick(() => {
+            this.swiper.destroy(true, true)
+            this.swiper = new Swiper(this.$refs.swiper_container, this.config);
+          })
+        }
         this.inited = true;
       },
       update: function () {
         this.swiper && this.swiper.update(true);
-        this.$emit('inited');
       },
       slideTo: function (target) {
         let { loop, preview, slides_len, swiper } = this;

@@ -94,9 +94,6 @@
           loop: loop,
           initialSlide: value,
           autoplay: autoplay ? autoplay_speed : undefined,
-          onInit: () => {
-            this.$emit('inited');
-          },
           onTransitionEnd: (swiper) => {
             const { inited, trigger } = this;
             if (!inited) return;
@@ -145,7 +142,7 @@
       this.registerEvents();
     },
     mounted: function () {
-      this.$nextTick(() => this.init())
+      this.init()
     },
     watch: {
       value: function (index, old_index) {
@@ -171,7 +168,6 @@
       },
       update: function () {
         this.swiper && this.swiper.update(true);
-        this.$emit('inited');
       },
       slideTo: function (target) {
         let { loop, preview, slides_len, swiper } = this;

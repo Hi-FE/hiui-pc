@@ -11,6 +11,7 @@
         :class="[
           obj.classname,
           {
+            custom_style: custom_style,
             disabled: obj.disabled,
             today: obj.isToday,
             active: obj.active
@@ -18,7 +19,13 @@
         ]"
         @click="clickYear(obj)">
         <div class="hiui-calendar-date-slot">
-          <slot :date="obj.date" :year="obj.year">
+          <slot
+            :date="obj.date"
+            :year="obj.year"
+            :disabled="obj.disabled"
+            :active="obj.active"
+            :today="obj.isToday"
+            >
             <span class="hiui-calendar-date-default-slot">{{ obj.year }}</span>
           </slot>
         </div>
@@ -48,7 +55,8 @@
       header_height: {
         type: String,
         default: '60px'
-      }
+      },
+      custom_style: Boolean
     },
     data () {
       return {

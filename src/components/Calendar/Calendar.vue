@@ -17,13 +17,25 @@
         :header_height="header_height"
         :days="days"
         :filter="(date, type) => filter(date, type, i)"
+        :custom_style="custom_style"
         @get_day="getDate"
         @click_month="(obj) => setMonth(obj, i)"
         @click_year="(obj) => setYear(obj, i)"
         @change="setLinkageRange"
       >
         <template scope="obj">
-          <slot :date="obj.date" :day="obj.day" :month="obj.month" :year="obj.year">
+          <slot
+            :date="obj.date"
+            :day="obj.day"
+            :month="obj.month"
+            :year="obj.year"
+            :prev_month="obj.prev_month"
+            :next_month="obj.next_month"
+            :in_range="obj.in_range"
+            :disabled="obj.disabled"
+            :active="obj.active"
+            :today="obj.today"
+          >
             <span class="hiui-calendar-date-default-slot">
               {{ obj.day }}
             </span>
@@ -44,11 +56,19 @@
         :height="calendar_height"
         :header_height="header_height"
         :filter="(date, type) => filter(date, type, i)"
+        :custom_style="custom_style"
         @get_month="(obj) => getMonth(obj, i)"
         @click_year="(obj) => setYear(obj, i)"
       >
         <template scope="obj">
-          <slot :date="obj.date" :month="obj.month" :year="obj.year" name="month">
+          <slot
+            :date="obj.date"
+            :month="obj.month"
+            :year="obj.year"
+            :disabled="obj.disabled"
+            :active="obj.active"
+            :today="obj.today"
+            name="month">
             <span class="hiui-calendar-date-default-slot">{{ obj.month + 1 }}月</span>
           </slot>
         </template>
@@ -67,10 +87,18 @@
         :height="calendar_height"
         :header_height="header_height"
         :filter="(date, type) => filter(date, type, i)"
+        :custom_style="custom_style"
         @get_year="(obj) => getYear(obj, i)"
       >
         <template scope="obj">
-          <slot :date="obj.date" :year="obj.year" name="year">
+          <slot
+            :date="obj.date"
+            :year="obj.year"
+            :disabled="obj.disabled"
+            :active="obj.active"
+            :today="obj.today"
+            name="year"
+          >
             <span class="hiui-calendar-date-default-slot">{{ obj.year }}</span>
           </slot>
         </template>
@@ -160,8 +188,7 @@
         type: String,
         default: '60px'
       },
-      td_style: Object,
-      active_style: Object
+      custom_style: Boolean
     },
     model: {
       prop: 'date',

@@ -138,16 +138,18 @@
           calendar_width="500px"
           calendar_height="400px"
           v-model="slot_date"
+          :rules="['fromToday']"
           :format_date.sync="slot_format_date"
         >
           <template scope="scope">
             <div :style="{ padding: '4px', fontSize: '12px' }">
-              <div v-if="scope.year === today.getFullYear() && scope.month === today.getMonth() && scope.day === today.getDate()" @click="$toast('自定义绑定事件')">
+              <div v-if="scope.today" @click="$toast('自定义绑定事件')">
                 {{ scope.day }}<br /><br />
                 余 2
               </div>
               <template v-else>
-                {{ scope.day }}
+                {{ scope.day }}<br /><br />
+                {{ scope.disabled ? '已过期' : '' }}
               </template>
             </div>
           </template>
@@ -174,6 +176,10 @@
     table {
       margin: 0!important;
       overflow: hidden!important;
+
+      tr {
+        background-color: transparent!important;
+      }
     }
 
     .calendar_result {
@@ -230,6 +236,10 @@
         // slot
         slot_date: new Date(),
         slot_format_date: '',
+        // style
+        style_begin_date: null,
+        style_end_date: null,
+        style_format_date: '',
         code: `
 <div class="calendar_result">
   Date: {{ default_date }}<br />
@@ -371,7 +381,7 @@
   >
   <template scope="scope">
     <div :style="{ padding: '4px', fontSize: '12px' }">
-      <div v-if="scope.year === today.getFullYear() && scope.month === today.getMonth() && scope.day === today.getDate()" @click="$toast('自定义绑定事件')">
+      <div v-if="scope.today" @click="$toast('自定义绑定事件')">
         {{ scope.day }}<br /><br />
         余 2
       </div>

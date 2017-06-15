@@ -37,6 +37,7 @@
 | calendar_width | 日历宽度 | `String` | `300px` |
 | calendar_height | 日历高度 | `String` | `250px` |
 | header_height | 头部高度 | `String` | `60px` |
+| no_border | 不显示边框 | `Boolean` | `false` |
 
 | 事件 | 说明 | 回调参数 |
 | ----|:-----| ---- |
@@ -72,8 +73,17 @@ const rules = [
 
 | 名字 | 说明 | 插槽变量 |
 | ----|:-----|:-----|
-| default | 日历内容 | `date <Date:日期对象>`, `year <Number:年份>`, `month <Number:月份>`, `date <Number:日期>` |
-| month | 月历内容 | `date <Date:日期对象>`, `year <Number:年份>`, `month <Number:月份>` |
-| year | 年历内容 | `date <Date:日期对象>`, `year <Number:年份>` |
+| default | 日历内容 | `in_range <Boolean:是否在范围中>`, `year <Number:年份>`, `month <Number:月份>`, `day <Number:日期>` |
+| month | 月历内容 | `year <Number:年份>`, `month <Number:月份>` |
+| year | 年历内容 | `year <Number:年份>` |
+
+### 共有的插槽变量
+
+ ```
+  date     {Date}     日期对象
+  disabled {Boolean}  是否被禁用
+  active   {Boolean}  是否激活状态
+  today    {Boolean}  是否今天
+ ```
 
 

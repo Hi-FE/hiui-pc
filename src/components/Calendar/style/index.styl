@@ -100,47 +100,50 @@ _year_row = 5;
 
     td {
       position: relative;
-      border: 1px solid #fff;
-      background-color: #efefef;
       transition: all .2s;
 
-      &.cur_month {
-        color: #333;
-        font-weight: 600;
-      }
+      &:not(.custom_style) {
+        border: 1px solid #fff;
+        background-color: #efefef;
 
-      &.prev_month, &.next_month {
-        color: #777;
-        background-color: #f7f7f7;
-
-        &.active, &.inRange {
-          opacity: .66;
+        &.cur_month {
+          color: #333;
+          font-weight: 600;
         }
-      }
 
-      &.today {
-        box-shadow: inset 0 0 0 1px _blue;
-      }
+        &.prev_month, &.next_month {
+          color: #777;
+          background-color: #f7f7f7;
 
-      &.inRange {
-        background-color: lighten(_blue_light, 80%);
-      }
+          &.active, &.inRange {
+            opacity: .66;
+          }
+        }
 
-      &.active {
-        color: _white;
-        background-color: _blue;
-        cursor: default;
-      }
+        &.today {
+          box-shadow: inset 0 0 0 1px _blue;
+        }
 
-      &.disabled {
-        color: #ccc;
-        cursor: not-allowed;
-        font-weight: normal;
-      }
+        &.inRange {
+          background-color: lighten(_blue_light, 80%);
+        }
 
-      &:not(.disabled):not(.active):hover, &:not(.active).isHover {
-        color: _white;
-        background-color: _blue_light;
+        &.active {
+          color: _white;
+          background-color: _blue;
+          cursor: default;
+        }
+
+        &.disabled {
+          color: #ccc;
+          cursor: not-allowed;
+          font-weight: normal;
+        }
+
+        &:not(.disabled):not(.active):hover, &:not(.active).isHover {
+          color: _white;
+          background-color: _blue_light;
+        }
       }
     }
   }
@@ -156,29 +159,37 @@ _year_row = 5;
     position: relative;
     display: inline-block;
     font-size: 18px;
-    background-color: #efefef;
-    border: 1px solid _white;
     cursor: pointer;
     transition: all .3s;
 
-    &.today {
-      box-shadow: inset 0 0 0 1px _blue;
-    }
 
-    &.active {
-      color: _white;
-      background-color: _blue;
-    }
+    &:not(.custom_style) {
+      border: 1px solid _white;
+      background-color: #efefef;
 
-    &.disabled {
-      color: #ccc;
-      cursor: not-allowed;
-      font-weight: normal;
-    }
+      &.custom_style {
+        border: none;
+      }
 
-    &:not(.disabled):not(.active):hover {
-      color: _white;
-      background-color: _blue_light;
+      &.today {
+        box-shadow: inset 0 0 0 1px _blue;
+      }
+
+      &.active {
+        color: _white;
+        background-color: _blue;
+      }
+
+      &.disabled {
+        color: #ccc;
+        cursor: not-allowed;
+        font-weight: normal;
+      }
+
+      &:not(.disabled):not(.active):hover {
+        color: _white;
+        background-color: _blue_light;
+      }
     }
   }
 }

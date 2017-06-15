@@ -19,6 +19,7 @@
             :class="[
               obj.classname,
               {
+                custom_style: custom_style,
                 disabled: obj.disabled,
                 today: obj.isToday,
                 inRange: inRange(obj.date),
@@ -30,7 +31,18 @@
             @mouseenter="mouseenterDay(obj)"
             >&nbsp;
             <div class="hiui-calendar-date-slot">
-              <slot :date="obj.date" :day="obj.day" :month="month" :year="year">
+              <slot
+                :date="obj.date"
+                :day="obj.day"
+                :month="month"
+                :year="year"
+                :prev_month="!!obj.prev_month"
+                :next_month="!!obj.next_month"
+                :in_range="inRange(obj.date)"
+                :disabled="obj.disabled"
+                :active="obj.active"
+                :today="obj.isToday"
+              >
                 <span class="hiui-calendar-date-default-slot">
                   {{ obj.day }}
                 </span>
@@ -72,7 +84,8 @@
       header_height: {
         type: String,
         default: '60px'
-      }
+      },
+      custom_style: Boolean
     },
     data () {
       return {
@@ -128,16 +141,18 @@
           result[i] = []
           for (let j = 0; j < this.COL; j++) {
             let cur = i * 7 + j
-            let day, month, date, filter_result, classname
+            let day, month, date, filter_result, classname, prev_month, next_month
 
             if (cur < this.firstDay) {
               day = this.prevMonthDays - (this.firstDay - cur - 1)
               month = this.month - 1
               classname = 'prev_month'
+              prev_month = true
             } else if (cur >= this.firstDay + this.curMonthDays) {
               day = cur - (this.firstDay + this.curMonthDays - 1)
               month = this.month + 1
               classname = 'next_month'
+              next_month = true
             } else {
               day = cur - this.firstDay + 1
               month = this.month
@@ -151,6 +166,8 @@
               day,
               date,
               classname,
+              prev_month,
+              next_month,
               active: this.isActive(date),
               ...filter_result
             })

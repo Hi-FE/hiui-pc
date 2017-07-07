@@ -14,7 +14,7 @@
                     :index_trigger="index_trigger"
                     :index_x_offset="index_x_offset"
                     :index_y_offset="index_y_offset"
-                    @active="slideTo"></SwipeIndex>
+                    @active="slideTo(arguments[0]), swiper.startAutoplay()"></SwipeIndex>
 
       </div>
 
@@ -51,7 +51,7 @@
       free: Boolean,
       coverflow: Boolean,
       loop: { type: Boolean, default: true },
-      autoplay: Boolean,
+      autoplay: [Boolean, Number],
       index: Boolean,
       index_trigger: { type: [String, Boolean], default: 'click' },
       trigger: { type: String, default: 'change' },
@@ -84,7 +84,7 @@
       },
       config: function () {
         const { preview, between, sliding_num, free, loop, autoplay, value } = this;
-        const autoplay_speed = 5000
+        const autoplay_speed = typeof autoplay === 'number' ? autoplay : autoplay ? 5000 : undefined
         // default config
         let config = {
           slidesPerView: preview,
@@ -93,7 +93,7 @@
           freeMode: free,
           loop: loop,
           initialSlide: value,
-          autoplay: autoplay ? autoplay_speed : undefined,
+          autoplay: autoplay_speed,
           onTransitionEnd: (swiper) => {
             const { inited, trigger } = this;
             if (!inited) return;
@@ -146,9 +146,10 @@
     },
     watch: {
       value: function (index, old_index) {
-        const { swiper, trigger, is_sliding } = this;
+        const { swiper, trigger, autoplay, is_sliding } = this;
         if (!swiper || (trigger === 'progress' && is_sliding)) return;
         this.slideTo(index)
+        this.swiper.startAutoplay()
       },
       update_by: {
         deep: true,

@@ -23,6 +23,7 @@
 | value | Swipe的当前下标，请使用`v-model`获取及设置  | - | - |
 | preview | 预览展示的滑块数目  | `Number` | 1 |
 | between | 每个滑块之间的间距  | `Number` | 0 |
+| autoplay | 自动滑动, 默认5000毫秒间隔，可自定义时长  | `Boolean`/`Number` | false |
 | trigger | index的触发时机, 可选值`change`/`progress`  | `String` | change |
 | arrow | 箭头, 可选值`true`/`false`/`'hover'`  | `String, Boolean` | false |
 | outer_arrow | 是否显示外部箭头, 可选值`true`/`false` | `Boolean` | false |
@@ -35,7 +36,6 @@
 | loop | 无限循环滑动  | `Boolean` | true |
 | free | 滑块自由滑动  | `Boolean` | false |
 | coverflow | coverflow过渡效果  | `Boolean` | false |
-| autoplay | 自动滑动  | `Boolean` | false |
 | update_by | 指定更新数据源，Swipe会监听它，用于更新Swipe状态 | - | - |
 
 | 事件 | 说明 | 类型 | 使用 | 结果 |

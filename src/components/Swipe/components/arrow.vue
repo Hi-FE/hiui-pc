@@ -7,12 +7,12 @@
          :style="{ 'margin-top': -arrow_offset + 'px' }">
 
       <!-- outer arrow -->
-      <span class="arrow outer" :class="direction" v-if="outer_arrow" @click="direction === 'left' ? swiper.slidePrev() : swiper.slideNext()" @mouseenter="$set(hover, index, true)" @mouseleave="$set(hover, index, false)">
+      <span class="arrow outer" :class="direction" v-if="outer_arrow" @click="(direction === 'left' ? swiper.slidePrev() : swiper.slideNext()), swiper.startAutoplay()" @mouseenter="$set(hover, index, true)" @mouseleave="$set(hover, index, false)">
         <Icon class="icon" :name="direction" :size="24" :color="hover[index] ? '#323232' : '#999'"></Icon>
       </span>
 
       <!-- inner arrow -->
-      <span class="arrow inner" :class="direction" v-else @click="direction === 'left' ? swiper.slidePrev() : swiper.slideNext()">
+      <span class="arrow inner" :class="direction" v-else @click="(direction === 'left' ? swiper.slidePrev() : swiper.slideNext()), swiper.startAutoplay()">
         <Icon class="icon" :name="`arrow${direction}`" :size="16" color="#fff"></Icon>
       </span>
 

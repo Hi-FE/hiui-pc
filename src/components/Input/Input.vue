@@ -131,6 +131,7 @@
         this.is_focus = true
         this.is_error = false
         this.is_correct = false
+        this.$emit('focus')
       },
       blurHandler: function (is_edited) {
         this.is_focus = false
@@ -138,6 +139,7 @@
           this.is_error = !this.no_verify && !this.verify_result || !!this.custom_tip;
           this.is_correct = !this.no_verify && this.verify_result && !this.custom_tip;
         }
+        this.$emit('blur')
       },
       enterHandler: function () {
         this.$emit('enter');

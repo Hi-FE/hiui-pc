@@ -115,6 +115,10 @@
       getLoadmoreTop () {
         let { content } = this.$refs
 
+        if (!content) {
+          return false
+        }
+
         this.loadmore_scrollTop = content.offsetHeight + this.getOffsetTop(content) - this.offset - document.documentElement.clientHeight
       },
       getOffsetTop(elem) {

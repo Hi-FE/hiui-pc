@@ -1,13 +1,13 @@
 <template>
   <div>
     <h3>{{ data[type].name }}</h3>
-    <Row :gutter="20" :class="`${type}-group color-group`">
-      <Col v-for="(name, key, i) in data[type].colors" :key="i" :span="24 / data[type].colors.length" class="color-item-wrap">
+    <div :class="`${type}-group color-group pure-g`">
+      <div v-for="(name, key, i) in data[type].colors" :key="i" :class="['color-item-wrap', `pure-u-${24 / data[type].colors.length}-24`]">
         <div class="color-item">
           <div class="color-name">{{ name }}</div>
         </div>
-      </Col>
-    </Row>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -18,20 +18,30 @@
     margin-bottom: 20px;
   }
 
-  .color-item {
-    color: _white;
-    height: 80px;
-    font-size: 14px;
-    padding: 0 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 4px;
+  .color-item-wrap {
 
-    .color-name {
-      font-size: 16px;
-      text-shadow: 0 0 1px rgba(0, 0, 0, .8);
+    .color-item {
+      color: _white;
+      height: 80px;
+      font-size: 14px;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .color-name {
+        font-size: 16px;
+        text-shadow: 0 0 1px rgba(0, 0, 0, .8);
+      }
+    }
+
+    &:first-child .color-item {
+      border-radius: 4px 0 0 4px;
+    }
+
+    &:last-child .color-item {
+      border-radius: 0 4px 4px 0;
     }
   }
 

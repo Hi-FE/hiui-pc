@@ -11,7 +11,7 @@
                 @blur="$emit('blur')"
                 @keyup.enter="$emit('enter')"
                 @input="$emit('input', $event.target.value)"
-                @change="$emit('input', reformStr($event.target.value)), $emit('change', reformStr($event.target.value))"></textarea>
+                @change="changeHandler($event.target.value)"></textarea>
       <textarea class="hidden-textarea" :ref="'hidden_textarea'" :rows="rows" :value="value"></textarea>
     </template>
     <input v-else
@@ -24,7 +24,7 @@
            @blur="$emit('blur')"
            @keyup.enter="$emit('enter')"
            @input="$emit('input', $event.target.value)"
-           @change="$emit('input', reformStr($event.target.value)), $emit('change', reformStr($event.target.value))">
+           @change="changeHandler($event.target.value)">
   </div>
 </template>
 
@@ -108,25 +108,31 @@
     },
     methods: {
       // 正则验证
-      verifyResult: function (value = '', regs, verify = []) {
+      verifyResult: function (value = '', reg, verify = []) {
         value = value && typeof value.trim === 'function' && value.trim() || value;
         verify = [].concat(verify);
+
         // 优先使用接口正则验证
-        if (this.reg) return new RegExp(this.reg).test(value)
+        if (reg) return new RegExp(reg).test(value)
+
         // 内置基础正则验证
-        for (let i = 0, len = verify.length, reg; i < len; i++) {
-          reg = BASIC_VERIFY_REGEXP[verify[i]];
+        return verify.some(item => {
+          const reg = BASIC_VERIFY_REGEXP[item]
+
           if (reg.test(value)) {
             // fix: 判空正则无法识别undefined
-            if (verify[i] === 'empty') return !!value || value === 0;
-            return true;
-          } else {
-            if (i === len - 1) {
-              return false;
-            }
+            if (item === 'empty') return !!value || value === 0
+
+            return true
           }
-        }
-        return false
+
+          return false
+        })
+      },
+      changeHandler: function (value) {
+        this.$emit('input', this.reformStr(value))
+        this.$emit('change', this.reformStr(value))
+        this.$emit('verify', this.verifyResult(value, this.reg, this.verify))
       },
       reformStr: function (str) {
         str = str + '';
